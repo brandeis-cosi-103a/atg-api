@@ -1,0 +1,5 @@
+{
+    "files.trimTrailingWhitespace": true,
+    "editor.formatOnSave": true,
+    "java.compile.nullAnalysis.mode": "automatic"
+}
