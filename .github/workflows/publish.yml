@@ -28,5 +28,10 @@ jobs:
         echo "signing.keyId=${{ secrets.GPG_KEY_ID }}" >> gradle.properties
         echo "signing.password=${{ secrets.GPG_PASSPHRASE }}" >> gradle.properties
         echo "signing.secretKeyRingFile=private.asc.gpg" >> gradle.properties
+        pwd
+        ls -lah
     - name: Push to Maven Central
-      run: ./gradlew publishAllPublicationsToMavenCentralRepository
+      run: |
+        pwd
+        ls -lah
+        ./gradlew publishAllPublicationsToMavenCentralRepository
