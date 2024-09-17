@@ -1,0 +1,33 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v4
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: 17
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4
+    - name: Create GPG keyring
+      run: |
+        echo "${{ secrets.GPG_PRIVATE_KEY }}" > private.gpg
+        gpg --import private.asc
+        gpg --dearmor private.asc
+    - name: Setup credentials
+      run: |
+        touch gradle.properties
+        echo "mavenCentralUsername=${{ secrets.MAVEN_CENTRAL_USERNAME }}" >> gradle.properties
+        echo "mavenCentralPassword=${{ secrets.MAVEN_CENTRAL_PASSWORD }}" >> gradle.properties
+        echo "signing.keyId=${{ secrets.GPG_KEY_ID }}" >> gradle.properties
+        echo "signing.password=${{ secrets.GPG_PASSPHRASE }}" >> gradle.properties
+        echo "signing.secretKeyRingFile=private.asc.gpg" >> gradle.properties
+    - name: Push to Maven Central
+      run: ./gradlew publishAllPublicationsToMavenCentralRepository
