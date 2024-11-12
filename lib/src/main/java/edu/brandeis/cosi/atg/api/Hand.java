@@ -29,11 +29,4 @@ public interface Hand {
      * @return an immutable list of played cards in the hand
      */
     public ImmutableList<Card> getPlayedCards();
-
-    /**
-     * Gets the playable cards in the hand.
-     *
-     * @return an immutable list of playable cards in the hand
-     */
-    public ImmutableList<Card> getPlayableCards();
 }
