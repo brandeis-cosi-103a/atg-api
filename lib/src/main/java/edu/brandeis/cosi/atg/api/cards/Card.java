@@ -93,7 +93,7 @@ public class Card {
          * @param value the value of the card type
          * @param cost the cost of the card type
          */
-        Type(String description, Category category, int value, int cost) {
+        Type(String description, Category category, int cost, int value) {
             this.description = description;
             this.category = category;
             this.value = value;

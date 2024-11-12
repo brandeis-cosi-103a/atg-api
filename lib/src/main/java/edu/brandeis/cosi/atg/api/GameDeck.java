@@ -5,7 +5,11 @@ import com.google.common.collect.ImmutableCollection;
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
- * Represents the deck of cards used in the game.
+ * Represents the piles of cards available for purchase during the game.
+ *
+ * This class does not represent a single player's deck of cards (which is a private implementation
+ * detail of the game engine), but rather the piles of cards available for purchase during the game.
+ *
  */
 public interface GameDeck {
 

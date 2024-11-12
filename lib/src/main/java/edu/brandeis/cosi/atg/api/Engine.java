@@ -27,12 +27,11 @@ public interface Engine {
         /**
          * Creates an instance of {@link Engine}.
          *
-         * @param cards the list of available cards
          * @param playerOne the first player
          * @param playerTwo the second player
          * @param observer the game observer
          * @return an instance of {@link Engine}
          */
-        public Engine makeEngine(ImmutableList<Card> cards, Player playerOne, Player playerTwo, GameObserver observer);
+        public Engine makeEngine(Player playerOne, Player playerTwo, GameObserver observer);
     }
 }

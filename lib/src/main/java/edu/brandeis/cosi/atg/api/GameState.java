@@ -20,7 +20,10 @@ public interface GameState {
     public Hand getCurrentPlayerHand();
 
     /**
-     * Gets the amount of money the current player can spend.
+     * Gets the amount of money the current player can spend this turn.
+     *
+     * This is the amount of money the player has earned by playing cards during this turn,
+     * as opposed to the amount of money that the player has in their hand or deck.
      *
      * @return the amount of spendable money
      */
