@@ -5,7 +5,7 @@ plugins {
     id "com.vanniktech.maven.publish" version "0.29.0"
 }
 
-version = '1.0.0'
+version = '1.0.3'
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -23,7 +23,7 @@ mavenPublishing {
 
   signAllPublications()
 
-  coordinates("io.github.brandeis-cosi-103a", "atg-api", "1.0.2")
+  coordinates("io.github.brandeis-cosi-103a", "atg-api", "1.0.3")
 
   pom {
     name = "Automation: The Game API"
