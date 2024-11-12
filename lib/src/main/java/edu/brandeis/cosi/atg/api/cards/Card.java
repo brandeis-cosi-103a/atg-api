@@ -72,6 +72,14 @@ public class Card {
         return type.getDescription();
     }
 
+    /**
+     * Returns a string representation of the card, including its description and id.
+     */
+    @Override
+    public String toString() {
+        return "[" + getDescription() + "(id: " + id + ")]";
+    }
+
     public enum Type {
         METHOD("Method", Category.VICTORY, 2, 1),
         MODULE("Module", Category.VICTORY, 5, 3),
