@@ -81,7 +81,7 @@ public class Card {
     }
 
     public enum Type {
-        CURSE("Curse", Category.VICTORY, 0, -1),
+        BUG("Bug", Category.VICTORY, 0, -1),
         METHOD("Method", Category.VICTORY, 2, 1),
         MODULE("Module", Category.VICTORY, 5, 3),
         FRAMEWORK("Framework", Category.VICTORY, 8, 6),
@@ -119,45 +119,48 @@ public class Card {
          * Note that "+2 Money" indicates the player has 2 more money to spend for this turn.
          * This does not imply that any money cards are gained by the player.
          */
-        MILITIA("Militia", Category.ACTION, 4, 0),
+        IP_THEFT("Intellectual Property Theft", Category.ACTION, 4, 0),
 
         /**
          * +2 Cards
          * When another player plays an Attack card, you may reveal this from your hand to
          * be unaffected by it.
          */
-        MOAT("Moat", Category.ACTION, 2, 0),
+        MONITORING("Monitoring", Category.ACTION, 2, 0),
 
         /**
          * +1 Card
          * +1 Action
          * +1 Money
          *
-         * Discard a card per empty Supply pile.
+         * Discard one card per empty Supply pile.
          */
         POACHER("Poacher", Category.ACTION, 4, 0),
 
         /**
          * Trash a card from your hand. Gain a card costing up to 2 more than the trashed card.
          */
-        REMODEL("Remodel", Category.ACTION, 4, 0),
+        REFACTOR("Refactor", Category.ACTION, 4, 0),
 
         /**
          * You may play an Action card from your hand twice.
+         *
+         * Playing a Throne Room will result in the player being prompted with a PlayCardDecision
+         * to select the action card to play twice.
          */
-        THRONE_ROOM("Throne Room", Category.ACTION, 4, 0),
+        PARALLELIZATION("Parallelization", Category.ACTION, 4, 0),
 
         /**
          * +1 Card
          * +2 Actions
          */
-        VILLAGE("Village", Category.ACTION, 3, 0),
+        CODE_REVIEW("Code Review", Category.ACTION, 3, 0),
 
         /**
          * +2 Cards
-         * Each other player gains a Curse.
+         * Each other player gains a Bug.
          */
-        WITCH("Witch", Category.ACTION, 5, 0);
+        EVERGREEN_TEST("Evergreen Test", Category.ACTION, 5, 0);
 
         private String description;
         private Category category;
