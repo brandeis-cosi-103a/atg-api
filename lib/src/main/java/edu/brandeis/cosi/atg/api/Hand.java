@@ -1,6 +1,6 @@
 package edu.brandeis.cosi.atg.api;
 
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableCollection;
 
 import edu.brandeis.cosi.atg.api.cards.Card;
 
@@ -14,19 +14,19 @@ public interface Hand {
      *
      * @return an immutable list of all cards in the hand
      */
-    public ImmutableList<Card> getAllCards();
+    public ImmutableCollection<Card> getAllCards();
 
     /**
      * Gets the unplayed cards in the hand.
      *
-     * @return an immutable list of unplayed cards in the hand
+     * @return an immutable collection of unplayed cards in the hand
      */
-    public ImmutableList<Card> getUnplayedCards();
+    public ImmutableCollection<Card> getUnplayedCards();
 
     /**
      * Gets the played cards in the hand.
      *
-     * @return an immutable list of played cards in the hand
+     * @return an immutable collection of played cards in the hand
      */
-    public ImmutableList<Card> getPlayedCards();
+    public ImmutableCollection<Card> getPlayedCards();
 }
