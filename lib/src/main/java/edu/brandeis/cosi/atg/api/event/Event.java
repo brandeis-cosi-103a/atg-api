@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
                 @JsonSubTypes.Type(value = GameEvent.class, name = "game"),
                 @JsonSubTypes.Type(value = PlayCardEvent.class, name = "play_card")
 })
-public sealed interface Event permits EndTurnEvent, GainCardEvent, GameEvent, PlayCardEvent {
+public sealed interface Event permits EndTurnEvent, GameEvent, GainCardEvent, PlayCardEvent, DiscardCardEvent {
 
         /**
          * Gets the description of the event.

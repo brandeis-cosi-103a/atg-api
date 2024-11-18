@@ -1,6 +1,7 @@
 package edu.brandeis.cosi.atg.api;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 
 /**
  * An Engine executes a full game, given a list of available cards, and players
