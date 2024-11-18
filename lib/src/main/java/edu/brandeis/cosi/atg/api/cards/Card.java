@@ -86,7 +86,77 @@ public class Card {
         FRAMEWORK("Framework", Category.VICTORY, 8, 6),
         BITCOIN("Bitcoin", Category.MONEY, 1, 1),
         ETHEREUM("Ethereum", Category.MONEY, 3, 2),
-        DOGECOIN("Dogecoin", Category.MONEY, 6, 3);
+        DOGECOIN("Dogecoin", Category.MONEY, 6, 3),
+
+        /**
+         * +1 Action
+         * Discard any number of cards, then draw that many.
+         */
+        CELLAR("Cellar", Category.ACTION, 2, 0),
+
+        /**
+         * +4 Cards
+         * +1 Buy
+         * Each other player draws a card.
+         */
+        COUNCIL_ROOM("Council Room", Category.ACTION, 5, 0),
+
+        /**
+         * +2 Cards
+         * +1 Action
+         * +2 Money
+         *
+         * Note that "+2 Money" indicates the player has 2 more money to spend for this turn.
+         * This does not imply that any money cards are gained by the player.
+         */
+        FESTIVAL("Festival", Category.ACTION, 5, 0),
+
+        /**
+         * +2 Money
+         * Each other player discards down to 3 cards in hand.
+         *
+         * Note that "+2 Money" indicates the player has 2 more money to spend for this turn.
+         * This does not imply that any money cards are gained by the player.
+         */
+        MILITIA("Militia", Category.ACTION, 4, 0),
+
+        /**
+         * +2 Cards
+         * When another player plays an Attack card, you may reveal this from your hand to
+         * be unaffected by it.
+         */
+        MOAT("Moat", Category.ACTION, 2, 0),
+
+        /**
+         * +1 Card
+         * +1 Action
+         * +1 Money
+         *
+         * Discard a card per empty Supply pile.
+         */
+        POACHER("Poacher", Category.ACTION, 4, 0),
+
+        /**
+         * Trash a card from your hand. Gain a card costing up to 2 more than the trashed card.
+         */
+        REMODEL("Remodel", Category.ACTION, 4, 0),
+
+        /**
+         * You may play an Action card from your hand twice.
+         */
+        THRONE_ROOM("Throne Room", Category.ACTION, 4, 0),
+
+        /**
+         * +1 Card
+         * +2 Actions
+         */
+        VILLAGE("Village", Category.ACTION, 3, 0),
+
+        /**
+         * +2 Cards
+         * Each other player gains a Curse.
+         */
+        WITCH("Witch", Category.ACTION, 5, 0);
 
         private String description;
         private Category category;
