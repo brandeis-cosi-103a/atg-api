@@ -1,26 +1,26 @@
-package edu.brandeis.cosi.atg.api.actions;
+package edu.brandeis.cosi.atg.api.decisions;
 
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
- * Represents an action where a player plays a card.
+ * Represents a decision by a player to play a card.
  */
-public final class PlayCardAction implements Action {
+public final class PlayCardDecision implements Decision {
     private Card card;
 
     /**
-     * Constructs a PlayCardAction with the specified card.
+     * Constructs a PlayCardDecision with the specified card.
      *
      * @param card the card to play
      */
-    public PlayCardAction(Card card) {
+    public PlayCardDecision(Card card) {
         this.card = card;
     }
 
     /**
-     * Gets the description of the play card action.
+     * Gets the description of the play card decision.
      *
-     * @return the description of the play card action
+     * @return the description of the play card decision
      */
     public String getDescription() {
         return "Play " + card.getDescription();
