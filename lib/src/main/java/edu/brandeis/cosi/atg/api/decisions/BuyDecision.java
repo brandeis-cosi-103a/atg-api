@@ -1,29 +1,29 @@
-package edu.brandeis.cosi.atg.api.actions;
+package edu.brandeis.cosi.atg.api.decisions;
 
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
- * Represents an action where a player buys a card.
+ * Represents a decision by a player to buy a card.
  */
-public final class BuyAction implements Action {
+public final class BuyDecision implements Decision {
     private Card.Type cardType;
     private int numAvailable;
 
     /**
-     * Constructs a BuyAction with the specified card type and number of available cards.
+     * Constructs a BuyDecision with the specified card type and number of available cards.
      *
      * @param cardType the type of card to buy
      * @param numAvailable the number of available cards of the specified type
      */
-    public BuyAction(Card.Type cardType, int numAvailable) {
+    public BuyDecision(Card.Type cardType, int numAvailable) {
         this.cardType = cardType;
         this.numAvailable = numAvailable;
     }
 
     /**
-     * Gets the description of the buy action.
+     * Gets the description of the buy decision.
      *
-     * @return the description of the buy action
+     * @return the description of the buy decision
      */
     public String getDescription() {
         return "Buy " + cardType.getDescription() + " [" + numAvailable + " avail]";
@@ -48,12 +48,12 @@ public final class BuyAction implements Action {
     }
 
     /**
-     * Returns a string representation of the buy action.
+     * Returns a string representation of the buy decision.
      *
-     * @return a string representation of the buy action
+     * @return a string representation of the buy decision
      */
     public String toString() {
-        return "BuyAction{" +
+        return "BuyDecision{" +
             "cardType=" + cardType +
             ", numAvailable=" + numAvailable +
             "}";

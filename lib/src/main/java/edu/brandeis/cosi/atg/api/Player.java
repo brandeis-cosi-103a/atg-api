@@ -2,7 +2,7 @@ package edu.brandeis.cosi.atg.api;
 
 import com.google.common.collect.ImmutableList;
 
-import edu.brandeis.cosi.atg.api.actions.Action;
+import edu.brandeis.cosi.atg.api.decisions.Decision;
 
 /**
  * A Player participates in a game. There is a single entry point: {@link Player#makeChoice makeChoice},
@@ -22,10 +22,10 @@ public interface Player {
      * Makes a choice during the game.
      *
      * @param state the current game state
-     * @param options the available actions to choose from
-     * @return the chosen actions
+     * @param options the available decisions to choose from
+     * @return the chosen decisions
      */
-    public ImmutableList<Action> makeChoice(GameState state, ImmutableList<Action> options);
+    public ImmutableList<Decision> makeDecision(GameState state, ImmutableList<Decision> options);
 
     /**
      * A pair of a player and their score.
