@@ -81,6 +81,7 @@ public class Card {
     }
 
     public enum Type {
+        CURSE("Curse", Category.VICTORY, 0, -1),
         METHOD("Method", Category.VICTORY, 2, 1),
         MODULE("Module", Category.VICTORY, 5, 3),
         FRAMEWORK("Framework", Category.VICTORY, 8, 6),

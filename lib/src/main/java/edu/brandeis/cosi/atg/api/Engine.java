@@ -1,6 +1,7 @@
 package edu.brandeis.cosi.atg.api;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 
 import edu.brandeis.cosi.atg.api.cards.Card;
 
@@ -29,9 +30,11 @@ public interface Engine {
          *
          * @param playerOne the first player
          * @param playerTwo the second player
+         * @param supplyPiles the types of cards available for purchase in this game
          * @param observer the game observer
          * @return an instance of {@link Engine}
+         * @throws IllegalArgumentException if the number of supply piles is < 5 or > 10
          */
-        public Engine makeEngine(Player playerOne, Player playerTwo, GameObserver observer);
+        public Engine makeEngine(Player playerOne, Player playerTwo, ImmutableSet<Card.Type> supplyPiles, GameObserver observer);
     }
 }

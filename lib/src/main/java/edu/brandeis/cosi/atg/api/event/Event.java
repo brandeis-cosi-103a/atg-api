@@ -3,7 +3,7 @@ package edu.brandeis.cosi.atg.api.event;
 /**
  * Represents an event in the game.
  */
-public sealed interface Event permits PlayerDecisionEvent, GameEvent {
+public sealed interface Event permits EndTurnEvent, GameEvent, GainCardEvent, PlayCardEvent, DiscardCardEvent {
 
     /**
      * Gets the description of the event.
