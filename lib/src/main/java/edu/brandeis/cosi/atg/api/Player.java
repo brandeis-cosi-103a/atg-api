@@ -1,7 +1,6 @@
 package edu.brandeis.cosi.atg.api;
 
 import java.util.Optional;
-
 import com.google.common.collect.ImmutableList;
 
 import edu.brandeis.cosi.atg.api.decisions.Decision;
