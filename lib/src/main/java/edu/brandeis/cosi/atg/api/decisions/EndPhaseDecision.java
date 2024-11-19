@@ -29,4 +29,27 @@ public final class EndPhaseDecision implements Decision {
     public String getDescription() {
         return "End phase: " + phase.name().toLowerCase();
     }
+
+    /**
+     * Gets the phase to end.
+     *
+     * @return the phase to end
+     */
+    public Phase getPhase() {
+        return phase;
+    }
+
+    @Override
+    public String toString() {
+        return "EndPhaseDecision{" + "phase=" + phase + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof EndPhaseDecision)) {
+            return false;
+        }
+        EndPhaseDecision other = (EndPhaseDecision) o;
+        return phase.equals(other.phase);
+    }
 }

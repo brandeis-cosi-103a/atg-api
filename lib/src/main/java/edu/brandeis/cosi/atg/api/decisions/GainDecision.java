@@ -52,10 +52,17 @@ public final class GainDecision implements Decision {
      *
      * @return a string representation of the gain decision
      */
+    @Override
     public String toString() {
-        return "GainDecision{" +
-            "cardType=" + cardType +
-            ", numAvailable=" + numAvailable +
-            "}";
+        return "GainDecision{cardType=" + cardType + ", numAvailable=" + numAvailable + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof GainDecision)) {
+            return false;
+        }
+        GainDecision other = (GainDecision) o;
+        return cardType.equals(other.cardType) && numAvailable == other.numAvailable;
     }
 }

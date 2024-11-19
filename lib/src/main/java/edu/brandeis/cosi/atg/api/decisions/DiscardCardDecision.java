@@ -37,4 +37,18 @@ public final class DiscardCardDecision implements Decision {
     public Card getCard() {
         return card;
     }
+
+    @Override
+    public String toString() {
+        return "DiscardCardDecision{" + "card=" + card + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof DiscardCardDecision)) {
+            return false;
+        }
+        DiscardCardDecision other = (DiscardCardDecision) o;
+        return card.equals(other.card);
+    }
 }
