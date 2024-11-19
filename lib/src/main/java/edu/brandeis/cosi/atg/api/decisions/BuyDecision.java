@@ -53,10 +53,7 @@ public final class BuyDecision implements Decision {
      * @return a string representation of the buy decision
      */
     public String toString() {
-        return "BuyDecision{" +
-            "cardType=" + cardType +
-            ", numAvailable=" + numAvailable +
-            "}";
+        return "BuyDecision{cardType=" + cardType + ", numAvailable=" + numAvailable + "}";
     }
 
     public boolean equals(Object o) {
