@@ -16,7 +16,11 @@ public final class EndPhaseDecision implements Decision {
          * The BUY phase is the last phase of a turn, so ending the BUY phase is equivalent to
          * ending the turn.
          */
-        BUY;
+        BUY,
+        /**
+         * The phase of a turn where the player discards their hand and draws a new hand.
+         */
+        CLEANUP;
     }
 
     private Phase phase;
