@@ -1,7 +1,6 @@
 package edu.brandeis.cosi.atg.api;
 
-import java.util.Optional;
-
+import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableList;
 
 import edu.brandeis.cosi.atg.api.decisions.Decision;
@@ -9,8 +8,10 @@ import edu.brandeis.cosi.atg.api.event.Event;
 
 /**
  * A Player participates in a game. There is a single entry point:
- * {@link Player#makeDecision makeDecision}, which is invoked by the Engine when the Player must
- * make a decision during the game, such as whether to play a card, which card to buy, or which
+ * {@link Player#makeDecision makeDecision}, which is invoked by the Engine when
+ * the Player must
+ * make a decision during the game, such as whether to play a card, which card
+ * to buy, or which
  * cards to discard.
  */
 public interface Player {
@@ -25,12 +26,12 @@ public interface Player {
     /**
      * Makes a choice during the game.
      *
-     * @param state the current game state
+     * @param state   the current game state
      * @param options the available decisions to choose from
-     * @param reason the previous Decision that led to this decision point, if any
-     * @return the chosen decisions
+     * @param reason  the previous Decision that led to this decision point, if any
+     * @return the chosen decision
      */
-    public ImmutableList<Decision> makeDecision(GameState state, ImmutableList<Decision> options, Optional<Event> reason);
+    public Decision makeDecision(GameState state, ImmutableList<Decision> options, Optional<Event> reason);
 
     /**
      * A pair of a player and their score.
@@ -49,7 +50,7 @@ public interface Player {
          * Constructs a ScorePair with the specified player and score.
          *
          * @param player the player
-         * @param score the score of the player
+         * @param score  the score of the player
          */
         public ScorePair(Player player, int score) {
             this.player = player;
