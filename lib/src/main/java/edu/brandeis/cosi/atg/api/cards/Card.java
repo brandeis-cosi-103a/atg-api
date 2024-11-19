@@ -89,12 +89,33 @@ public class Card {
         return type.equals(other.type) && id == other.id;
     }
 
+    /**
+     * Represents the type of a card.
+     */
     public enum Type {
+        /**
+         * A victory card worth 1 automation point.
+         */
         METHOD("Method", Category.VICTORY, 2, 1),
+        /**
+         * A victory card worth 3 automation points.
+         */
         MODULE("Module", Category.VICTORY, 5, 3),
+        /**
+         * A victory card worth 6 automation points.
+         */
         FRAMEWORK("Framework", Category.VICTORY, 8, 6),
+        /**
+         * A money card worth 1 money.
+         */
         BITCOIN("Bitcoin", Category.MONEY, 1, 1),
+        /**
+         * A money card worth 2 money.
+         */
         ETHEREUM("Ethereum", Category.MONEY, 3, 2),
+        /**
+         * A money card worth 3 money.
+         */
         DOGECOIN("Dogecoin", Category.MONEY, 6, 3);
 
         private String description;
@@ -157,8 +178,17 @@ public class Card {
          * Represents the category of a card type.
          */
         public enum Category {
+            /**
+             * A card that can be played during the action phase.
+             */
             ACTION("Action"),
+            /**
+             * A card that grants money to spend for the turn in which it is played.
+             */
             MONEY("Money"),
+            /**
+             * A card that grants automation points when the game ends.
+             */
             VICTORY("Victory");
 
             private String name;
