@@ -5,6 +5,7 @@ import java.util.Optional;
 import com.google.common.collect.ImmutableList;
 
 import edu.brandeis.cosi.atg.api.decisions.Decision;
+import edu.brandeis.cosi.atg.api.event.Event;
 
 /**
  * The interface to a player in a game of <i>Automation: The Game</i>.
@@ -45,7 +46,7 @@ public interface Player {
      * @param options the available decisions to choose from
      * @return the chosen decision
      */
-    public Decision makeDecision(GameState state, ImmutableList<Decision> options);
+    public Decision makeDecision(GameState state, ImmutableList<Decision> options, Optional<Event> reason);
 
     /**
      * Gets the observer for this player.
