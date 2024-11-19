@@ -1,7 +1,5 @@
 package edu.brandeis.cosi.atg.api;
 
-import java.util.Optional;
-
 import com.google.common.collect.ImmutableList;
 
 import edu.brandeis.cosi.atg.api.decisions.Decision;
@@ -29,7 +27,7 @@ public interface Player {
      * @param reason the previous Decision that led to this decision point, if any
      * @return the chosen decisions
      */
-    public ImmutableList<Decision> makeDecision(GameState state, ImmutableList<Decision> options, Optional<Decision> reason);
+    public ImmutableList<Decision> makeDecision(GameState state, ImmutableList<Decision> options);
 
     /**
      * A pair of a player and their score.
