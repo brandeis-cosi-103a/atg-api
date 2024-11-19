@@ -58,4 +58,12 @@ public final class BuyDecision implements Decision {
             ", numAvailable=" + numAvailable +
             "}";
     }
+
+    public boolean equals(Object o) {
+        if (!(o instanceof BuyDecision)) {
+            return false;
+        }
+        BuyDecision other = (BuyDecision) o;
+        return cardType.equals(other.cardType) && numAvailable == other.numAvailable;
+    }
 }

@@ -13,4 +13,8 @@ public final class EndTurnDecision implements Decision {
     public String getDescription() {
         return "End turn";
     }
+
+    public boolean equals(Object o) {
+        return o instanceof EndTurnDecision;
+    }
 }
