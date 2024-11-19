@@ -174,14 +174,14 @@ public class Card {
          * +1 Action
          * Discard any number of cards, then draw that many.
          */
-        CELLAR("Cellar", Category.ACTION, 2, 0),
+        BACKLOG("Backlog", Category.ACTION, 2, 0),
 
         /**
          * +4 Cards
          * +1 Buy
          * Each other player draws a card.
          */
-        COUNCIL_ROOM("Council Room", Category.ACTION, 5, 0),
+        DAILY_SCRUM("Daily Scrum", Category.ACTION, 5, 0),
 
         /**
          * +2 Cards
@@ -192,7 +192,7 @@ public class Card {
          * turn.
          * This does not imply that any money cards are gained by the player.
          */
-        FESTIVAL("Festival", Category.ACTION, 5, 0),
+        IPO("IPO", Category.ACTION, 5, 0),
 
         /**
          * +2 Money
@@ -202,7 +202,7 @@ public class Card {
          * turn.
          * This does not imply that any money cards are gained by the player.
          */
-        IP_THEFT("Intellectual Property Theft", Category.ACTION, 4, 0),
+        HACK("Hack", Category.ACTION, 4, 0),
 
         /**
          * +2 Cards
@@ -219,7 +219,7 @@ public class Card {
          *
          * Discard one card per empty Supply pile.
          */
-        POACHER("Poacher", Category.ACTION, 4, 0),
+        TECH_DEBT("Tech Debt", Category.ACTION, 4, 0),
 
         /**
          * Trash a card from your hand. Gain a card costing up to 2 more than the
