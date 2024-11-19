@@ -1,13 +1,16 @@
 package edu.brandeis.cosi.atg.api;
 
+import java.util.Optional;
+
 import com.google.common.collect.ImmutableList;
 
 import edu.brandeis.cosi.atg.api.decisions.Decision;
 
 /**
- * A Player participates in a game. There is a single entry point: {@link Player#makeChoice makeChoice},
- * which is invoked by the Engine when the Player must make a decision during the game, such as
- * whether to play a card, which card to buy, or which cards to discard.
+ * A Player participates in a game. There is a single entry point:
+ * {@link Player#makeDecision makeDecision}, which is invoked by the Engine when the Player must
+ * make a decision during the game, such as whether to play a card, which card to buy, or which
+ * cards to discard.
  */
 public interface Player {
 
@@ -23,15 +26,22 @@ public interface Player {
      *
      * @param state the current game state
      * @param options the available decisions to choose from
+     * @param reason the previous Decision that led to this decision point, if any
      * @return the chosen decisions
      */
-    public ImmutableList<Decision> makeDecision(GameState state, ImmutableList<Decision> options);
+    public ImmutableList<Decision> makeDecision(GameState state, ImmutableList<Decision> options, Optional<Decision> reason);
 
     /**
      * A pair of a player and their score.
      */
     public final class ScorePair {
+        /**
+         * The player that scored the score.
+         */
         public Player player;
+        /**
+         * The score of the player.
+         */
         public int score;
 
         /**

@@ -1,11 +1,14 @@
 name: Publish
 
 on:
-  workflow_dispatch:
+  release:
+    types: [published]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      RELEASE_NAME: ${{ github.event.release.tag_name }}
     steps:
     - name: Checkout sources
       uses: actions/checkout@v4
@@ -30,4 +33,4 @@ jobs:
         echo "signing.secretKeyRingFile=$GITHUB_WORKSPACE/private.asc.gpg" >> gradle.properties
     - name: Push to Maven Central
       run: |
-        ./gradlew publishAllPublicationsToMavenCentralRepository
+        ./gradlew -Pversion=$RELEASE_NAME publishAllPublicationsToMavenCentralRepository
