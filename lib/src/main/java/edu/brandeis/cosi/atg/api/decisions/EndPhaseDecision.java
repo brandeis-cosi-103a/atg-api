@@ -4,6 +4,9 @@ package edu.brandeis.cosi.atg.api.decisions;
  * Represents a decision by a player to end their turn.
  */
 public final class EndPhaseDecision implements Decision {
+    /**
+     * Represents the phase of a turn.
+     */
     public enum Phase {
         /** The phase of the turn that involves playing action cards */
         ACTION,

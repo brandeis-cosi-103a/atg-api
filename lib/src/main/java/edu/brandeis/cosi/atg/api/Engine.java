@@ -33,7 +33,7 @@ public interface Engine {
          * @param supplyPiles the types of cards available for purchase in this game
          * @param observer the game observer
          * @return an instance of {@link Engine}
-         * @throws IllegalArgumentException if the number of supply piles is < 5 or > 10
+         * @throws IllegalArgumentException if the number of supply piles is less than 5 or greater than 10
          */
         public Engine makeEngine(Player playerOne, Player playerTwo, ImmutableSet<Card.Type> supplyPiles, GameObserver observer);
     }
