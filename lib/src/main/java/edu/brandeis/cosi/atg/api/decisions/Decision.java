@@ -19,8 +19,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = EndPhaseDecision.class, name = "end_phase"),
         @JsonSubTypes.Type(value = PlayCardDecision.class, name = "play_card")
 })
-public sealed interface Decision
-        permits BuyDecision, GainDecision, EndPhaseDecision, PlayCardDecision, DiscardCardDecision {
+public sealed interface Decision permits BuyDecision, EndPhaseDecision, PlayCardDecision, GainCardDecision,
+        TrashCardDecision, DiscardCardDecision {
     /**
      * Gets the description of the decision.
      *

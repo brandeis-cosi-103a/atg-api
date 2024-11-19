@@ -5,17 +5,18 @@ import edu.brandeis.cosi.atg.api.cards.Card;
 /**
  * Represents a decision by a player to gain a card.
  */
-public final class GainDecision implements Decision {
+public final class GainCardDecision implements Decision {
     private Card.Type cardType;
     private int numAvailable;
 
     /**
-     * Constructs a GainDecision with the specified card type and number of available cards.
+     * Constructs a GainDecision with the specified card type and number of
+     * available cards.
      *
-     * @param cardType the type of card to gain
+     * @param cardType     the type of card to gain
      * @param numAvailable the number of available cards of the specified type
      */
-    public GainDecision(Card.Type cardType, int numAvailable) {
+    public GainCardDecision(Card.Type cardType, int numAvailable) {
         this.cardType = cardType;
         this.numAvailable = numAvailable;
     }
@@ -59,10 +60,10 @@ public final class GainDecision implements Decision {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof GainDecision)) {
+        if (!(o instanceof GainCardDecision)) {
             return false;
         }
-        GainDecision other = (GainDecision) o;
+        GainCardDecision other = (GainCardDecision) o;
         return cardType.equals(other.cardType) && numAvailable == other.numAvailable;
     }
 }
