@@ -34,4 +34,12 @@ public final class PlayCardDecision implements Decision {
     public Card getCard() {
         return card;
     }
+
+    public boolean equals(Object o) {
+        if (!(o instanceof PlayCardDecision)) {
+            return false;
+        }
+        PlayCardDecision other = (PlayCardDecision) o;
+        return card.equals(other.card);
+    }
 }

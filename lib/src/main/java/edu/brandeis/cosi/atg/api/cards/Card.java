@@ -80,6 +80,15 @@ public class Card {
         return "[" + getDescription() + "(id: " + id + ")]";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Card)) {
+            return false;
+        }
+        Card other = (Card) o;
+        return type.equals(other.type) && id == other.id;
+    }
+
     public enum Type {
         METHOD("Method", Category.VICTORY, 2, 1),
         MODULE("Module", Category.VICTORY, 5, 3),
