@@ -14,6 +14,12 @@ public final class EndTurnDecision implements Decision {
         return "End turn";
     }
 
+    @Override
+    public String toString() {
+        return "EndTurnDecision";
+    }
+
+    @Override
     public boolean equals(Object o) {
         return o instanceof EndTurnDecision;
     }

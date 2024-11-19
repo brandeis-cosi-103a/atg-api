@@ -35,6 +35,12 @@ public final class PlayCardDecision implements Decision {
         return card;
     }
 
+    @Override
+    public String toString() {
+        return "PlayCardDecision{" + "card=" + card + "}";
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (!(o instanceof PlayCardDecision)) {
             return false;
