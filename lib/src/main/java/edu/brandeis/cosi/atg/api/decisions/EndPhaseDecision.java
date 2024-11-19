@@ -25,7 +25,11 @@ public final class EndPhaseDecision implements Decision {
          * This phase only occurs when a player takes an action that requires cards to
          * be discarded.
          */
-        DISCARD;
+        DISCARD,
+        /**
+         * The phase of a turn where the player discards their hand and draws a new hand.
+         */
+        CLEANUP;
     }
 
     private Phase phase;
