@@ -34,7 +34,7 @@ public final class GainCardEvent implements Event {
 
     /**
      * Gets the card type gained by the player.
-     * @return the type of card gained by the player
+     * @return the card type gained by the player
      */
     public Card.Type getDecision() {
         return cardType;

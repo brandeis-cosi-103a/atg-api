@@ -10,7 +10,21 @@ public final class EndPhaseDecision implements Decision {
     public enum Phase {
         /** The phase of the turn that involves playing action cards */
         ACTION,
-        /** A phase of a turn that involves discarding zero or more cards */
+        /** The phase of a turn that involves playing money */
+        MONEY,
+        /**
+         * The phase of a turn that involves buying cards.
+         *
+         * The BUY phase is the last phase of a turn, so ending the BUY phase is equivalent to
+         * ending the turn.
+         */
+        BUY,
+        /**
+         * A phase of a turn that involves discarding zero or more cards.
+         *
+         * This phase only occurs when a player takes an action that requires cards to
+         * be discarded.
+         */
         DISCARD;
     }
 

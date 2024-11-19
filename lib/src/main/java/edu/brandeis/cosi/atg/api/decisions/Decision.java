@@ -3,8 +3,7 @@ package edu.brandeis.cosi.atg.api.decisions;
 /**
  * Represents a decision that a player can make during the game.
  */
-public sealed interface Decision permits BuyDecision, GainDecision, EndPhaseDecision, EndTurnDecision, PlayCardDecision, DiscardCardDecision {
-
+public sealed interface Decision permits BuyDecision, EndPhaseDecision, PlayCardDecision, GainDecision, DiscardCardDecision {
     /**
      * Gets the description of the decision.
      *
