@@ -4,15 +4,12 @@ import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
  * Represents a decision by a player to discard a card.
- *
- * When a player can decide to discard a variable number of cards, the player should indicate
- * they are finished discarding by also playing an EndPhaseDecision.
  */
 public final class DiscardCardDecision implements Decision {
     private Card card;
 
     /**
-     * Constructs a PlayCardDecision with the specified card.
+     * Constructs a TrashCardDecision with the specified card.
      *
      * @param card the card to discard
      */
