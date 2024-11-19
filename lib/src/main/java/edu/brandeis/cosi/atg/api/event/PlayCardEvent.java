@@ -14,6 +14,7 @@ public final class PlayCardEvent implements Event {
      * Constructs a PlayCardEvent with the specified card.
      *
      * @param card the card that was played
+     * @param player the player who played the card
      */
     public PlayCardEvent(Card card, Player player) {
         this.card = card;
@@ -22,6 +23,7 @@ public final class PlayCardEvent implements Event {
 
     /**
      * Gets the description of the play card event.
+     * @return the description of the play card event
      */
     public String getDescription() {
         return player.getName() + " played card: " + card;
@@ -29,6 +31,7 @@ public final class PlayCardEvent implements Event {
 
     /**
      * Gets the card that was played.
+     * @return the card that was played
      */
     public Card getCard() {
         return card;
