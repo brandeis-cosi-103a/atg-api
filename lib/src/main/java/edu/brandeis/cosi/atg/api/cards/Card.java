@@ -11,7 +11,7 @@ public class Card {
      * Constructs a Card with the specified type and id.
      *
      * @param type the type of the card
-     * @param id the id of the card
+     * @param id   the id of the card
      */
     public Card(Type type, int id) {
         this.type = type;
@@ -73,7 +73,8 @@ public class Card {
     }
 
     /**
-     * Returns a string representation of the card, including its description and id.
+     * Returns a string representation of the card, including its description and
+     * id.
      */
     @Override
     public String toString() {
@@ -127,9 +128,9 @@ public class Card {
          * Constructs a Type with the specified description, category, value, and cost.
          *
          * @param description the description of the card type
-         * @param category the category of the card type
-         * @param value the value of the card type
-         * @param cost the cost of the card type
+         * @param category    the category of the card type
+         * @param value       the value of the card type
+         * @param cost        the cost of the card type
          */
         Type(String description, Category category, int cost, int value) {
             this.description = description;
@@ -178,10 +179,6 @@ public class Card {
          * Represents the category of a card type.
          */
         public enum Category {
-            /**
-             * A card that can be played during the action phase.
-             */
-            ACTION("Action"),
             /**
              * A card that grants money to spend for the turn in which it is played.
              */

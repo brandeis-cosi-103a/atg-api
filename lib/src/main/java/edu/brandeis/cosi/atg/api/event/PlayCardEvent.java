@@ -1,6 +1,5 @@
 package edu.brandeis.cosi.atg.api.event;
 
-import edu.brandeis.cosi.atg.api.Player;
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
@@ -8,32 +7,43 @@ import edu.brandeis.cosi.atg.api.cards.Card;
  */
 public final class PlayCardEvent implements Event {
     private Card card;
-    private Player player;
+    private String playerName;
 
     /**
      * Constructs a PlayCardEvent with the specified card.
      *
-     * @param card the card that was played
+     * @param card   the card that was played
      * @param player the player who played the card
      */
-    public PlayCardEvent(Card card, Player player) {
+    public PlayCardEvent(Card card, String playerName) {
         this.card = card;
-        this.player = player;
+        this.playerName = playerName;
     }
 
     /**
      * Gets the description of the play card event.
+     *
      * @return the description of the play card event
      */
     public String getDescription() {
-        return player.getName() + " played card: " + card;
+        return playerName + " played card: " + card;
     }
 
     /**
      * Gets the card that was played.
+     *
      * @return the card that was played
      */
     public Card getCard() {
         return card;
+    }
+
+    /**
+     * Gets the name of the player who played the card.
+     *
+     * @return the name of the player who played the card
+     */
+    public String getPlayerName() {
+        return playerName;
     }
 }
