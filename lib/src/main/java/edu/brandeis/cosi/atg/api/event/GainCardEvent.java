@@ -4,36 +4,34 @@ import edu.brandeis.cosi.atg.api.Player;
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
- * Represents an event where a player gains a card. Note that this event is generated when a
- * player gains any card, including buying one from the supply.
- *
- * When a player buys a card from a supply, a PlayerDecisionEvent is generated, followed by
- * a GainCardEvent.
+ * Represents an event where a player gains a card. Note that this event is
+ * generated when a player gains any card, including buying one from the supply.
  */
 public final class GainCardEvent implements Event {
     private Card.Type cardType;
-    private Player player;
+    private String playerName;
 
     /**
      * Constructs an GainCardEvent with the specified card type and player.
      *
-     * @param cardType the type of card gained by the player
-     * @param player the player who gained the card
+     * @param cardType   the type of card gained by the player
+     * @param playerName the name of the player who gained the card
      */
-    public GainCardEvent(Card.Type cardType, Player player) {
+    public GainCardEvent(Card.Type cardType, String playerName) {
         this.cardType = cardType;
-        this.player = player;
+        this.playerName = playerName;
     }
 
     /**
      * Gets the description of the card gain event.
      */
     public String getDescription() {
-        return player.getName() + " gained card: " + cardType.getDescription();
+        return playerName + " gained card: " + cardType.getDescription();
     }
 
     /**
      * Gets the card type gained by the player.
+     *
      * @return the card type gained by the player
      */
     public Card.Type getDecision() {
@@ -41,10 +39,11 @@ public final class GainCardEvent implements Event {
     }
 
     /**
-     * Gets the player who gained the card.
-     * @return the player who gained the card
+     * Gets the name of the player who gained the card.
+     *
+     * @return the name of the player who gained the card
      */
-    public Player getPlayer() {
-        return player;
+    public String getPlayerName() {
+        return playerName;
     }
 }

@@ -15,7 +15,8 @@ public final class EndPhaseDecision implements Decision {
         /**
          * The phase of a turn that involves buying cards.
          *
-         * The BUY phase is the last phase of a turn, so ending the BUY phase is equivalent to
+         * The BUY phase is the last phase of a turn, so ending the BUY phase is
+         * equivalent to
          * ending the turn.
          */
         BUY,
@@ -27,7 +28,15 @@ public final class EndPhaseDecision implements Decision {
          */
         DISCARD,
         /**
-         * The phase of a turn where the player discards their hand and draws a new hand.
+         * A phase of a turn that involves gaining cards.
+         *
+         * This phase only occurs when a player takes an action that triggers a card
+         * gain.
+         */
+        GAIN,
+        /**
+         * The phase of a turn where the player discards their hand and draws a new
+         * hand.
          */
         CLEANUP;
     }
@@ -36,6 +45,7 @@ public final class EndPhaseDecision implements Decision {
 
     /**
      * Constructs a EndPhaseDecision with the specified phase.
+     * 
      * @param phase the phase to end
      */
     public EndPhaseDecision(Phase phase) {

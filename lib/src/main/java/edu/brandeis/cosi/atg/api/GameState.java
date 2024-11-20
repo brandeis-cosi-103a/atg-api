@@ -22,7 +22,8 @@ public interface GameState {
     /**
      * Gets the amount of money the current player can spend this turn.
      *
-     * This is the amount of money the player has earned by playing cards during this turn,
+     * This is the amount of money the player has earned by playing cards during
+     * this turn,
      * as opposed to the amount of money that the player has in their hand or deck.
      *
      * @return the amount of spendable money
@@ -35,6 +36,13 @@ public interface GameState {
      * @return the number of available buys
      */
     public int getAvailableBuys();
+
+    /**
+     * Gets the number of actions available to the current player.
+     *
+     * @return the number of available actions
+     */
+    public int getAvailableActions();
 
     /**
      * Gets the game deck.

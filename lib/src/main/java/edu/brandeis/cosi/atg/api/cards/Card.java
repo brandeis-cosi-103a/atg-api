@@ -11,7 +11,7 @@ public class Card {
      * Constructs a Card with the specified type and id.
      *
      * @param type the type of the card
-     * @param id the id of the card
+     * @param id   the id of the card
      */
     public Card(Type type, int id) {
         this.type = type;
@@ -73,7 +73,8 @@ public class Card {
     }
 
     /**
-     * Returns a string representation of the card, including its description and id.
+     * Returns a string representation of the card, including its description and
+     * id.
      */
     @Override
     public String toString() {
@@ -140,7 +141,8 @@ public class Card {
          * +1 Action
          * +2 Money
          *
-         * Note that "+2 Money" indicates the player has 2 more money to spend for this turn.
+         * Note that "+2 Money" indicates the player has 2 more money to spend for this
+         * turn.
          * This does not imply that any money cards are gained by the player.
          */
         IPO("IPO", Category.ACTION, 5, 0),
@@ -149,14 +151,16 @@ public class Card {
          * +2 Money
          * Each other player discards down to 3 cards in hand.
          *
-         * Note that "+2 Money" indicates the player has 2 more money to spend for this turn.
+         * Note that "+2 Money" indicates the player has 2 more money to spend for this
+         * turn.
          * This does not imply that any money cards are gained by the player.
          */
         HACK("Hack", Category.ACTION, 4, 0),
 
         /**
          * +2 Cards
-         * When another player plays an Attack card, you may reveal this from your hand to
+         * When another player plays an Attack card, you may reveal this from your hand
+         * to
          * be unaffected by it.
          */
         MONITORING("Monitoring", Category.ACTION, 2, 0),
@@ -171,14 +175,16 @@ public class Card {
         TECH_DEBT("Tech Debt", Category.ACTION, 4, 0),
 
         /**
-         * Trash a card from your hand. Gain a card costing up to 2 more than the trashed card.
+         * Trash a card from your hand. Gain a card costing up to 2 more than the
+         * trashed card.
          */
         REFACTOR("Refactor", Category.ACTION, 4, 0),
 
         /**
          * You may play an Action card from your hand twice.
          *
-         * Playing a Throne Room will result in the player being prompted with a PlayCardDecision
+         * Playing a Parallelization will result in the player being prompted with a
+         * PlayCardDecision
          * to select the action card to play twice.
          */
         PARALLELIZATION("Parallelization", Category.ACTION, 4, 0),
@@ -204,9 +210,9 @@ public class Card {
          * Constructs a Type with the specified description, category, value, and cost.
          *
          * @param description the description of the card type
-         * @param category the category of the card type
-         * @param value the value of the card type
-         * @param cost the cost of the card type
+         * @param category    the category of the card type
+         * @param value       the value of the card type
+         * @param cost        the cost of the card type
          */
         Type(String description, Category category, int cost, int value) {
             this.description = description;
