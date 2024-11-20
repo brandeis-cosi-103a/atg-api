@@ -7,18 +7,15 @@ import edu.brandeis.cosi.atg.api.cards.Card;
  */
 public final class GainCardDecision implements Decision {
     private Card.Type cardType;
-    private int numAvailable;
 
     /**
      * Constructs a GainDecision with the specified card type and number of
      * available cards.
      *
-     * @param cardType     the type of card to gain
-     * @param numAvailable the number of available cards of the specified type
+     * @param cardType the type of card to gain
      */
-    public GainCardDecision(Card.Type cardType, int numAvailable) {
+    public GainCardDecision(Card.Type cardType) {
         this.cardType = cardType;
-        this.numAvailable = numAvailable;
     }
 
     /**
@@ -27,7 +24,7 @@ public final class GainCardDecision implements Decision {
      * @return the description of the gain decision
      */
     public String getDescription() {
-        return "Gain " + cardType.getDescription() + " [" + numAvailable + " avail]";
+        return "Gain " + cardType.getDescription();
     }
 
     /**
@@ -40,22 +37,13 @@ public final class GainCardDecision implements Decision {
     }
 
     /**
-     * Gets the number of available cards of the specified type.
-     *
-     * @return the number of available cards of the specified type
-     */
-    public int getNumAvailable() {
-        return numAvailable;
-    }
-
-    /**
      * Returns a string representation of the gain decision.
      *
      * @return a string representation of the gain decision
      */
     @Override
     public String toString() {
-        return "GainDecision{cardType=" + cardType + ", numAvailable=" + numAvailable + "}";
+        return "GainDecision{cardType=" + cardType + "}";
     }
 
     @Override
@@ -64,6 +52,6 @@ public final class GainCardDecision implements Decision {
             return false;
         }
         GainCardDecision other = (GainCardDecision) o;
-        return cardType.equals(other.cardType) && numAvailable == other.numAvailable;
+        return cardType.equals(other.cardType);
     }
 }

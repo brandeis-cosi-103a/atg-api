@@ -12,8 +12,7 @@ import edu.brandeis.cosi.atg.api.cards.Card;
  * player gains any card, including buying one from the supply.
  *
  * When a player buys a card from a supply, a PlayerDecisionEvent is generated,
- * followed by
- * a GainCardEvent.
+ * followed by a GainCardEvent.
  */
 public final class GainCardEvent implements Event {
     private Card.Type cardType;

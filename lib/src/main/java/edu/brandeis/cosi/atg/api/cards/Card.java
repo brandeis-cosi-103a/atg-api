@@ -230,7 +230,7 @@ public class Card {
         /**
          * You may play an Action card from your hand twice.
          *
-         * Playing a Throne Room will result in the player being prompted with a
+         * Playing a Parallelization will result in the player being prompted with a
          * PlayCardDecision
          * to select the action card to play twice.
          */

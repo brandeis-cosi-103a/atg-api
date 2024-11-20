@@ -109,6 +109,13 @@ public final class GameState {
     }
 
     /**
+     * Gets the number of actions available to the current player.
+     *
+     * @return the number of available actions
+     */
+    public int getAvailableActions();
+
+    /**
      * Gets the game deck.
      *
      * @return the game deck

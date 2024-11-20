@@ -3,43 +3,45 @@ package edu.brandeis.cosi.atg.api.event;
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
- * Represents a decision by a player to discard a card.
+ * Represents an event where a player discards a card.
  */
 public final class DiscardCardEvent implements Event {
-    private Card card;
+    private Card.Type cardType;
+    private String playerName;
 
     /**
-     * Constructs a PlayCardDecision with the specified card.
-     */
-    public DiscardCardEvent() {
-    }
-
-    /**
-     * Constructs a PlayCardDecision with the specified card.
+     * Constructs an DiscardCardEvent with the specified card type and player.
      *
-     * @param card the card that was discarded
+     * @param cardType   the type of card discarded by the player
+     * @param playerName the name of the player who discarded the card
      */
-    public DiscardCardEvent(Card card) {
-        this.card = card;
+    public DiscardCardEvent(Card.Type cardType, String playerName) {
+        this.cardType = cardType;
+        this.playerName = playerName;
     }
 
     /**
-     * Gets the description of the discard card decision.
+     * Gets the description of the card discard event.
      */
     public String getDescription() {
-        if(card != null) {
-            return "Discard " + card.getDescription();
-        } else {
-            return "Discard";
-        }
+        return playerName + " discarded card: " + cardType.getDescription();
     }
 
     /**
-     * Gets the card that was discarded, if it is visible.
+     * Gets the card type discarded by the player.
      *
-     * @return the card that was discarded if it is visible, otherwise null
+     * @return the card type discarded by the player
      */
-    public Card getCard() {
-        return card;
+    public Card.Type getDecision() {
+        return cardType;
+    }
+
+    /**
+     * Gets the name of the player who discarded the card.
+     *
+     * @return the name of the player who discarded the card
+     */
+    public String getPlayerName() {
+        return playerName;
     }
 }
