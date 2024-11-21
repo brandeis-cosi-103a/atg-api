@@ -1,54 +1,19 @@
 package edu.brandeis.cosi.atg.api.decisions;
 
+import edu.brandeis.cosi.atg.api.GameState;
+
 /**
  * Represents a decision by a player to end their turn.
  */
 public final class EndPhaseDecision implements Decision {
-    /**
-     * Represents the phase of a turn.
-     */
-    public enum Phase {
-        /** The phase of the turn that involves playing action cards */
-        ACTION,
-        /** The phase of a turn that involves playing money */
-        MONEY,
-        /**
-         * The phase of a turn that involves buying cards.
-         *
-         * The BUY phase is the last phase of a turn, so ending the BUY phase is
-         * equivalent to
-         * ending the turn.
-         */
-        BUY,
-        /**
-         * A phase of a turn that involves discarding zero or more cards.
-         *
-         * This phase only occurs when a player takes an action that requires cards to
-         * be discarded.
-         */
-        DISCARD,
-        /**
-         * A phase of a turn that involves gaining cards.
-         *
-         * This phase only occurs when a player takes an action that triggers a card
-         * gain.
-         */
-        GAIN,
-        /**
-         * The phase of a turn where the player discards their hand and draws a new
-         * hand.
-         */
-        CLEANUP;
-    }
-
-    private Phase phase;
+    private GameState.TurnPhase phase;
 
     /**
      * Constructs a EndPhaseDecision with the specified phase.
-     * 
+     *
      * @param phase the phase to end
      */
-    public EndPhaseDecision(Phase phase) {
+    public EndPhaseDecision(GameState.TurnPhase phase) {
         this.phase = phase;
     }
 
@@ -66,7 +31,7 @@ public final class EndPhaseDecision implements Decision {
      *
      * @return the phase to end
      */
-    public Phase getPhase() {
+    public GameState.TurnPhase getPhase() {
         return phase;
     }
 
