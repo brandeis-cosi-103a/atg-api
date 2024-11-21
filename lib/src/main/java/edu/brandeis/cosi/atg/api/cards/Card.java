@@ -189,8 +189,7 @@ public class Card {
          * +2 Money
          *
          * Note that "+2 Money" indicates the player has 2 more money to spend for this
-         * turn.
-         * This does not imply that any money cards are gained by the player.
+         * turn. This does not imply that any money cards are gained by the player.
          */
         IPO("IPO", Category.ACTION, 5, 0),
 
@@ -199,16 +198,17 @@ public class Card {
          * Each other player discards down to 3 cards in hand.
          *
          * Note that "+2 Money" indicates the player has 2 more money to spend for this
-         * turn.
-         * This does not imply that any money cards are gained by the player.
+         * turn. This does not imply that any money cards are gained by the player.
          */
         HACK("Hack", Category.ACTION, 4, 0),
 
         /**
          * +2 Cards
+         *
          * When another player plays an Attack card, you may reveal this from your hand
-         * to
-         * be unaffected by it.
+         * to be unaffected by the attack.
+         *
+         * Attack cards are: Hack and Evergreen Test
          */
         MONITORING("Monitoring", Category.ACTION, 2, 0),
 
@@ -231,8 +231,7 @@ public class Card {
          * You may play an Action card from your hand twice.
          *
          * Playing a Parallelization will result in the player being prompted with a
-         * PlayCardDecision
-         * to select the action card to play twice.
+         * PlayCardDecision to select the action card to play twice.
          */
         PARALLELIZATION("Parallelization", Category.ACTION, 4, 0),
 
