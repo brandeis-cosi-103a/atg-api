@@ -4,6 +4,25 @@ package edu.brandeis.cosi.atg.api;
  * Represents the current state of the game.
  */
 public interface GameState {
+    /**
+     * Represents the phase of a turn.
+     */
+    public enum TurnPhase {
+        /** The phase of a turn that involves playing money */
+        MONEY,
+        /**
+         * The phase of a turn that involves buying cards.
+         *
+         * The BUY phase is the last phase of a turn, so ending the BUY phase is
+         * equivalent to ending the turn.
+         */
+        BUY,
+        /**
+         * The phase of a turn where the player discards their hand and draws a new
+         * hand.
+         */
+        CLEANUP;
+    }
 
     /**
      * Gets the name of the current player.
@@ -22,8 +41,9 @@ public interface GameState {
     /**
      * Gets the amount of money the current player can spend this turn.
      *
-     * This is the amount of money the player has earned by playing cards during this turn,
-     * as opposed to the amount of money that the player has in their hand or deck.
+     * This is the amount of money the player has earned by playing cards during
+     * this turn, as opposed to the amount of money that the player has in their
+     * hand or deck.
      *
      * @return the amount of spendable money
      */
@@ -42,4 +62,11 @@ public interface GameState {
      * @return the game deck
      */
     public GameDeck getDeck();
+
+    /**
+     * Gets the phase of the current turn.
+     *
+     * @return the phase of the current turn
+     */
+    public TurnPhase getTurnPhase();
 }
