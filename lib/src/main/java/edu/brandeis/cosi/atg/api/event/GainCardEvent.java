@@ -1,6 +1,5 @@
 package edu.brandeis.cosi.atg.api.event;
 
-import edu.brandeis.cosi.atg.api.Player;
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
