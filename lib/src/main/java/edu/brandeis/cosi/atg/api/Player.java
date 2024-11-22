@@ -34,6 +34,19 @@ public interface Player {
     public Decision makeDecision(GameState state, ImmutableList<Decision> options, Optional<Event> reason);
 
     /**
+     * A factory for creating players.
+     */
+    public interface PlayerFactory {
+        /**
+         * Creates a new player.
+         *
+         * @param name the name of the player
+         * @return the new player
+         */
+        public Player makePlayer(String name);
+    }
+
+    /**
      * A pair of a player and their score.
      */
     public final class ScorePair {
