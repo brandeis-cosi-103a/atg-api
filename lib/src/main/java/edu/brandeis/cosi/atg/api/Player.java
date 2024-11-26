@@ -43,7 +43,14 @@ public interface Player {
          * @param name the name of the player
          * @return the new player
          */
-        public Player makePlayer(String name);
+        public Player makePlayer();
+
+        /**
+         * Gets the name of the player.
+         *
+         * @return the name of the player
+         */
+        public String getPlayerName();
     }
 
     /**
