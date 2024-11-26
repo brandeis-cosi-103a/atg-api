@@ -13,8 +13,8 @@ public final class GainCardEvent implements Event {
     /**
      * Constructs an GainCardEvent with the specified card type and player.
      *
-     * @param cardType the type of card gained by the player
-     * @param player   the name of the player who gained the card
+     * @param cardType   the type of card gained by the player
+     * @param playerName the name of the player who gained the card
      */
     public GainCardEvent(Card.Type cardType, String playerName) {
         this.cardType = cardType;
