@@ -26,7 +26,6 @@ public interface Player {
      *
      * @param state   the current game state
      * @param options the available decisions to choose from
-     * @param reason  the previous Decision that led to this decision point, if any
      * @return the chosen decision
      */
     public Decision makeDecision(GameState state, ImmutableList<Decision> options);
@@ -38,10 +37,16 @@ public interface Player {
         /**
          * Creates a new player.
          *
-         * @param name the name of the player
          * @return the new player
          */
-        public Player makePlayer(String name);
+        public Player makePlayer();
+
+        /**
+         * Gets the name of the player.
+         *
+         * @return the name of the player
+         */
+        public String getPlayerName();
     }
 
     /**
