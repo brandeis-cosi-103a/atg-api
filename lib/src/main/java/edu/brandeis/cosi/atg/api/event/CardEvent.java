@@ -6,18 +6,25 @@ import edu.brandeis.cosi.atg.api.cards.Card;
  * Represents an event where a player gains a card. Note that this event is
  * generated when a player gains any card, including buying one from the supply.
  */
-public final class GainCardEvent implements Event {
+public final class CardEvent implements Event {
     private Card.Type cardType;
     private String playerName;
+    private Type eventType;
+
+    public enum Type {
+        DISCARD, GAIN, PLAY, TRASH
+    }
 
     /**
      * Constructs an GainCardEvent with the specified card type and player.
      *
      * @param cardType   the type of card gained by the player
+     * @param eventType  the type of event
      * @param playerName the name of the player who gained the card
      */
-    public GainCardEvent(Card.Type cardType, String playerName) {
+    public CardEvent(Card.Type cardType, Type eventType, String playerName) {
         this.cardType = cardType;
+        this.eventType = eventType;
         this.playerName = playerName;
     }
 
@@ -25,7 +32,7 @@ public final class GainCardEvent implements Event {
      * Gets the description of the card gain event.
      */
     public String getDescription() {
-        return playerName + " gained card: " + cardType.getDescription();
+        return playerName + " " + eventType.name() + " card: " + cardType.getDescription();
     }
 
     /**
@@ -35,6 +42,15 @@ public final class GainCardEvent implements Event {
      */
     public Card.Type getDecision() {
         return cardType;
+    }
+
+    /**
+     * Gets the type of event.
+     * 
+     * @return the type of event
+     */
+    public Type getEventType() {
+        return eventType;
     }
 
     /**

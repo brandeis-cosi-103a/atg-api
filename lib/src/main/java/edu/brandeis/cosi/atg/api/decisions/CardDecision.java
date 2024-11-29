@@ -5,17 +5,24 @@ import edu.brandeis.cosi.atg.api.cards.Card;
 /**
  * Represents a decision by a player to gain a card.
  */
-public final class GainCardDecision implements Decision {
+public final class CardDecision implements Decision {
     private Card.Type cardType;
+    private Type decisionType;
+
+    public enum Type {
+        BUY, DISCARD, GAIN, PLAY, TRASH
+    }
 
     /**
      * Constructs a GainDecision with the specified card type and number of
      * available cards.
      *
-     * @param cardType the type of card to gain
+     * @param cardType     the type of card to gain
+     * @param decisionType the type of decision
      */
-    public GainCardDecision(Card.Type cardType) {
+    public CardDecision(Card.Type cardType, Type decisionType) {
         this.cardType = cardType;
+        this.decisionType = decisionType;
     }
 
     /**
@@ -24,7 +31,7 @@ public final class GainCardDecision implements Decision {
      * @return the description of the gain decision
      */
     public String getDescription() {
-        return "Gain " + cardType.getDescription();
+        return decisionType.name() + " " + cardType.getDescription();
     }
 
     /**
@@ -37,21 +44,30 @@ public final class GainCardDecision implements Decision {
     }
 
     /**
+     * Gets the type of decision.
+     *
+     * @return the type of decision
+     */
+    public Type getDecisionType() {
+        return decisionType;
+    }
+
+    /**
      * Returns a string representation of the gain decision.
      *
      * @return a string representation of the gain decision
      */
     @Override
     public String toString() {
-        return "GainDecision{cardType=" + cardType + "}";
+        return decisionType.name() + "Decision{cardType=" + cardType + "}";
     }
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof GainCardDecision)) {
+        if (!(o instanceof CardDecision)) {
             return false;
         }
-        GainCardDecision other = (GainCardDecision) o;
-        return cardType.equals(other.cardType);
+        CardDecision other = (CardDecision) o;
+        return cardType.equals(other.cardType) && decisionType.equals(other.decisionType);
     }
 }
