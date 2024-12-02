@@ -54,4 +54,9 @@ public final class TrashCardDecision implements Decision {
         TrashCardDecision other = (TrashCardDecision) o;
         return card.equals(other.card);
     }
+
+    @Override
+    public int hashCode() {
+        return card.hashCode();
+    }
 }

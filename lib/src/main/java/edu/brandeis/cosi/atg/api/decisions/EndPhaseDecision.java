@@ -54,4 +54,9 @@ public final class EndPhaseDecision implements Decision {
         EndPhaseDecision other = (EndPhaseDecision) o;
         return phase.equals(other.phase);
     }
+
+    @Override
+    public int hashCode() {
+        return phase.hashCode();
+    }
 }

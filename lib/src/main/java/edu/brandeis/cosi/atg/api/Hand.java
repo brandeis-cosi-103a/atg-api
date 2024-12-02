@@ -1,6 +1,7 @@
 package edu.brandeis.cosi.atg.api;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableSet;
@@ -32,6 +33,7 @@ public final class Hand {
      *
      * @return an immutable list of all cards in the hand
      */
+    @JsonIgnore
     public ImmutableCollection<Card> getAllCards() {
         return ImmutableSet.<Card>builder().addAll(playedCards).addAll(unplayedCards).build();
     }

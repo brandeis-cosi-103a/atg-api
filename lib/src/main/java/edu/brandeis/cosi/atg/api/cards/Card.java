@@ -99,6 +99,11 @@ public class Card {
         return type.equals(other.type) && id == other.id;
     }
 
+    @Override
+    public int hashCode() {
+        return type.hashCode() + id;
+    }
+
     /**
      * Represents the type of a card.
      */

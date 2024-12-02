@@ -54,4 +54,9 @@ public final class DiscardCardDecision implements Decision {
         DiscardCardDecision other = (DiscardCardDecision) o;
         return card.equals(other.card);
     }
+
+    @Override
+    public int hashCode() {
+        return card.hashCode();
+    }
 }
