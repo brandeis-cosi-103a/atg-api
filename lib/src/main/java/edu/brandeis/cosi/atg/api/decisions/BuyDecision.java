@@ -62,9 +62,4 @@ public final class BuyDecision implements Decision {
     public int hashCode() {
         return cardType.hashCode();
     }
-
-    @Override
-    public int hashCode() {
-        return cardType.hashCode() + numAvailable;
-    }
 }
