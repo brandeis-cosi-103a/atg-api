@@ -1,5 +1,9 @@
 package edu.brandeis.cosi.atg.api.decisions;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
@@ -13,7 +17,8 @@ public final class DiscardCardDecision implements Decision {
      *
      * @param card the card to discard
      */
-    public DiscardCardDecision(Card card) {
+    @JsonCreator
+    public DiscardCardDecision(@JsonProperty("card") Card card) {
         this.card = card;
     }
 
@@ -22,6 +27,7 @@ public final class DiscardCardDecision implements Decision {
      *
      * @return the description of the discard card decision
      */
+    @JsonIgnore
     public String getDescription() {
         return "Discard " + card.getDescription();
     }

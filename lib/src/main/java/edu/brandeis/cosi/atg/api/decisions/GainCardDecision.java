@@ -1,5 +1,9 @@
 package edu.brandeis.cosi.atg.api.decisions;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
@@ -14,7 +18,8 @@ public final class GainCardDecision implements Decision {
      *
      * @param cardType the type of card to gain
      */
-    public GainCardDecision(Card.Type cardType) {
+    @JsonCreator
+    public GainCardDecision(@JsonProperty("cardType") Card.Type cardType) {
         this.cardType = cardType;
     }
 
@@ -23,6 +28,7 @@ public final class GainCardDecision implements Decision {
      *
      * @return the description of the gain decision
      */
+    @JsonIgnore
     public String getDescription() {
         return "Gain " + cardType.getDescription();
     }

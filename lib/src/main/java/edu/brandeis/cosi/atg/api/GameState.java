@@ -16,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public final class GameState {
     private final String currentPlayerName;
     private final int availableBuys;
+    private final int availableActions;
     private final int spendableMoney;
     private final Hand currentPlayerHand;
     private final GameDeck deck;
@@ -49,6 +50,7 @@ public final class GameState {
      *                          GameState is intended for a player who is not the
      *                          current player
      * @param phase             the phase of the current turn
+     * @param availableActions  the number of available actions
      * @param spendableMoney    the amount of money the player can spend this turn
      * @param availableBuys     the number of available buys
      * @param deck              the game deck
@@ -57,10 +59,12 @@ public final class GameState {
     public GameState(@JsonProperty("currentPlayerNmae") String currentPlayerName,
             @JsonProperty("currentPlayerHand") Hand currentPlayerHand,
             @JsonProperty("turnPhase") TurnPhase phase,
+            @JsonProperty("availableActions") int availableActions,
             @JsonProperty("spendableMoney") int spendableMoney,
             @JsonProperty("availableBuys") int availableBuys,
             @JsonProperty("deck") GameDeck deck) {
         this.availableBuys = availableBuys;
+        this.availableActions = availableActions;
         this.currentPlayerHand = currentPlayerHand;
         this.currentPlayerName = currentPlayerName;
         this.deck = deck;
@@ -113,7 +117,9 @@ public final class GameState {
      *
      * @return the number of available actions
      */
-    public int getAvailableActions();
+    public int getAvailableActions() {
+        return availableActions;
+    }
 
     /**
      * Gets the game deck.

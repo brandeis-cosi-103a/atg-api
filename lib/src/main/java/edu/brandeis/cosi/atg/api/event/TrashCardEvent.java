@@ -1,5 +1,9 @@
 package edu.brandeis.cosi.atg.api.event;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
@@ -15,7 +19,8 @@ public final class TrashCardEvent implements Event {
      * @param cardType   the type of card trashed by the player
      * @param playerName the name of the player who trashed the card
      */
-    public TrashCardEvent(Card.Type cardType, String playerName) {
+    @JsonCreator
+    public TrashCardEvent(@JsonProperty("cardType") Card.Type cardType, @JsonProperty("playerName") String playerName) {
         this.cardType = cardType;
         this.playerName = playerName;
     }
@@ -23,6 +28,7 @@ public final class TrashCardEvent implements Event {
     /**
      * Gets the description of the card trash event.
      */
+    @JsonIgnore
     public String getDescription() {
         return playerName + " trashed card: " + cardType.getDescription();
     }
