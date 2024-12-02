@@ -1,6 +1,7 @@
 package edu.brandeis.cosi.atg.api;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -30,11 +31,21 @@ public final class GameDeck {
     }
 
     /**
+     * Gets the number of available cards of each type.
+     *
+     * @return a map of card types to the number of available cards of that type
+     */
+    public ImmutableMap<Card.Type, Integer> getCardCounts() {
+        return cardCounts;
+    }
+
+    /**
      * Gets the number of available cards of the specified type.
      *
      * @param cardType the type of card
      * @return the number of available cards of the specified type
      */
+    @JsonIgnore
     public int getNumAvailable(Card.Type cardType) {
         return cardCounts.get(cardType);
     }
@@ -44,6 +55,7 @@ public final class GameDeck {
      *
      * @return an immutable collection of all card types in the deck
      */
+    @JsonIgnore
     public ImmutableSet<Card.Type> getCardTypes() {
         return cardCounts.keySet();
     }
