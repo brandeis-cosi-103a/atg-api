@@ -60,4 +60,9 @@ public final class GainCardDecision implements Decision {
         GainCardDecision other = (GainCardDecision) o;
         return cardType.equals(other.cardType);
     }
+
+    @Override
+    public int hashCode() {
+        return cardType.hashCode();
+    }
 }
