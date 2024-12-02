@@ -35,7 +35,7 @@ public final class GameDeck {
      * @param cardType the type of card
      * @return the number of available cards of the specified type
      */
-    int getNumAvailable(Card.Type cardType) {
+    public int getNumAvailable(Card.Type cardType) {
         return cardCounts.get(cardType);
     }
 
@@ -44,7 +44,7 @@ public final class GameDeck {
      *
      * @return an immutable collection of all card types in the deck
      */
-    ImmutableSet<Card.Type> getCardTypes() {
+    public ImmutableSet<Card.Type> getCardTypes() {
         return cardCounts.keySet();
     }
 }
