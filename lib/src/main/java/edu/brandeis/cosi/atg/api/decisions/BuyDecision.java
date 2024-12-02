@@ -11,19 +11,15 @@ import edu.brandeis.cosi.atg.api.cards.Card;
  */
 public final class BuyDecision implements Decision {
     private Card.Type cardType;
-    private int numAvailable;
 
     /**
-     * Constructs a BuyDecision with the specified card type and number of available
-     * cards.
+     * Constructs a BuyDecision with the specified card type.
      *
-     * @param cardType     the type of card to buy
-     * @param numAvailable the number of available cards of the specified type
+     * @param cardType the type of card to buy
      */
     @JsonCreator
-    public BuyDecision(@JsonProperty("cardType") Card.Type cardType, @JsonProperty("numAvailable") int numAvailable) {
+    public BuyDecision(@JsonProperty("cardType") Card.Type cardType) {
         this.cardType = cardType;
-        this.numAvailable = numAvailable;
     }
 
     /**
@@ -33,7 +29,7 @@ public final class BuyDecision implements Decision {
      */
     @JsonIgnore
     public String getDescription() {
-        return "Buy " + cardType.getDescription() + " [" + numAvailable + " avail]";
+        return "Buy " + cardType.getDescription();
     }
 
     /**
@@ -46,21 +42,12 @@ public final class BuyDecision implements Decision {
     }
 
     /**
-     * Gets the number of available cards of the specified type.
-     *
-     * @return the number of available cards of the specified type
-     */
-    public int getNumAvailable() {
-        return numAvailable;
-    }
-
-    /**
      * Returns a string representation of the buy decision.
      *
      * @return a string representation of the buy decision
      */
     public String toString() {
-        return "BuyDecision{cardType=" + cardType + ", numAvailable=" + numAvailable + "}";
+        return "BuyDecision{cardType=" + cardType + "}";
     }
 
     public boolean equals(Object o) {
@@ -68,7 +55,12 @@ public final class BuyDecision implements Decision {
             return false;
         }
         BuyDecision other = (BuyDecision) o;
-        return cardType.equals(other.cardType) && numAvailable == other.numAvailable;
+        return cardType.equals(other.cardType);
+    }
+
+    @Override
+    public int hashCode() {
+        return cardType.hashCode();
     }
 
     @Override
