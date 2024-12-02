@@ -54,4 +54,9 @@ public final class PlayCardDecision implements Decision {
         PlayCardDecision other = (PlayCardDecision) o;
         return card.equals(other.card);
     }
+
+    @Override
+    public int hashCode() {
+        return card.hashCode();
+    }
 }

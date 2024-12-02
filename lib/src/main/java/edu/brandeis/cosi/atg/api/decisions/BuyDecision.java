@@ -70,4 +70,9 @@ public final class BuyDecision implements Decision {
         BuyDecision other = (BuyDecision) o;
         return cardType.equals(other.cardType) && numAvailable == other.numAvailable;
     }
+
+    @Override
+    public int hashCode() {
+        return cardType.hashCode() + numAvailable;
+    }
 }
