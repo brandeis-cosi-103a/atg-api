@@ -1,5 +1,9 @@
 package edu.brandeis.cosi.atg.api.event;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
@@ -16,7 +20,8 @@ public final class GainCardEvent implements Event {
      * @param cardType   the type of card gained by the player
      * @param playerName the name of the player who gained the card
      */
-    public GainCardEvent(Card.Type cardType, String playerName) {
+    @JsonCreator
+    public GainCardEvent(@JsonProperty("cardType") Card.Type cardType, @JsonProperty("playerName") String playerName) {
         this.cardType = cardType;
         this.playerName = playerName;
     }
@@ -24,6 +29,7 @@ public final class GainCardEvent implements Event {
     /**
      * Gets the description of the card gain event.
      */
+    @JsonIgnore
     public String getDescription() {
         return playerName + " gained card: " + cardType.getDescription();
     }

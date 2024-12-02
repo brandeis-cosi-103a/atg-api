@@ -1,5 +1,9 @@
 package edu.brandeis.cosi.atg.api.cards;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Represents a card in the game.
  */
@@ -13,7 +17,8 @@ public class Card {
      * @param type the type of the card
      * @param id   the id of the card
      */
-    public Card(Type type, int id) {
+    @JsonCreator
+    public Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) {
         this.type = type;
         this.id = id;
     }
@@ -41,6 +46,7 @@ public class Card {
      *
      * @return the category of the card
      */
+    @JsonIgnore
     public Type.Category getCategory() {
         return type.getCategory();
     }
@@ -50,6 +56,7 @@ public class Card {
      *
      * @return the value of the card
      */
+    @JsonIgnore
     public int getValue() {
         return type.getValue();
     }
@@ -59,6 +66,7 @@ public class Card {
      *
      * @return the cost of the card
      */
+    @JsonIgnore
     public int getCost() {
         return type.getCost();
     }
@@ -68,6 +76,7 @@ public class Card {
      *
      * @return the description of the card
      */
+    @JsonIgnore
     public String getDescription() {
         return type.getDescription();
     }

@@ -55,8 +55,9 @@ dependencies {
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     api libs.guava
+    implementation platform('com.fasterxml.jackson:jackson-bom:2.18.2')
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

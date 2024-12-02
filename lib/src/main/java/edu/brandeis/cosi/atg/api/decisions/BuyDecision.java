@@ -1,5 +1,9 @@
 package edu.brandeis.cosi.atg.api.decisions;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
@@ -10,12 +14,14 @@ public final class BuyDecision implements Decision {
     private int numAvailable;
 
     /**
-     * Constructs a BuyDecision with the specified card type and number of available cards.
+     * Constructs a BuyDecision with the specified card type and number of available
+     * cards.
      *
-     * @param cardType the type of card to buy
+     * @param cardType     the type of card to buy
      * @param numAvailable the number of available cards of the specified type
      */
-    public BuyDecision(Card.Type cardType, int numAvailable) {
+    @JsonCreator
+    public BuyDecision(@JsonProperty("cardType") Card.Type cardType, @JsonProperty("numAvailable") int numAvailable) {
         this.cardType = cardType;
         this.numAvailable = numAvailable;
     }
@@ -25,6 +31,7 @@ public final class BuyDecision implements Decision {
      *
      * @return the description of the buy decision
      */
+    @JsonIgnore
     public String getDescription() {
         return "Buy " + cardType.getDescription() + " [" + numAvailable + " avail]";
     }

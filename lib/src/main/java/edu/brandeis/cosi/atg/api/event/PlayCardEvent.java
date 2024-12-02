@@ -1,5 +1,9 @@
 package edu.brandeis.cosi.atg.api.event;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
@@ -15,7 +19,8 @@ public final class PlayCardEvent implements Event {
      * @param card       the card that was played
      * @param playerName the player who played the card
      */
-    public PlayCardEvent(Card card, String playerName) {
+    @JsonCreator
+    public PlayCardEvent(@JsonProperty("card") Card card, @JsonProperty("playerName") String playerName) {
         this.card = card;
         this.playerName = playerName;
     }
@@ -25,6 +30,7 @@ public final class PlayCardEvent implements Event {
      *
      * @return the description of the play card event
      */
+    @JsonIgnore
     public String getDescription() {
         return playerName + " played card: " + card;
     }
