@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * finely track the
  * progression of the game, if needed by their strategy.
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", defaultImpl = GameEvent.class)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
                 @JsonSubTypes.Type(value = EndTurnEvent.class, name = "end_turn"),
                 @JsonSubTypes.Type(value = GameEvent.class, name = "game"),
