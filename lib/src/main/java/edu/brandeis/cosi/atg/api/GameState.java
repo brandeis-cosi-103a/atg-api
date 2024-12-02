@@ -1,9 +1,19 @@
 package edu.brandeis.cosi.atg.api;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Represents the current state of the game.
  */
-public interface GameState {
+public final class GameState {
+    private final String currentPlayerName;
+    private final int availableBuys;
+    private final int spendableMoney;
+    private final Hand currentPlayerHand;
+    private final GameDeck deck;
+    private final TurnPhase phase;
+
     /**
      * Represents the phase of a turn.
      */
@@ -25,18 +35,49 @@ public interface GameState {
     }
 
     /**
+     * Constructs a GameState with the specified parameters.
+     *
+     * @param currentPlayerName the name of the player whose turn it is
+     * @param currentPlayerHand the hand of the current player, or null if the
+     *                          GameState is intended for a player who is not the
+     *                          current player
+     * @param phase             the phase of the current turn
+     * @param spendableMoney    the amount of money the player can spend this turn
+     * @param availableBuys     the number of available buys
+     * @param deck              the game deck
+     */
+    @JsonCreator
+    public GameState(@JsonProperty("currentPlayerNmae") String currentPlayerName,
+            @JsonProperty("currentPlayerHand") Hand currentPlayerHand,
+            @JsonProperty("turnPhase") TurnPhase phase,
+            @JsonProperty("spendableMoney") int spendableMoney,
+            @JsonProperty("availableBuys") int availableBuys,
+            @JsonProperty("deck") GameDeck deck) {
+        this.availableBuys = availableBuys;
+        this.currentPlayerHand = currentPlayerHand;
+        this.currentPlayerName = currentPlayerName;
+        this.deck = deck;
+        this.spendableMoney = spendableMoney;
+        this.phase = phase;
+    }
+
+    /**
      * Gets the name of the current player.
      *
      * @return the name of the current player
      */
-    public String getCurrentPlayerName();
+    public String getCurrentPlayerName() {
+        return currentPlayerName;
+    }
 
     /**
      * Gets the hand of the current player.
      *
      * @return the hand of the current player
      */
-    public Hand getCurrentPlayerHand();
+    public Hand getCurrentPlayerHand() {
+        return currentPlayerHand;
+    }
 
     /**
      * Gets the amount of money the current player can spend this turn.
@@ -47,26 +88,34 @@ public interface GameState {
      *
      * @return the amount of spendable money
      */
-    public int getSpendableMoney();
+    public int getSpendableMoney() {
+        return spendableMoney;
+    }
 
     /**
      * Gets the number of buys available to the current player.
      *
      * @return the number of available buys
      */
-    public int getAvailableBuys();
+    public int getAvailableBuys() {
+        return availableBuys;
+    }
 
     /**
      * Gets the game deck.
      *
      * @return the game deck
      */
-    public GameDeck getDeck();
+    public GameDeck getDeck() {
+        return deck;
+    }
 
     /**
      * Gets the phase of the current turn.
      *
      * @return the phase of the current turn
      */
-    public TurnPhase getTurnPhase();
+    public TurnPhase getTurnPhase() {
+        return phase;
+    }
 }

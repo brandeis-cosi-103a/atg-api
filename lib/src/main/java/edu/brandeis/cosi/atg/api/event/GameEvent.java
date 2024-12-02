@@ -1,5 +1,8 @@
 package edu.brandeis.cosi.atg.api.event;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Represents a general event in the game.
  */
@@ -11,7 +14,8 @@ public final class GameEvent implements Event {
      *
      * @param description the description of the event
      */
-    public GameEvent(String description) {
+    @JsonCreator
+    public GameEvent(@JsonProperty("description") String description) {
         this.description = description;
     }
 
