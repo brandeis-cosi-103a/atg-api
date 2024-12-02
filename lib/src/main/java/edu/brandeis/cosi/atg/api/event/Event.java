@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 /**
  * Represents an event in the game.
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", defaultImpl = GameEvent.class)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
                 @JsonSubTypes.Type(value = DiscardCardEvent.class, name = "discard_card"),
                 @JsonSubTypes.Type(value = EndTurnEvent.class, name = "end_turn"),
