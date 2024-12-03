@@ -5,6 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * Represents an event in the game.
+ *
+ * The {@link Engine} will notify {@link GameObserver}s of events as they occur.
+ * Events are intended to be informational - they can be printed to a console,
+ * logged or saved, or used by {@link Player}s to more finely track the
+ * progression of the game, if needed by their strategy.
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.brandeis.cosi.atg.api.GameState;
 
 /**
- * Represents a decision by a player to end their turn.
+ * Represents a decision by a player to end a phase of their turn.
  */
 public final class EndPhaseDecision implements Decision {
     private GameState.TurnPhase phase;

@@ -4,7 +4,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Represents the current state of the game.
+ * Represents the current, immutable state of the game.
+ *
+ * When the {@link Engine} prompts a {@link Player} for a decision, it provides
+ * a GameState representing the current state of the game. The Player can use
+ * the GameState while making a decision.
+ *
+ * GameState is intentionally immutable: the only way players can modify the
+ * state of the game is to make a decision when prompted by the Engine.
  */
 public final class GameState {
     private final String currentPlayerName;
