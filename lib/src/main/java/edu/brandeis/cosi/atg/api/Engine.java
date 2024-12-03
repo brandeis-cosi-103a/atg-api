@@ -22,6 +22,8 @@ import edu.brandeis.cosi.atg.api.cards.Card;
  * returning an invalid or disallowed Decision, the Engine should throw a
  * {@link PlayerViolationException}.
  *
+ * TODO: Document other phases of the game and their semantics.
+ *
  * During the {@link GameState.TurnPhase#MONEY MONEY} phase, the Engine should
  * prompt the Player with one
  * {@link edu.brandeis.cosi.atg.api.decisions.PlayCardDecision

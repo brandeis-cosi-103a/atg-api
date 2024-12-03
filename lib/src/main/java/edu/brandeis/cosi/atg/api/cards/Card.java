@@ -111,6 +111,8 @@ public class Card {
 
     /**
      * Represents the type of a card.
+     *
+     * TODO: Document the semantics / decisions of each card.
      */
     public enum Type {
         /**
