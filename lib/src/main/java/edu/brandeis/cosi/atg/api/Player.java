@@ -24,6 +24,9 @@ public interface Player {
     /**
      * Makes a choice during the game.
      *
+     * This method should handle exceptions to the greatest extent possible -
+     * allowing an exception to escape will cause the player to forfeit the game.
+     *
      * @param state   the current game state
      * @param options the available decisions to choose from
      * @return the chosen decision

@@ -6,6 +6,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Represents a card in the game.
+ *
+ * Cards have {@link Type types} that determine their category, value, and cost.
+ * They also have ids, which are unique to each card in the game. The id of a
+ * card is used to distinguish it from other cards of the same type. Two cards
+ * are considered equal if they have the same type and id.
  */
 public class Card {
     private Type type;
