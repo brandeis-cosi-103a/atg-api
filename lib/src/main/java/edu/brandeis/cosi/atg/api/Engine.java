@@ -7,8 +7,8 @@ import com.google.common.collect.ImmutableList;
  * to participate.
  *
  * Game events are logged to the {@link GameObserver GameObserver}, to
- * facilitate printing to a
- * console (or any other external handling of game events).
+ * facilitate printing to a console (or any other external handling of game
+ * events).
  */
 public interface Engine {
 
@@ -16,8 +16,11 @@ public interface Engine {
      * Executes the game and returns the score for each player.
      *
      * @return The scores for each player, sorted from most points to least.
+     * @throws PlayerViolationException if a player violates the rules of the game
+     *                                  or throws an exception when making a
+     *                                  decision
      */
-    public ImmutableList<Player.ScorePair> play();
+    public ImmutableList<Player.ScorePair> play() throws PlayerViolationException;
 
     /**
      * Factory interface for creating instances of {@link Engine}.
