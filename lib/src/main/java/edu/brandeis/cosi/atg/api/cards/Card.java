@@ -110,26 +110,50 @@ public class Card {
     public enum Type {
         /**
          * A victory card worth 1 automation point.
+         *
+         * This card is never playable, but grants 1 automation point when the game
+         * ends.
          */
         METHOD("Method", Category.VICTORY, 2, 1),
         /**
          * A victory card worth 3 automation points.
+         *
+         * This card is never playable, but grants 1 automation point when the game
+         * ends.
          */
         MODULE("Module", Category.VICTORY, 5, 3),
         /**
          * A victory card worth 6 automation points.
+         *
+         * This card is never playable, but grants 1 automation point when the game
+         * ends.
          */
         FRAMEWORK("Framework", Category.VICTORY, 8, 6),
         /**
          * A money card worth 1 money.
+         *
+         * This card is playable during the
+         * {@link edu.brandeis.cosi.atg.api.GameState.TurnPhase#MONEY MONEY}
+         * phase. When played, it grants 1 spendable money for the turn on which it was
+         * played.
          */
         BITCOIN("Bitcoin", Category.MONEY, 1, 1),
         /**
          * A money card worth 2 money.
+         *
+         * This card is playable during the
+         * {@link edu.brandeis.cosi.atg.api.GameState.TurnPhase#MONEY MONEY}
+         * phase. When played, it grants 2 spendable money for the turn on which it was
+         * played.
          */
         ETHEREUM("Ethereum", Category.MONEY, 3, 2),
         /**
          * A money card worth 3 money.
+         *
+         * This card is playable during the
+         * {@link edu.brandeis.cosi.atg.api.GameState.TurnPhase#MONEY MONEY}
+         * phase. When played, it grants 3 spendable money for the turn on which it was
+         * played.
          */
         DOGECOIN("Dogecoin", Category.MONEY, 6, 3);
 

@@ -9,7 +9,8 @@ import com.google.common.collect.ImmutableSet;
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
- * A Hand represents the collection of cards a player has during the game.
+ * A Hand represents the collection of cards a player has in their hand during a
+ * single turn of the game.
  */
 public final class Hand {
     private final ImmutableCollection<Card> playedCards;
@@ -18,8 +19,8 @@ public final class Hand {
     /**
      * Constructs a Hand with the specified cards
      *
-     * @param playedCards
-     * @param unplayedCards
+     * @param playedCards   The cards that have already been played this turn.
+     * @param unplayedCards The cards that have not yet been played this turn.
      */
     @JsonCreator
     public Hand(@JsonProperty("playedCards") ImmutableCollection<Card> playedCards,
