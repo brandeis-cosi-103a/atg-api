@@ -31,6 +31,11 @@ public interface Player {
      *
      * @param state   the current game state
      * @param options the available decisions to choose from
+     * @param reason  the reason the player is being prompted with this decision, if
+     *                any. A reason is provided when the player is being prompted
+     *                with a decision as a result of another event in the game, but
+     *                not when the player is being prompted for a decision during
+     *                the normal course of their turn.
      * @return the chosen decision
      */
     public Decision makeDecision(GameState state, ImmutableList<Decision> options, Optional<Event> reason);
