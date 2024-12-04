@@ -6,8 +6,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 /**
  * Represents a decision that a player can make during the game.
  *
- * Decisions are the primary interface between an {@link Engine} and a
- * {@link Player}. The Engine presents a Player with a list of possible
+ * Decisions are the primary interface between an
+ * {@link edu.brandeis.cosi.atg.api.Engine} and a
+ * {@link edu.brandeis.cosi.atg.api.Player}. The Engine presents a Player with a
+ * list of possible
  * decisions, and the Player chooses one of them. The Engine then executes the
  * chosen decision.
  */
