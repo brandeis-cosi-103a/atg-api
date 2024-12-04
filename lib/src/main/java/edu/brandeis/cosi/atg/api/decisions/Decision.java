@@ -9,9 +9,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * Decisions are the primary interface between an
  * {@link edu.brandeis.cosi.atg.api.Engine} and a
  * {@link edu.brandeis.cosi.atg.api.Player}. The Engine presents a Player with a
- * list of possible
- * decisions, and the Player chooses one of them. The Engine then executes the
- * chosen decision.
+ * list of possible decisions, and the Player chooses one of them. The Engine
+ * then executes the chosen decision.
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({

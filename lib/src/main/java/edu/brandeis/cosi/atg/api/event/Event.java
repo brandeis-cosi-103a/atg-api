@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * The {@link edu.brandeis.cosi.atg.api.Engine} will notify
  * {@link edu.brandeis.cosi.atg.api.GameObserver}s of events as they occur.
  * Events are intended to be informational - they can be printed to a console,
- * logged or saved, or used by {@link edu.brandeis.cosi.atg.api.Player}s to more
- * finely track the
- * progression of the game, if needed by their strategy.
+ * logged or saved, or used by {@link edu.brandeis.cosi.atg.api.Player Players}
+ * to more finely track the progression of the game, if needed by their
+ * strategy.
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
