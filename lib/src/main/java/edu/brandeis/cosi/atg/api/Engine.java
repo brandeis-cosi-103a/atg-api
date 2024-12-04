@@ -18,7 +18,11 @@ import com.google.common.collect.ImmutableList;
  * a Player does not behave as expected - either by not returning a Decision, or
  * returning an invalid or disallowed Decision, the Engine should throw a
  * {@link PlayerViolationException}.
- *
+ * <br/>
+ * <br/>
+ * <strong>Primary phases of a turn:</strong>
+ * <br/>
+ * <br/>
  * During the {@link GameState.TurnPhase#MONEY MONEY} phase, the Engine should
  * prompt the Player with one
  * {@link edu.brandeis.cosi.atg.api.decisions.PlayCardDecision
@@ -39,7 +43,11 @@ import com.google.common.collect.ImmutableList;
  * During the {@link GameState.TurnPhase#CLEANUP CLEANUP} phase, the Engine
  * should discard the player's hand, and deal a new hand of 5 cards from the
  * player's deck (shuffling if needed).
- *
+ * <br/>
+ * <br/>
+ * <strong>Ending the game:</strong>
+ * <br/>
+ * <br/>
  * When all {@link edu.brandeis.cosi.atg.api.cards.Card.Type#FRAMEWORK
  * FRAMEWORK} cards have been purchased, the game ends, and the Engine returns a
  * list of {@link Player.ScorePair Player.ScorePairs} representing the scores of
