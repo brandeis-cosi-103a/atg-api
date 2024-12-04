@@ -115,35 +115,40 @@ public class Card {
     public enum Type {
         /**
          * A victory card worth -1 automation points.
-         *
+         * <br/>
+         * <br/>
          * This card is never playable, but subtracts 1 automation point when the game
          * ends.
          */
         BUG("Bug", Category.VICTORY, 0, -1),
         /**
          * A victory card worth 1 automation point.
-         *
+         * <br/>
+         * <br/>
          * This card is never playable, but grants 1 automation point when the game
          * ends.
          */
         METHOD("Method", Category.VICTORY, 2, 1),
         /**
          * A victory card worth 3 automation points.
-         *
+         * <br/>
+         * <br/>
          * This card is never playable, but grants 1 automation point when the game
          * ends.
          */
         MODULE("Module", Category.VICTORY, 5, 3),
         /**
          * A victory card worth 6 automation points.
-         *
+         * <br/>
+         * <br/>
          * This card is never playable, but grants 1 automation point when the game
          * ends.
          */
         FRAMEWORK("Framework", Category.VICTORY, 8, 6),
         /**
          * A money card worth 1 money.
-         *
+         * <br/>
+         * <br/>
          * This card is playable during the
          * {@link edu.brandeis.cosi.atg.api.GameState.TurnPhase#MONEY MONEY}
          * phase. When played, it grants 1 spendable money for the turn on which it was
@@ -152,7 +157,8 @@ public class Card {
         BITCOIN("Bitcoin", Category.MONEY, 1, 1),
         /**
          * A money card worth 2 money.
-         *
+         * <br/>
+         * <br/>
          * This card is playable during the
          * {@link edu.brandeis.cosi.atg.api.GameState.TurnPhase#MONEY MONEY}
          * phase. When played, it grants 2 spendable money for the turn on which it was
@@ -161,7 +167,8 @@ public class Card {
         ETHEREUM("Ethereum", Category.MONEY, 3, 2),
         /**
          * A money card worth 3 money.
-         *
+         * <br/>
+         * <br/>
          * This card is playable during the
          * {@link edu.brandeis.cosi.atg.api.GameState.TurnPhase#MONEY MONEY}
          * phase. When played, it grants 3 spendable money for the turn on which it was
@@ -170,9 +177,9 @@ public class Card {
         DOGECOIN("Dogecoin", Category.MONEY, 6, 3),
 
         /**
-         * +1 Action
-         * Discard any number of cards, then draw that many.
-         *
+         * +1 Action; Discard any number of cards, then draw that many
+         * <br/>
+         * <br/>
          * After playing this card, the player will be prompted with a list of
          * {@link edu.brandeis.cosi.atg.api.decisions.DiscardCardDecision
          * DiscardCardDecisions}, one for each card in their hand. The list of decisions
@@ -188,10 +195,9 @@ public class Card {
         BACKLOG("Backlog", Category.ACTION, 2, 0),
 
         /**
-         * +4 Cards
-         * +1 Buy
-         * Each other player draws a card.
-         *
+         * +4 Cards, +1 Buy; Each other player draws a card
+         * <br/>
+         * <br/>
          * When this card is played, the engine will draw 4 cards into the player's
          * hand. Immediately following that (before any other actions), the engine will
          * draw will draw 1 card into each other player's hands.
@@ -199,10 +205,9 @@ public class Card {
         DAILY_SCRUM("Daily Scrum", Category.ACTION, 5, 0),
 
         /**
-         * +2 Cards
-         * +1 Action
-         * +2 Money
-         *
+         * +2 Cards, +1 Action, +2 Money
+         * <br/>
+         * <br/>
          * When this card is played, the player immediately earns 2 more spendable money
          * for this turn, has two cards drawn into their hand, and is granted an
          * additional action for this turn.
@@ -213,9 +218,9 @@ public class Card {
         IPO("IPO", Category.ACTION, 5, 0),
 
         /**
-         * +2 Money
-         * Each other player discards down to 3 cards in hand.
-         *
+         * +2 Money; Each other player discards down to 3 cards in hand
+         * <br/>
+         * <br/>
          * When this card is played, the engine will first check to see which players
          * have {@link Card.Type#MONITORING Monitoring} cards, and will prompt them to
          * reveal the cards. After that, the engine prompt each player who hasn't
@@ -232,10 +237,11 @@ public class Card {
         HACK("Hack", Category.ACTION, 4, 0),
 
         /**
-         * +2 Cards
-         *
-         * When another player plays an Attack card, you may reveal this from your hand
-         * to be unaffected by the attack. The engine implements this by prompting the
+         * +2 Cards; When another player plays an Attack card, you may reveal this from
+         * your hand to be unaffected by the attack.
+         * <br/>
+         * <br/>
+         * The engine implements this by prompting the
          * player with a {@link edu.brandeis.cosi.atg.api.decisions.PlayCardDecision}
          * and an {@link edu.brandeis.cosi.atg.api.decisions.EndPhaseDecision} with
          * the phase set to
@@ -252,11 +258,9 @@ public class Card {
         MONITORING("Monitoring", Category.ACTION, 2, 0),
 
         /**
-         * +1 Card
-         * +1 Action
-         * +1 Money
-         * Discard one card per empty Supply pile.
-         *
+         * +1 Card, +1 Action, +1 Money; Discard one card per empty Supply pile
+         * <br/>
+         * <br/>
          * When this card is played, the player immediately earns 1 more spendable money
          * for this turn, has one card drawn into their hand, and is granted an
          * additional action for this turn. Following that, the player will be prompted
@@ -270,7 +274,8 @@ public class Card {
         /**
          * Trash a card from your hand. Gain a card costing up to 2 more than the
          * trashed card.
-         *
+         * <br/>
+         * <br/>
          * When this card is played, the player will be prompted with
          * {@link edu.brandeis.cosi.atg.api.decisions.TrashCardDecision
          * TrashCardDecisions} for each card in their hand. Trashing is not optional, so
@@ -285,7 +290,8 @@ public class Card {
 
         /**
          * You may play an Action card from your hand twice.
-         *
+         * <br/>
+         * <br/>
          * When this card is played, the player is immediately prompted with
          * {@link edu.brandeis.cosi.atg.api.decisions.PlayCardDecision
          * PlayCardDecisions} for every other unplayed action card in their hand. The
@@ -296,18 +302,18 @@ public class Card {
         PARALLELIZATION("Parallelization", Category.ACTION, 4, 0),
 
         /**
-         * +1 Card
-         * +2 Actions
-         *
+         * +1 Card, +2 Actions
+         * <br/>
+         * <br/>
          * When this card is played, the player immediately draws a card, and is granted
          * two additional actions for this turn.
          */
         CODE_REVIEW("Code Review", Category.ACTION, 3, 0),
 
         /**
-         * +2 Cards
-         * Each other player gains a Bug.
-         *
+         * +2 Cards; Each other player gains a Bug
+         * <br/>
+         * <br/>
          * When this card is played, the engine immediately adds a {@link Card.Type#BUG}
          * to each other player's discard pile.
          */

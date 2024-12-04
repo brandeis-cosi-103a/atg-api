@@ -23,6 +23,8 @@ import edu.brandeis.cosi.atg.api.cards.Card;
  * returning an invalid or disallowed Decision, the Engine should throw a
  * {@link PlayerViolationException}.
  *
+ * <br/>
+ * <br/>
  * <strong>Primary phases of a turn:</strong>
  * <br/>
  * <br/>
@@ -59,6 +61,8 @@ import edu.brandeis.cosi.atg.api.cards.Card;
  * involvement in this stage. The Engine should discard the player's hand, and
  * deal a new hand of 5 cards from the player's deck (shuffling if needed).
  *
+ * <br/>
+ * <br/>
  * <strong>Other turn phases:</strong>
  * <br/>
  * <br/>
@@ -91,6 +95,8 @@ import edu.brandeis.cosi.atg.api.cards.Card;
  * {@link edu.brandeis.cosi.atg.api.decisions.GainCardDecision
  * GainCardDecisions}, one for each eligible card that the player can gain.
  *
+ * <br/>
+ * <br/>
  * <strong> Ending the game</strong>
  * <br/>
  * <br/>
