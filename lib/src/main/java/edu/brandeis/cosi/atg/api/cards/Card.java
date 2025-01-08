@@ -178,7 +178,7 @@ public class Card {
         DOGECOIN("Dogecoin", Category.MONEY, 6, 3),
 
         /**
-         * +1 Action; Discard any number of cards, then draw that many
+         * +1 Action; Discard any number of cards, then draw that many.
          * <br/>
          * <br/>
          * After playing this card, the player will be prompted with a list of
@@ -196,7 +196,7 @@ public class Card {
         BACKLOG("Backlog", Category.ACTION, 2, 0),
 
         /**
-         * +4 Cards, +1 Buy; Each other player draws a card
+         * +4 Cards, +1 Buy; Each other player draws a card.
          * <br/>
          * <br/>
          * When this card is played, the engine will draw 4 cards into the player's
@@ -206,7 +206,7 @@ public class Card {
         DAILY_SCRUM("Daily Scrum", Category.ACTION, 5, 0),
 
         /**
-         * +2 Cards, +1 Action, +2 Money
+         * +2 Cards, +1 Action, +2 Money.
          * <br/>
          * <br/>
          * When this card is played, the player immediately earns 2 more spendable money
@@ -219,7 +219,7 @@ public class Card {
         IPO("IPO", Category.ACTION, 5, 0),
 
         /**
-         * +2 Money; Each other player discards down to 3 cards in hand
+         * +2 Money; Each other player discards down to 3 cards in hand.
          * <br/>
          * <br/>
          * When this card is played, the engine will first check to see which players
@@ -259,7 +259,7 @@ public class Card {
         MONITORING("Monitoring", Category.ACTION, 2, 0),
 
         /**
-         * +1 Card, +1 Action, +1 Money; Discard one card per empty Supply pile
+         * +1 Card, +1 Action, +1 Money; Discard one card per empty Supply pile.
          * <br/>
          * <br/>
          * When this card is played, the player immediately earns 1 more spendable money
@@ -273,7 +273,7 @@ public class Card {
         TECH_DEBT("Tech Debt", Category.ACTION, 4, 0),
 
         /**
-         * Trash a card from your hand. Gain a card costing up to 2 more than the
+         * Trash a card from your hand; Gain a card costing up to 2 more than the
          * trashed card.
          * <br/>
          * <br/>
@@ -303,7 +303,7 @@ public class Card {
         PARALLELIZATION("Parallelization", Category.ACTION, 4, 0),
 
         /**
-         * +1 Card, +2 Actions
+         * +1 Card, +2 Actions.
          * <br/>
          * <br/>
          * When this card is played, the player immediately draws a card, and is granted
@@ -312,7 +312,7 @@ public class Card {
         CODE_REVIEW("Code Review", Category.ACTION, 3, 0),
 
         /**
-         * +2 Cards; Each other player gains a Bug
+         * +2 Cards; Each other player gains a Bug.
          * <br/>
          * <br/>
          * When this card is played, the engine immediately adds a {@link Card.Type#BUG}
