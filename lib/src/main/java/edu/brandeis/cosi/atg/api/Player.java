@@ -42,6 +42,8 @@ public interface Player {
 
     /**
      * A factory for creating players.
+     *
+     * Implementations of this class <b>must</b> be default-constructible.
      */
     public interface PlayerFactory {
         /**
@@ -52,11 +54,14 @@ public interface Player {
         public Player makePlayer();
 
         /**
-         * Gets the name of the player.
+         * Returns a short description of the player.
          *
-         * @return the name of the player
+         * This description should be suitable for display in place of a player name,
+         * and so should be relatively short.
+         *
+         * @return a description of the player
          */
-        public String getPlayerName();
+        public String getPlayerDescription();
     }
 
     /**

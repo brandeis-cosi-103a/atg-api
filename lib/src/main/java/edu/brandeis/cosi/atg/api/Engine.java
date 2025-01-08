@@ -124,24 +124,4 @@ public interface Engine {
      *                                  decision
      */
     public ImmutableList<Player.ScorePair> play() throws PlayerViolationException;
-
-    /**
-     * Factory interface for creating instances of {@link Engine}.
-     */
-    public interface EngineFactory {
-
-        /**
-         * Creates an instance of {@link Engine}.
-         *
-         * @param playerOne   the first player. Player one always goes first.
-         * @param playerTwo   the second player
-         * @param supplyPiles the types of cards available for purchase in this game
-         * @param observer    the game observer
-         * @return an instance of {@link Engine}
-         * @throws IllegalArgumentException if the number of supply piles is not equal
-         *                                  to 10
-         */
-        public Engine makeEngine(Player playerOne, Player playerTwo, ImmutableSet<Card.Type> supplyPiles,
-                GameObserver observer);
-    }
 }
