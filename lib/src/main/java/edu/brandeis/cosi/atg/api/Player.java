@@ -34,25 +34,6 @@ public interface Player {
     public Decision makeDecision(GameState state, ImmutableList<Decision> options);
 
     /**
-     * A factory for creating players.
-     */
-    public interface PlayerFactory {
-        /**
-         * Creates a new player.
-         *
-         * @return the new player
-         */
-        public Player makePlayer();
-
-        /**
-         * Gets the name of the player.
-         *
-         * @return the name of the player
-         */
-        public String getPlayerName();
-    }
-
-    /**
      * A pair of a player and their score.
      */
     public final class ScorePair {

@@ -72,20 +72,4 @@ public interface Engine {
      *                                  decision
      */
     public ImmutableList<Player.ScorePair> play() throws PlayerViolationException;
-
-    /**
-     * Factory interface for creating instances of {@link Engine}.
-     */
-    public interface EngineFactory {
-
-        /**
-         * Creates an instance of {@link Engine}.
-         *
-         * @param playerOne the first player. Player one always goes first.
-         * @param playerTwo the second player
-         * @param observer  the game observer
-         * @return an instance of {@link Engine}
-         */
-        public Engine makeEngine(Player playerOne, Player playerTwo, GameObserver observer);
-    }
 }
