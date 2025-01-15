@@ -12,6 +12,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * They also have ids, which are unique to each card in the game. The id of a
  * card is used to distinguish it from other cards of the same type. Two cards
  * are considered equal if they have the same type and id.
+ * <br/>
+ * <br/>
+ * The three broad categories of cards are:
+ * {@link Card.Type.Category#ACTION ACTION},
+ * {@link Card.Type.Category#MONEY MONEY}, and
+ * {@link Card.Type.Category#VICTORY VICTORY}.
+ * Action cards have further, informal subcategories, such as "Attack" (
+ * {@link Card.Type#HACK} and {@link Card.Type#EVERGREEN_TEST}), and
+ * "Reaction" ({@link Card.Type#MONITORING}).
  */
 public class Card {
     private Type type;
@@ -219,7 +228,7 @@ public class Card {
         IPO("IPO", Category.ACTION, 5, 0),
 
         /**
-         * +2 Money; Each other player discards down to 3 cards in hand.
+         * (Attack card) +2 Money; Each other player discards down to 3 cards in hand.
          * <br/>
          * <br/>
          * When this card is played, the engine will first check to see which players
@@ -238,8 +247,8 @@ public class Card {
         HACK("Hack", Category.ACTION, 4, 0),
 
         /**
-         * +2 Cards; When another player plays an Attack card, you may reveal this from
-         * your hand to be unaffected by the attack.
+         * (Reaction card) +2 Cards; When another player plays an Attack card, you may
+         * reveal this from your hand to be unaffected by the attack.
          * <br/>
          * <br/>
          * The engine implements this by prompting the
@@ -277,6 +286,7 @@ public class Card {
          * trashed card.
          * <br/>
          * <br/>
+         * Trashing a card removes it from the player's deck entirely.
          * When this card is played, the player will be prompted with
          * {@link edu.brandeis.cosi.atg.api.decisions.TrashCardDecision
          * TrashCardDecisions} for each card in their hand. Trashing is not optional, so
@@ -312,11 +322,14 @@ public class Card {
         CODE_REVIEW("Code Review", Category.ACTION, 3, 0),
 
         /**
-         * +2 Cards; Each other player gains a Bug.
+         * (Attack card) +2 Cards; Each other player gains a Bug.
          * <br/>
          * <br/>
-         * When this card is played, the engine immediately adds a {@link Card.Type#BUG}
-         * to each other player's discard pile.
+         * When this card is played, the engine will first check to see which players
+         * have {@link Card.Type#MONITORING Monitoring} cards, and will prompt them to
+         * reveal the cards. After that, the engine immediately adds a
+         * {@link Card.Type#BUG} to the discard pile of each player who did not reveal
+         * a {@link Card.Type#MONITORING Monitoring} card.
          */
         EVERGREEN_TEST("Evergreen Test", Category.ACTION, 5, 0);
 

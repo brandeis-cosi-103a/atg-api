@@ -7,7 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
- * Represents a decision by a player to trash a card.
+ * Represents a decision by a player to trash a card. Trashing a card
+ * removes it from the player's deck entirely, and does not return it
+ * to the supply pile.
  */
 public final class TrashCardDecision implements Decision {
     private Card card;

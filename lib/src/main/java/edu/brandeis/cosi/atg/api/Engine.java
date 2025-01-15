@@ -66,8 +66,11 @@ import com.google.common.collect.ImmutableSet;
  * <br/>
  *
  * 1. The {@link GameState.TurnPhase#REACTION REACTION} phase. This phase occurs
- * when another player plays an attack card. At the time that the attack card is
- * played, each other player that holds a
+ * when another player plays an attack card (
+ * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#HACK Hack} or
+ * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#EVERGREEN_TEST Evergreen
+ * Test}). At the time that the attack card is played, each other player
+ * that holds a
  * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#MONITORING Monitoring card}
  * should be prompted with a
  * {@link edu.brandeis.cosi.atg.api.decisions.PlayCardDecision}
@@ -92,6 +95,7 @@ import com.google.common.collect.ImmutableSet;
  * a player needs to gain cards. The player should be prompted with a list of
  * {@link edu.brandeis.cosi.atg.api.decisions.GainCardDecision
  * GainCardDecisions}, one for each eligible card that the player can gain.
+ * Gained cards go directly to a player's discard pile.
  *
  * <br/>
  * <br/>
