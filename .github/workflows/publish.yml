@@ -3,12 +3,15 @@ name: Publish
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      RELEASE_NAME: ${{ github.event.release.tag_name }}
+      RELEASE_NAME: 0.0.1-SNAPSHOT #${{ github.event.release.tag_name }}
+      GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
     steps:
     - name: Checkout sources
       uses: actions/checkout@v4
@@ -26,8 +29,5 @@ jobs:
         echo "<settings><profiles><profile><id>ossrh</id><activation><activeByDefault>true</activeByDefault></activation><properties><gpg.passphraseEnvName>GPG_PASSPHRASE</gpg.passphraseEnvName><gpg.keyEnvName>GPG_PRIVATE_KEY</gpg.keyEnvName></properties></profile></profiles><servers><server><id>ossrh</id><username>${{ secrets.MAVEN_CENTRAL_USERNAME }}</username><password>${{ secrets.MAVEN_CENTRAL_PASSWORD }}</password></server></servers></settings>" > settings.xml
     - name: Push to Maven Central
       working-directory: ./lib
-      env:
-        GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-        GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
       run: |
         mvn --settings settings.xml <TODO>
