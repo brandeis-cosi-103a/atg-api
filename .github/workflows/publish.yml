@@ -24,7 +24,7 @@ jobs:
       working-directory: ./lib
       run: |
         touch settings.xml
-        echo "<settings><profiles><profile><id>ossrh</id><activation><activeByDefault>true</activeByDefault></activation><properties><gpg.passphraseEnvName>GPG_PASSPHRASE</gpg.passphraseEnvName><gpg.keyEnvName>GPG_PRIVATE_KEY</gpg.keyEnvName></properties></profile></profiles><servers><server><id>ossrh</id><username>${{ secrets.MAVEN_CENTRAL_USERNAME }}</username><password>${{ secrets.MAVEN_CENTRAL_PASSWORD }}</password></server></servers></settings>" > settings.xml
+        echo "<settings><profiles><profile><id>ossrh</id><activation><activeByDefault>true</activeByDefault></activation><properties><gpg.keyname>D3EBA9D6</gpg.keyname><gpg.passphraseEnvName>GPG_PASSPHRASE</gpg.passphraseEnvName><gpg.keyEnvName>GPG_PRIVATE_KEY</gpg.keyEnvName></properties></profile></profiles><servers><server><id>ossrh</id><username>${{ secrets.MAVEN_CENTRAL_USERNAME }}</username><password>${{ secrets.MAVEN_CENTRAL_PASSWORD }}</password></server></servers></settings>" > settings.xml
     - name: Push to Maven Central
       working-directory: ./lib
       run: |
