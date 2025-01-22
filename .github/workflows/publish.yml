@@ -9,10 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+      MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
       RELEASE_NAME: 0.0.1-SNAPSHOT #${{ github.event.release.tag_name }}
-      MVN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-      GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-      GPG_KEYNAME: D3EBA9D6
+      MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      MAVEN_GPG_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
     steps:
     - name: Checkout sources
       uses: actions/checkout@v4
@@ -22,17 +23,12 @@ jobs:
         distribution: 'temurin'
         java-version: 17
         cache: maven
-    - name: Create GPG keyring
-      run: |
-        echo -n "${{ secrets.GPG_PRIVATE_KEY }}" > private.asc
-        gpg --dearmor private.asc
-        gpg --list-signatures --keyid-format 0xshort
     - name: Setup credentials
-      working-directory: ./lib
-      run: |
+    run: |
         touch settings.xml
-        echo "<settings><profiles><profile><id>ossrh</id><activation><activeByDefault>true</activeByDefault></activation><properties><gpg.keyname>D3EBA9D6</gpg.keyname><gpg.passphraseEnvName>GPG_PASSPHRASE</gpg.passphraseEnvName><gpg.keyEnvName>GPG_PRIVATE_KEY</gpg.keyEnvName></properties></profile></profiles><servers><server><id>ossrh</id><username>${{ secrets.MAVEN_CENTRAL_USERNAME }}</username><password>${{ secrets.MAVEN_CENTRAL_PASSWORD }}</password></server></servers></settings>" > settings.xml
+        echo "<settings><servers><server><id>central</id><username>${{ secrets.MAVEN_CENTRAL_USERNAME }}</username><password>${{ secrets.MAVEN_CENTRAL_PASSWORD }}</password></server></servers></settings>" > settings.xml
     - name: Push to Maven Central
       working-directory: ./lib
       run: |
-        mvn --settings settings.xml -P release clean deploy
+        mvn versions:set -DnewVersion=${RELEASE_NAME} -DprocessAllModules -DgenerateBackupPoms=false
+        mvn -P release clean deploy
