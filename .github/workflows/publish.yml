@@ -19,18 +19,15 @@ jobs:
         java-version: 17
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
-    - name: Create GPG keyring
-      run: |
-        echo -n "${{ secrets.GPG_PRIVATE_KEY }}" > private.asc
-        gpg --dearmor private.asc
     - name: Setup credentials
+      working-directory: ./lib
       run: |
-        touch gradle.properties
-        echo "mavenCentralUsername=${{ secrets.MAVEN_CENTRAL_USERNAME }}" >> gradle.properties
-        echo "mavenCentralPassword=${{ secrets.MAVEN_CENTRAL_PASSWORD }}" >> gradle.properties
-        echo "signing.keyId=${{ secrets.GPG_KEY_ID }}" >> gradle.properties
-        echo "signing.password=${{ secrets.GPG_PASSPHRASE }}" >> gradle.properties
-        echo "signing.secretKeyRingFile=$GITHUB_WORKSPACE/private.asc.gpg" >> gradle.properties
+        touch settings.xml
+        echo "<settings><profiles><profile><id>ossrh</id><activation><activeByDefault>true</activeByDefault></activation><properties><gpg.passphraseEnvName>GPG_PASSPHRASE</gpg.passphraseEnvName><gpg.keyEnvName>GPG_PRIVATE_KEY</gpg.keyEnvName></properties></profile></profiles><servers><server><id>ossrh</id><username>${{ secrets.MAVEN_CENTRAL_USERNAME }}</username><password>${{ secrets.MAVEN_CENTRAL_PASSWORD }}</password></server></servers></settings>" > settings.xml
     - name: Push to Maven Central
+      working-directory: ./lib
+      env:
+        GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
       run: |
-        ./gradlew -Pversion=$RELEASE_NAME publishAllPublicationsToMavenCentralRepository
+        mvn --settings settings.xml <TODO>
