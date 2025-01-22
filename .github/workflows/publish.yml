@@ -31,4 +31,4 @@ jobs:
       working-directory: ./lib
       run: |
         mvn versions:set -DnewVersion=${RELEASE_NAME} -DprocessAllModules -DgenerateBackupPoms=false
-        mvn -P release clean deploy
+        mvn --settings settings.xml -P release clean deploy
