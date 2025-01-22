@@ -26,6 +26,7 @@ jobs:
       run: |
         echo -n "${{ secrets.GPG_PRIVATE_KEY }}" > private.asc
         gpg --dearmor private.asc
+        gpg --list-signatures --keyid-format 0xshort
     - name: Setup credentials
       working-directory: ./lib
       run: |
