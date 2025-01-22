@@ -10,8 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RELEASE_NAME: 0.0.1-SNAPSHOT #${{ github.event.release.tag_name }}
-      GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      MVN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+      GPG_KEYNAME: D3EBA9D6
     steps:
     - name: Checkout sources
       uses: actions/checkout@v4
@@ -20,6 +21,11 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: 17
+        cache: maven
+    - name: Create GPG keyring
+      run: |
+        echo -n "${{ secrets.GPG_PRIVATE_KEY }}" > private.asc
+        gpg --dearmor private.asc
     - name: Setup credentials
       working-directory: ./lib
       run: |
