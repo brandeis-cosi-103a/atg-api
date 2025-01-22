@@ -30,4 +30,4 @@ jobs:
     - name: Push to Maven Central
       working-directory: ./lib
       run: |
-        mvn --settings settings.xml <TODO>
+        mvn --settings settings.xml -P release clean deploy
