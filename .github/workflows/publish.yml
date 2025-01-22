@@ -24,7 +24,7 @@ jobs:
         java-version: 17
         cache: maven
     - name: Setup credentials
-    run: |
+      run: |
         touch settings.xml
         echo "<settings><servers><server><id>central</id><username>${{ secrets.MAVEN_CENTRAL_USERNAME }}</username><password>${{ secrets.MAVEN_CENTRAL_PASSWORD }}</password></server></servers></settings>" > settings.xml
     - name: Push to Maven Central
