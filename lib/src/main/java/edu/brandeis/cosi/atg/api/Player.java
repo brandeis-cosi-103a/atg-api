@@ -1,5 +1,7 @@
 package edu.brandeis.cosi.atg.api;
 
+import java.util.Optional;
+
 import com.google.common.collect.ImmutableList;
 
 import edu.brandeis.cosi.atg.api.decisions.Decision;
@@ -32,6 +34,21 @@ public interface Player {
      * @return the chosen decision
      */
     public Decision makeDecision(GameState state, ImmutableList<Decision> options);
+
+    /**
+     * Gets the observer for this player.
+     *
+     * The observer is used to notify the player of game events. If a Player
+     * is participating in a game, the Engine will notify this observer of
+     * all game events.
+     *
+     * If the returned observer is not present, no events will be sent to the
+     * player.
+     *
+     * @return the observer for this player, or an empty Optional if the player
+     *         does not require access to game events.
+     */
+    public Optional<GameObserver> getObserver();
 
     /**
      * A pair of a player and their score.
