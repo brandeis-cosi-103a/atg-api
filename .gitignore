@@ -29,5 +29,8 @@ replay_pid*
 # Ignore Gradle build output directory
 build
 
+# Ignore Maven build dir
+target
+
 *.gpg
 *.pgp
