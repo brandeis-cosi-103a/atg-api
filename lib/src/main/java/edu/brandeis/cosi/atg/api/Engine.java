@@ -1,19 +1,10 @@
 package edu.brandeis.cosi.atg.api;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-
-import edu.brandeis.cosi.atg.api.cards.Card;
 
 /**
  * An Engine executes a full game, given a list of available cards, and players
  * to participate.
- * <br/>
- * <br/>
- *
- * Game events are logged to the {@link GameObserver}, to
- * facilitate printing to a console (or any other external handling of game
- * events).
  * <br/>
  * <br/>
  *
@@ -116,6 +107,37 @@ import edu.brandeis.cosi.atg.api.cards.Card;
  * FRAMEWORK} cards have been purchased, the game ends, and the Engine returns a
  * list of {@link Player.ScorePair Player.ScorePairs} representing the scores of
  * each player.
+ * <br/>
+ * <br/>
+ * <strong>Game events:</strong>
+ * <br/>
+ * <br/>
+ * Engines are responsible for logging game events to {@link GameObserver}s.
+ * <br/>
+ * <br/>
+ * Each {@link Player} has a {@link Player.getObserver()} method, which returns
+ * an {@link GameObserver} for that player. The Engine should log all events to
+ * the Player observers (if present).
+ * <br/>
+ * <br/>
+ * Additionally, Engines can be configured with an additional
+ * {@link GameObserver} to log which events should be logged. This can be used
+ * to log events to the console, a file, or to facilitate testing.
+ * <br/>
+ * <br/>
+ * See the {@link edu.brandeis.cosi.atg.api.event event} package
+ * documentation for details on events.
+ * <br/>
+ * <br/>
+ *
+ * <strong>Creating Engines:</strong>
+ * <br/>
+ * <br/>
+ * Implementations of this class can have any constructor signature(s) required.
+ * However, a package containing an Engine must provide exactly one method
+ * annotated with the {@link EngineCreator} annotation. This allows an Engine to
+ * be created generically for testing or other purposes. See the
+ * {@link EngineCreator} documentation for more details.
  */
 public interface Engine {
 
