@@ -62,7 +62,7 @@ import com.google.common.collect.ImmutableList;
  * Engines are responsible for logging game events to {@link GameObserver}s.
  * <br/>
  * <br/>
- * Each {@link Player} has a {@link Player.getObserver()} method, which returns
+ * Each {@link Player} has a {@link Player#getObserver()} method, which returns
  * an {@link GameObserver} for that player. The Engine should log all events to
  * the Player observers (if present).
  * <br/>
