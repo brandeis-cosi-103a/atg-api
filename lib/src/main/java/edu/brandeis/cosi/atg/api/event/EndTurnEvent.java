@@ -8,6 +8,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public final class EndTurnEvent implements Event {
 
     /**
+     * Constructs an EndTurnEvent.
+     */
+    public EndTurnEvent() {
+    }
+
+    /**
      * Gets the description of the end turn decision.
      *
      * @return the description of the end turn decision

@@ -15,12 +15,14 @@ import java.lang.annotation.Target;
  * <li>It must return an instance of {@link Engine}</li>
  * <li>It must accept 3 arguments: Player player1, Player player2, GameObserver
  * observer</li>
+ * <li>
  * <ul>
  * <li>The first two arguments are the players that will be playing the
  * game.</li>
  * <li>The third argument is an observer that will be notified of all game
  * events. This argument may be null if no observer is required.</li>
  * </ul>
+ * </li>
  * </ul>
  */
 @Retention(RetentionPolicy.RUNTIME)

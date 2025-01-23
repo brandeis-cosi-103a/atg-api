@@ -21,6 +21,8 @@ import java.lang.annotation.Target;
 public @interface PlayerCreator {
     /**
      * A short and unique identifier for this player.
+     *
+     * @return the player name
      */
     String playerName();
 }
