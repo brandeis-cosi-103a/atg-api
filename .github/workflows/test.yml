@@ -15,8 +15,11 @@ jobs:
         distribution: 'temurin'
         java-version: 17
     - name: Build
+      working-directory: ./lib
       run: mvn clean compile
     - name: Test
+      working-directory: ./lib
       run: mvn test
     - name: Javadoc
+      working-directory: ./lib
       run: mvn javadoc:javadoc
