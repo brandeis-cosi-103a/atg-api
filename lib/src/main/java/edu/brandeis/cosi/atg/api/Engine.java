@@ -8,12 +8,6 @@ import com.google.common.collect.ImmutableList;
  * <br/>
  * <br/>
  *
- * Game events are logged to the {@link GameObserver}, to
- * facilitate printing to a console (or any other external handling of game
- * events).
- * <br/>
- * <br/>
- *
  * The Engine interacts with the {@link Player} interface by calling the
  * {@link Player#makeDecision(GameState, ImmutableList) Player.makeDecision}
  * method. In general, the Engine should only prompt the
@@ -62,6 +56,27 @@ import com.google.common.collect.ImmutableList;
  * each player.
  * <br/>
  * <br/>
+ * <strong>Game events:</strong>
+ * <br/>
+ * <br/>
+ * Engines are responsible for logging game events to {@link GameObserver}s.
+ * <br/>
+ * <br/>
+ * Each {@link Player} has a {@link Player.getObserver()} method, which returns
+ * an {@link GameObserver} for that player. The Engine should log all events to
+ * the Player observers (if present).
+ * <br/>
+ * <br/>
+ * Additionally, Engines can be configured with an additional
+ * {@link GameObserver} to log which events should be logged. This can be used
+ * to log events to the console, a file, or to facilitate testing.
+ * <br/>
+ * <br/>
+ * See the {@link edu.brandeis.cosi.atg.api.event event} package
+ * documentation for details on events.
+ * <br/>
+ * <br/>
+ *
  * <strong>Creating Engines:</strong>
  * <br/>
  * <br/>
