@@ -7,12 +7,24 @@ import com.google.common.collect.ImmutableList;
 import edu.brandeis.cosi.atg.api.decisions.Decision;
 
 /**
+ * The interface to a player in a game of <i>Automation: The Game</i>.
+ * <br/>
+ * <br/>
  * A Player participates in a game. There is a single entry point:
  * {@link Player#makeDecision makeDecision}, which is invoked by the Engine when
- * the Player must
- * make a decision during the game, such as whether to play a card, which card
- * to buy, or which
- * cards to discard.
+ * the Player must make a decision during the game, such as whether to play a
+ * card, which card to buy, or which cards to discard.
+ * <br/>
+ * <br/>
+ *
+ * <strong>Creating Players:</strong>
+ * <br/>
+ * <br/>
+ * Implementations of this class can have any constructor signature(s) required.
+ * However, a package containing a Player must provide at least one method
+ * annotated with the {@link PlayerCreator} annotation. This allows a Player to
+ * be created generically for testing or other purposes. See the
+ * {@link PlayerCreator} documentation for more details.
  */
 public interface Player {
 

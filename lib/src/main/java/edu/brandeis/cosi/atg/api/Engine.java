@@ -60,6 +60,16 @@ import com.google.common.collect.ImmutableList;
  * FRAMEWORK} cards have been purchased, the game ends, and the Engine returns a
  * list of {@link Player.ScorePair Player.ScorePairs} representing the scores of
  * each player.
+ * <br/>
+ * <br/>
+ * <strong>Creating Engines:</strong>
+ * <br/>
+ * <br/>
+ * Implementations of this class can have any constructor signature(s) required.
+ * However, a package containing an Engine must provide exactly one method
+ * annotated with the {@link EngineCreator} annotation. This allows an Engine to
+ * be created generically for testing or other purposes. See the
+ * {@link EngineCreator} documentation for more details.
  */
 public interface Engine {
 
