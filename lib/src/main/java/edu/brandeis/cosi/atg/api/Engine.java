@@ -76,15 +76,43 @@ import com.google.common.collect.ImmutableList;
  * documentation for details on events.
  * <br/>
  * <br/>
- *
  * <strong>Creating Engines:</strong>
  * <br/>
  * <br/>
- * Implementations of this class can have any constructor signature(s) required.
+ * Implementations of this class can have any constructor signature(s).
  * However, a package containing an Engine must provide exactly one method
  * annotated with the {@link EngineCreator} annotation. This allows an Engine to
  * be created generically for testing or other purposes. See the
  * {@link EngineCreator} documentation for more details.
+ * <br/>
+ * <br/>
+ * <strong>Starting cards:</strong>
+ * <br/>
+ * <br/>
+ * Engines should initialize a {@link GameDeck} with the following cards:
+ * <ul>
+ * <li>60x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#BITCOIN Bitcoin}
+ * cards</li>
+ * <li>40x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#ETHEREUM Ethereum}
+ * cards</li>
+ * <li>30x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#DOGECOIN Dogecoin}
+ * cards</li>
+ * <li>14x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#METHOD Method}
+ * cards</li>
+ * <li>8x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#MODULE Module}
+ * cards</li>
+ * <li>8x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#FRAMEWORK Framework}
+ * cards</li>
+ * </ul>
+ *
+ * Starting hands for players should be dealt from this GameDeck. Each player's
+ * staring hand should include:
+ * <ul>
+ * <li>7x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#BITCOIN Bitcoin}
+ * cards</li>
+ * <li>3x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#METHOD Method}
+ * cards</li>
+ * </ul>
  */
 public interface Engine {
 
