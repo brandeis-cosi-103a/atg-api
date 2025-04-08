@@ -26,6 +26,10 @@ public final class GameState {
      * Represents the phase of a turn.
      */
     public enum TurnPhase {
+        /** The phase of the turn that involves playing action cards */
+        ACTION,
+        /** The phase of a turn that involves reacting to another player's action */
+        REACTION,
         /** The phase of a turn that involves playing money */
         MONEY,
         /**
@@ -35,6 +39,20 @@ public final class GameState {
          * equivalent to ending the turn.
          */
         BUY,
+        /**
+         * A phase of a turn that involves discarding zero or more cards.
+         *
+         * This phase only occurs when a player takes an action that requires cards to
+         * be discarded.
+         */
+        DISCARD,
+        /**
+         * A phase of a turn that involves gaining cards.
+         *
+         * This phase only occurs when a player takes an action that triggers a card
+         * gain.
+         */
+        GAIN,
         /**
          * The phase of a turn where the player discards their hand and draws a new
          * hand.

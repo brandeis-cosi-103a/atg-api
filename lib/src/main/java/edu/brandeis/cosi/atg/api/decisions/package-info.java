@@ -3,14 +3,21 @@
  * game.
  * <br/>
  * <br/>
- * There are three types of decisions:
+ * There are six types of decisions:
  * <ul>
  * <li>{@link edu.brandeis.cosi.atg.api.decisions.BuyDecision} - a decision to
  * buy a card</li>
- * <li>{@link edu.brandeis.cosi.atg.api.decisions.EndPhaseDecision} - a decision
- * to end a phase of play</li>
  * <li>{@link edu.brandeis.cosi.atg.api.decisions.PlayCardDecision} - a decision
  * to play a card</li>
+ * <li>{@link edu.brandeis.cosi.atg.api.decisions.GainCardDecision} - a decision
+ * to gain a card</li>
+ * <li>{@link edu.brandeis.cosi.atg.api.decisions.DiscardCardDecision} - a
+ * decision to discard a card</li>
+ * <li>{@link edu.brandeis.cosi.atg.api.decisions.TrashCardDecision} - a
+ * decision to trash (permanently remove from the player's deck) a card</li>
+ * <li>{@link edu.brandeis.cosi.atg.api.decisions.EndPhaseDecision} - a decision
+ * to end a phase of play</li>
+ *
  * </ul>
  * <br/>
  * <br/>

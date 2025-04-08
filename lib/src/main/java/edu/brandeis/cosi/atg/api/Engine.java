@@ -1,7 +1,6 @@
 package edu.brandeis.cosi.atg.api;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 
 /**
  * An Engine executes a full game, given a list of available cards, and players
@@ -156,6 +155,20 @@ import com.google.common.collect.ImmutableSet;
  * cards</li>
  * <li>8x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#FRAMEWORK Framework}
  * cards</li>
+ * <li>10x each of the 10 action cards:
+ * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#BACKLOG Backlog}
+ * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#DAILY_SCRUM Daily Scrum}
+ * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#IPO IPO}
+ * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#HACK Hack}
+ * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#MONITORING Monitoring}
+ * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#TECH_DEBT Tech Debt}
+ * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#REFACTOR Refactor}
+ * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#PARALLELIZATION
+ * Parallelization}
+ * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#CODE_REVIEW Code Review}
+ * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#EVERGREEN_TEST Evergreen
+ * Test}
+ * </li> *
  * </ul>
  *
  * Starting hands for players should be dealt from this GameDeck. Each player's

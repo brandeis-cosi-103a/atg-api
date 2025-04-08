@@ -394,6 +394,10 @@ public class Card {
          */
         public enum Category {
             /**
+             * A card that can be played during the action phase.
+             */
+            ACTION("Action"),
+            /**
              * A card that grants money to spend for the turn in which it is played.
              */
             MONEY("Money"),
