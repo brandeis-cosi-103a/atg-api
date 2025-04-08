@@ -10,7 +10,7 @@
  * <li>{@link DiscardCardEvent} - an event that occurs when a card is
  * discarded</li>
  * <li>{@link TrashCardEvent} - an event that occurs when a card is trashed
- * (permanently removed from the player's deck)</li> *
+ * (permanently removed from the player's deck)</li>
  * <li>{@link GameEvent} - a generic event which doesn't fit any of the other
  * categories</li>
  * </ul>

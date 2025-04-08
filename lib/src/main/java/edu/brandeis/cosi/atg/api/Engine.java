@@ -17,13 +17,11 @@ import com.google.common.collect.ImmutableList;
  * a Player does not behave as expected - either by not returning a Decision, or
  * returning an invalid or disallowed Decision, the Engine should throw a
  * {@link PlayerViolationException}.
- *
  * <br/>
  * <br/>
  * <strong>Primary phases of a turn:</strong>
  * <br/>
  * <br/>
- *
  * 1. The {@link GameState.TurnPhase#ACTION ACTION} phase. During this phase,
  * the Engine should prompt the player with one
  * {@link edu.brandeis.cosi.atg.api.decisions.PlayCardDecision PlayCardDecision}
@@ -35,6 +33,8 @@ import com.google.common.collect.ImmutableList;
  * {@link edu.brandeis.cosi.atg.api.cards.Card.Type Card Types} for details on
  * the semantics of each card type.
  *
+ * <br/>
+ * <br/>
  * 2. The {@link GameState.TurnPhase#MONEY MONEY} phase. During this phase, the
  * Engine should prompt the Player with one
  * {@link edu.brandeis.cosi.atg.api.decisions.PlayCardDecision
@@ -44,7 +44,6 @@ import com.google.common.collect.ImmutableList;
  * finished playing money for this turn.
  * <br/>
  * <br/>
- *
  * 3. The {@link GameState.TurnPhase#BUY BUY} phase. During this phase, the
  * Engine should prompt the Player with one
  * {@link edu.brandeis.cosi.atg.api.decisions.BuyDecision BuyCardDecision}
@@ -53,7 +52,8 @@ import com.google.common.collect.ImmutableList;
  * EndPhaseDecision}, which the player can use to indicate that they have
  * finished buying cards for this turn. A player starts a turn with a single
  * buy, but can earn additional buys by playing certain action cards.
- *
+ * <br/>
+ * <br/>
  * 4. The {@link GameState.TurnPhase#CLEANUP CLEANUP} phase. There is no player
  * involvement in this stage. The Engine should discard the player's hand, and
  * deal a new hand of 5 cards from the player's deck (shuffling if needed).
@@ -76,7 +76,8 @@ import com.google.common.collect.ImmutableList;
  * for the Monitoring card, and an
  * {@link edu.brandeis.cosi.atg.api.decisions.EndPhaseDecision}
  * with the phase set to {@link GameState.TurnPhase#REACTION REACTION}.
- *
+ * <br/>
+ * <br/>
  * 2. The {@link GameState.TurnPhase#DISCARD DISCARD} phase. This phase occurs
  * anytime a player needs to discard cards from their hand.
  * The player should be prompted with a list of
@@ -89,7 +90,8 @@ import com.google.common.collect.ImmutableList;
  * should not include an EndPhaseDecision in the list of possibilities (and
  * raise a {@link PlayerViolationException} if the player attempts to end the
  * phase or does not choose a valid discard decision).
- *
+ * <br/>
+ * <br/>
  * 3. The {@link GameState.TurnPhase#GAIN GAIN} phase. This phase occurs anytime
  * a player needs to gain cards. The player should be prompted with a list of
  * {@link edu.brandeis.cosi.atg.api.decisions.GainCardDecision
