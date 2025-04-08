@@ -32,7 +32,6 @@ import com.google.common.collect.ImmutableList;
  * action, but can earn additional actions by playing certain action cards. See
  * {@link edu.brandeis.cosi.atg.api.cards.Card.Type Card Types} for details on
  * the semantics of each card type.
- *
  * <br/>
  * <br/>
  * 2. The {@link GameState.TurnPhase#MONEY MONEY} phase. During this phase, the
@@ -170,7 +169,7 @@ import com.google.common.collect.ImmutableList;
  * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#CODE_REVIEW Code Review}
  * {@link edu.brandeis.cosi.atg.api.cards.Card.Type#EVERGREEN_TEST Evergreen
  * Test}
- * </li> *
+ * </li>
  * </ul>
  *
  * Starting hands for players should be dealt from this GameDeck. Each player's

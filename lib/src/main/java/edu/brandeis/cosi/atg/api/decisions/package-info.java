@@ -17,7 +17,6 @@
  * decision to trash (permanently remove from the player's deck) a card</li>
  * <li>{@link edu.brandeis.cosi.atg.api.decisions.EndPhaseDecision} - a decision
  * to end a phase of play</li>
- *
  * </ul>
  * <br/>
  * <br/>
