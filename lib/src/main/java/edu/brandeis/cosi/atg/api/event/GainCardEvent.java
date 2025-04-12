@@ -22,6 +22,13 @@ public final class GainCardEvent implements Event {
      */
     @JsonCreator
     public GainCardEvent(@JsonProperty("cardType") Card.Type cardType, @JsonProperty("playerName") String playerName) {
+        if (cardType == null) {
+            throw new IllegalArgumentException("Card type cannot be null");
+        }
+        if (playerName == null) {
+            throw new IllegalArgumentException("Player name cannot be null");
+        }
+
         this.cardType = cardType;
         this.playerName = playerName;
     }
@@ -39,7 +46,7 @@ public final class GainCardEvent implements Event {
      *
      * @return the card type gained by the player
      */
-    public Card.Type getDecision() {
+    public Card.Type getCardType() {
         return cardType;
     }
 
@@ -50,5 +57,24 @@ public final class GainCardEvent implements Event {
      */
     public String getPlayerName() {
         return playerName;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        GainCardEvent that = (GainCardEvent) obj;
+        return cardType.equals(that.cardType) && playerName.equals(that.playerName);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = cardType.hashCode();
+        result = 31 * result + playerName.hashCode();
+        return result;
     }
 }

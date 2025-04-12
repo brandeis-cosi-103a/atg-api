@@ -19,6 +19,9 @@ public final class PlayCardDecision implements Decision {
      */
     @JsonCreator
     public PlayCardDecision(@JsonProperty("card") Card card) {
+        if (card == null) {
+            throw new IllegalArgumentException("Card cannot be null");
+        }
         this.card = card;
     }
 

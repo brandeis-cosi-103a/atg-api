@@ -13,8 +13,8 @@ import edu.brandeis.cosi.atg.api.cards.Card;
  * single turn of the game.
  */
 public final class Hand {
-    private final ImmutableCollection<Card> playedCards;
-    private final ImmutableCollection<Card> unplayedCards;
+    private final ImmutableSet<Card> playedCards;
+    private final ImmutableSet<Card> unplayedCards;
 
     /**
      * Constructs a Hand with the specified cards
@@ -25,8 +25,8 @@ public final class Hand {
     @JsonCreator
     public Hand(@JsonProperty("playedCards") ImmutableCollection<Card> playedCards,
             @JsonProperty("unplayedCards") ImmutableCollection<Card> unplayedCards) {
-        this.playedCards = playedCards;
-        this.unplayedCards = unplayedCards;
+        this.playedCards = ImmutableSet.<Card>builder().addAll(playedCards).build();
+        this.unplayedCards = ImmutableSet.<Card>builder().addAll(unplayedCards).build();
     }
 
     /**
@@ -55,5 +55,25 @@ public final class Hand {
      */
     public ImmutableCollection<Card> getPlayedCards() {
         return playedCards;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Hand hand = (Hand) o;
+
+        return playedCards.equals(hand.playedCards) &&
+                unplayedCards.equals(hand.unplayedCards);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = playedCards.hashCode();
+        result = 31 * result + unplayedCards.hashCode();
+        return result;
     }
 }

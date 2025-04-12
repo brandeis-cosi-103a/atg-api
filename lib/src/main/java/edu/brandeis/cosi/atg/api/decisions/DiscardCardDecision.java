@@ -19,6 +19,9 @@ public final class DiscardCardDecision implements Decision {
      */
     @JsonCreator
     public DiscardCardDecision(@JsonProperty("card") Card card) {
+        if (card == null) {
+            throw new IllegalArgumentException("Card cannot be null");
+        }
         this.card = card;
     }
 

@@ -156,4 +156,41 @@ public final class GameState {
     public TurnPhase getTurnPhase() {
         return phase;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        GameState gameState = (GameState) o;
+
+        if (availableBuys != gameState.availableBuys)
+            return false;
+        if (availableActions != gameState.availableActions)
+            return false;
+        if (spendableMoney != gameState.spendableMoney)
+            return false;
+        if (!currentPlayerName.equals(gameState.currentPlayerName))
+            return false;
+        if (currentPlayerHand != null ? !currentPlayerHand.equals(gameState.currentPlayerHand)
+                : gameState.currentPlayerHand != null)
+            return false;
+        if (!deck.equals(gameState.deck))
+            return false;
+        return phase == gameState.phase;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = currentPlayerName.hashCode();
+        result = 31 * result + availableBuys;
+        result = 31 * result + availableActions;
+        result = 31 * result + spendableMoney;
+        result = 31 * result + (currentPlayerHand != null ? currentPlayerHand.hashCode() : 0);
+        result = 31 * result + deck.hashCode();
+        result = 31 * result + phase.hashCode();
+        return result;
+    }
 }

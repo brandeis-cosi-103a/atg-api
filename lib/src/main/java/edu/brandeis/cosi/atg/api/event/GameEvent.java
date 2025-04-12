@@ -16,6 +16,9 @@ public final class GameEvent implements Event {
      */
     @JsonCreator
     public GameEvent(@JsonProperty("description") String description) {
+        if (description == null) {
+            throw new IllegalArgumentException("Description cannot be null");
+        }
         this.description = description;
     }
 
@@ -26,5 +29,22 @@ public final class GameEvent implements Event {
      */
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        GameEvent other = (GameEvent) obj;
+        return description.equals(other.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return description.hashCode();
     }
 }

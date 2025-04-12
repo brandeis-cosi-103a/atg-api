@@ -59,4 +59,19 @@ public final class GameDeck {
     public ImmutableSet<Card.Type> getCardTypes() {
         return cardCounts.keySet();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        GameDeck gameDeck = (GameDeck) o;
+        return cardCounts.equals(gameDeck.cardCounts);
+    }
+
+    @Override
+    public int hashCode() {
+        return cardCounts.hashCode();
+    }
 }

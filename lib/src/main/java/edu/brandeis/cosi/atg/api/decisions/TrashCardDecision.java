@@ -21,6 +21,9 @@ public final class TrashCardDecision implements Decision {
      */
     @JsonCreator
     public TrashCardDecision(@JsonProperty("card") Card card) {
+        if (card == null) {
+            throw new IllegalArgumentException("Card cannot be null");
+        }
         this.card = card;
     }
 
