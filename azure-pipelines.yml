@@ -29,6 +29,7 @@ steps:
 - task: AzureCLI@2
   inputs:
     displayName: 'Copy javadocs'
+    scriptLocation: inlineScript
     scriptType: bash
     inlineScript: |
       az storage blob upload-batch \
