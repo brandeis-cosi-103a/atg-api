@@ -22,4 +22,20 @@ steps:
     mavenPomFile: 'lib/pom.xml'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'test'
+    goals: 'package'
+- script: mkdir -p docs && cp target/atg-api-1.4.1-SNAPSHOT-javadoc.jar docs/ && cd docs && jar -xvf atg-api-1.4.1-SNAPSHOT-javadoc.jar
+  workingDirectory: lib
+  displayName: 'Extract javadoc'
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Delfino 103a'
+    displayName: 'Copy javadocs'
+    scriptLocation: inlineScript
+    scriptType: bash
+    inlineScript: |
+      az storage blob upload-batch \
+        --account-name atgapi \
+        --destination-path="v1" \
+        --destination=\$web \
+        --source docs
+
