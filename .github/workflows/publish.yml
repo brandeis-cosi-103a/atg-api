@@ -14,6 +14,7 @@ jobs:
       RELEASE_NAME: ${{ github.event.release.tag_name }}
       MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       MAVEN_GPG_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+      AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
     steps:
     - name: Checkout sources
       uses: actions/checkout@v4
@@ -32,4 +33,7 @@ jobs:
       working-directory: ./lib
       run: |
         mvn versions:set -DnewVersion=${RELEASE_NAME} -DprocessAllModules -DgenerateBackupPoms=false
-        mvn --settings settings.xml -P release clean deploy
+        #mvn --settings settings.xml -P release clean deploy
+    - name: Publish javadocs to Azure
+      run: |
+        ./scripts/upload_docs.sh ${RELEASE_NAME}
