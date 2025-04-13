@@ -23,14 +23,16 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- script: mkdir -p docs && echo "foo" && ls -la target/atg-api-1.4.1-SNAPSHOT-javadoc.jar && jar -xvf target/atg-api-1.4.1-SNAPSHOT-javadoc.jar
+- script: mkdir -p docs && cp target/atg-api-1.4.1-SNAPSHOT-javadoc.jar docs/ && cd docs && jar -xvf target/atg-api-1.4.1-SNAPSHOT-javadoc.jar
   workingDirectory: lib
   displayName: 'Extract javadoc'
-- task: AzureFileCopy@4
-  displayName: Deploy javadoc
+- task: AzureCLI@2
   inputs:
-    SourcePath: 'docs'
-    Destination: AzureBlob
-    storage: atgapi
-    ContainerName: web
-    BlobPrefix: v1
+    displayName: 'Copy javadocs'
+    inlineScript: |
+      az storage blob upload-batch \
+        --account-name atgapi \
+        --destination-path="v1" \
+        --destination=\$web \
+        --source docs
+
