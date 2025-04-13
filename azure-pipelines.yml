@@ -22,8 +22,8 @@ steps:
     mavenPomFile: 'lib/pom.xml'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'test'
-- script: ls target && jar --help && mkdir -p docs && jar --verbose --extract --file target/atg-api-1.4.1-SNAPSHOT-javadoc.jar -C docs
+    goals: 'package'
+- script: ls target && jar --help && mkdir -p docs && jar -xvf target/atg-api-1.4.1-SNAPSHOT-javadoc.jar -C docs
   workingDirectory: lib
   displayName: 'Extract javadoc'
 - task: AzureFileCopy@4
