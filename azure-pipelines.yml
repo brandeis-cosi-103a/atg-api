@@ -5,6 +5,7 @@
 
 trigger:
 - main
+- v2
 
 pool:
   vmImage: ubuntu-latest
@@ -18,7 +19,6 @@ steps:
 - task: Maven@3
   inputs:
     mavenPomFile: 'lib/pom.xml'
-    mavenOptions: '-Xmx3072m'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    goals: 'test'
