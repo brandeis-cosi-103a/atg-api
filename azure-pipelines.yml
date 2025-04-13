@@ -28,6 +28,7 @@ steps:
     script: |
       mkdir -p docs
       jar -xvf lib/target/atg-api-1.4.1-SNAPSHOT-javadoc.jar -C docs
+- task: AzureFileCopy@4
   displayName: Deploy javadoc
   inputs:
     SourcePath: 'docs'
