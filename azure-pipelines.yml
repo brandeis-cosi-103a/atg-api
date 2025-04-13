@@ -28,6 +28,7 @@ steps:
   displayName: 'Extract javadoc'
 - task: AzureCLI@2
   inputs:
+    azureSubscription: 'Delfino 103a'
     displayName: 'Copy javadocs'
     scriptLocation: inlineScript
     scriptType: bash
