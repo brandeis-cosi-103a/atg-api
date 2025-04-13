@@ -51,3 +51,5 @@ az storage blob upload   --account-name atgapi --container \$web --name latest/i
 az storage blob upload   --account-name atgapi --container \$web --name $MAJOR/index.html --file index.html --overwrite
 az storage blob upload   --account-name atgapi --container \$web --name $MAJOR.$MINOR/index.html --file index.html --overwrite
 az storage blob upload-batch   --account-name atgapi --destination-path="$MAJOR.$MINOR.$PATCH"   --destination=\$web   --source docs --overwrite
+
+rm index.html
