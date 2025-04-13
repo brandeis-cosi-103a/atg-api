@@ -16,8 +16,9 @@ steps:
     versionSpec: '21'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
-- task: Maven@3
+- task: Maven@4
   inputs:
+    mavenVersionOption: '3.9.9'
     mavenPomFile: 'lib/pom.xml'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
