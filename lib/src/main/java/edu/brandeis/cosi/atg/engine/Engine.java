@@ -2,7 +2,6 @@ package edu.brandeis.cosi.atg.engine;
 
 import com.google.common.collect.ImmutableList;
 
-import edu.brandeis.cosi.atg.player.Player;
 import edu.brandeis.cosi.atg.state.CardStacks;
 import edu.brandeis.cosi.atg.state.GameState;
 
