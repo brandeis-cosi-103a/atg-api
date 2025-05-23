@@ -2,6 +2,8 @@ package edu.brandeis.cosi.atg.engine;
 
 import com.google.common.collect.ImmutableList;
 
+import edu.brandeis.cosi.atg.event.GameObserver;
+import edu.brandeis.cosi.atg.player.Player;
 import edu.brandeis.cosi.atg.state.CardStacks;
 import edu.brandeis.cosi.atg.state.GameState;
 
@@ -112,6 +114,26 @@ import edu.brandeis.cosi.atg.state.GameState;
  * FRAMEWORK} cards have been purchased, the game ends, and the Engine returns a
  * list of {@link ScorePair Player.ScorePairs} representing the scores of
  * each player.
+ * <br/>
+ * <br/>
+ * <strong>Game events:</strong>
+ * <br/>
+ * <br/>
+ * Engines are responsible for logging game events to {@link GameObserver}s.
+ * <br/>
+ * <br/>
+ * Each {@link Player} has a {@link Player#getObserver()} method, which returns
+ * an {@link GameObserver} for that player. The Engine should log all events to
+ * the Player observers (if present).
+ * <br/>
+ * <br/>
+ * Additionally, Engines can be configured with an additional
+ * {@link GameObserver} to log which events should be logged. This can be used
+ * to log events to the console, a file, or to facilitate testing.
+ * <br/>
+ * <br/>
+ * See the {@link edu.brandeis.cosi.atg.api.event event} package
+ * documentation for details on events.
  * <br/>
  * <br/>
  * <strong>Creating Engines:</strong>
