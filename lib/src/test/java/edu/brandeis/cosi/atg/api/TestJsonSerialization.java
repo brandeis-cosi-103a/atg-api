@@ -6,20 +6,22 @@ import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 
-import edu.brandeis.cosi.atg.api.GameState.TurnPhase;
-import edu.brandeis.cosi.atg.api.cards.Card;
-import edu.brandeis.cosi.atg.api.decisions.BuyDecision;
-import edu.brandeis.cosi.atg.api.decisions.DiscardCardDecision;
-import edu.brandeis.cosi.atg.api.decisions.EndPhaseDecision;
-import edu.brandeis.cosi.atg.api.decisions.GainCardDecision;
-import edu.brandeis.cosi.atg.api.decisions.PlayCardDecision;
-import edu.brandeis.cosi.atg.api.decisions.TrashCardDecision;
-import edu.brandeis.cosi.atg.api.event.DiscardCardEvent;
-import edu.brandeis.cosi.atg.api.event.EndTurnEvent;
-import edu.brandeis.cosi.atg.api.event.GainCardEvent;
-import edu.brandeis.cosi.atg.api.event.GameEvent;
-import edu.brandeis.cosi.atg.api.event.PlayCardEvent;
-import edu.brandeis.cosi.atg.api.event.TrashCardEvent;
+import edu.brandeis.cosi.atg.state.GameState;
+import edu.brandeis.cosi.atg.state.Hand;
+import edu.brandeis.cosi.atg.state.CardStacks;
+import edu.brandeis.cosi.atg.cards.Card;
+import edu.brandeis.cosi.atg.decisions.BuyDecision;
+import edu.brandeis.cosi.atg.decisions.DiscardCardDecision;
+import edu.brandeis.cosi.atg.decisions.EndPhaseDecision;
+import edu.brandeis.cosi.atg.decisions.GainCardDecision;
+import edu.brandeis.cosi.atg.decisions.PlayCardDecision;
+import edu.brandeis.cosi.atg.decisions.TrashCardDecision;
+import edu.brandeis.cosi.atg.event.DiscardCardEvent;
+import edu.brandeis.cosi.atg.event.EndTurnEvent;
+import edu.brandeis.cosi.atg.event.GainCardEvent;
+import edu.brandeis.cosi.atg.event.GameEvent;
+import edu.brandeis.cosi.atg.event.PlayCardEvent;
+import edu.brandeis.cosi.atg.event.TrashCardEvent;
 
 import org.junit.jupiter.api.Test;
 
@@ -80,7 +82,7 @@ public class TestJsonSerialization {
 
     @Test
     public void testEndTurnDecisionSerialization() throws Exception {
-        testJsonRoundTrip(new EndPhaseDecision(TurnPhase.BUY));
+        testJsonRoundTrip(new EndPhaseDecision(GameState.TurnPhase.BUY));
     }
 
     @Test
@@ -112,9 +114,9 @@ public class TestJsonSerialization {
         ImmutableMap<Card.Type, Integer> cardCounts = ImmutableMap.of(
                 Card.Type.FRAMEWORK, 10,
                 Card.Type.BITCOIN, 5);
-        GameDeck gameDeck = new GameDeck(cardCounts);
+        CardStacks cardStacks = new CardStacks(cardCounts);
 
-        testJsonRoundTrip(gameDeck);
+        testJsonRoundTrip(cardStacks);
     }
 
     @Test
@@ -126,7 +128,7 @@ public class TestJsonSerialization {
         ImmutableMap<Card.Type, Integer> cardCounts = ImmutableMap.of(
                 Card.Type.FRAMEWORK, 10,
                 Card.Type.BITCOIN, 5);
-        GameDeck gameDeck = new GameDeck(cardCounts);
+        CardStacks gameDeck = new CardStacks(cardCounts);
 
         GameState gameState = new GameState(
                 "Alice",
