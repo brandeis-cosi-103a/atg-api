@@ -118,9 +118,11 @@ import edu.brandeis.cosi.atg.state.GameState;
  * <strong>Creating Engines:</strong>
  * <br/>
  * <br/>
- * Engine implementations <strong>must</strong> have a zero-argument
- * constructor. They may optionally have additional constructors for testing or
- * other purposes.
+ * Engine implementations <strong>must</strong> have a 1-argument constructor
+ * which accepts a
+ * {@link java.util.List} of {@link edu.brandeis.cosi.atg.player.Player}s.
+ * The Engine should throw an {@link java.lang.IllegalArgumentException} if the
+ * list of Players contains more than 4 players.
  * <br/>
  * <br/>
  * <strong>Starting cards:</strong>
