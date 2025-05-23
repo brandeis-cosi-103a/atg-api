@@ -1,10 +1,6 @@
-package edu.brandeis.cosi.atg.api.decisions;
+package edu.brandeis.cosi.atg.decisions;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import edu.brandeis.cosi.atg.api.cards.Card;
+import edu.brandeis.cosi.atg.cards.Card;
 
 /**
  * Represents a decision by a player to buy a card.
@@ -17,8 +13,7 @@ public final class BuyDecision implements Decision {
      *
      * @param cardType the type of card to buy
      */
-    @JsonCreator
-    public BuyDecision(@JsonProperty("cardType") Card.Type cardType) {
+    public BuyDecision(Card.Type cardType) {
         this.cardType = cardType;
     }
 
@@ -27,7 +22,6 @@ public final class BuyDecision implements Decision {
      *
      * @return the description of the buy decision
      */
-    @JsonIgnore
     public String getDescription() {
         return "Buy " + cardType.getDescription();
     }

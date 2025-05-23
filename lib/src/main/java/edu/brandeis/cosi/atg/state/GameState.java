@@ -1,7 +1,7 @@
-package edu.brandeis.cosi.atg.api;
+package edu.brandeis.cosi.atg.state;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import edu.brandeis.cosi.atg.engine.Engine;
+import edu.brandeis.cosi.atg.player.Player;
 
 /**
  * Represents the current, immutable state of the game.
@@ -18,7 +18,7 @@ public final class GameState {
     private final int availableBuys;
     private final int spendableMoney;
     private final Hand currentPlayerHand;
-    private final GameDeck deck;
+    private final CardStacks deck;
     private final TurnPhase phase;
 
     /**
@@ -53,13 +53,12 @@ public final class GameState {
      * @param availableBuys     the number of available buys
      * @param deck              the game deck
      */
-    @JsonCreator
-    public GameState(@JsonProperty("currentPlayerNmae") String currentPlayerName,
-            @JsonProperty("currentPlayerHand") Hand currentPlayerHand,
-            @JsonProperty("turnPhase") TurnPhase phase,
-            @JsonProperty("spendableMoney") int spendableMoney,
-            @JsonProperty("availableBuys") int availableBuys,
-            @JsonProperty("deck") GameDeck deck) {
+    public GameState(String currentPlayerName,
+            Hand currentPlayerHand,
+            TurnPhase phase,
+            int spendableMoney,
+            int availableBuys,
+            CardStacks deck) {
         this.availableBuys = availableBuys;
         this.currentPlayerHand = currentPlayerHand;
         this.currentPlayerName = currentPlayerName;
@@ -113,7 +112,7 @@ public final class GameState {
      *
      * @return the game deck
      */
-    public GameDeck getDeck() {
+    public CardStacks getDeck() {
         return deck;
     }
 

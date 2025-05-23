@@ -1,10 +1,6 @@
-package edu.brandeis.cosi.atg.api.decisions;
+package edu.brandeis.cosi.atg.decisions;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import edu.brandeis.cosi.atg.api.GameState;
+import edu.brandeis.cosi.atg.state.GameState;
 
 /**
  * Represents a decision by a player to end a phase of their turn.
@@ -17,8 +13,7 @@ public final class EndPhaseDecision implements Decision {
      *
      * @param phase the phase to end
      */
-    @JsonCreator
-    public EndPhaseDecision(@JsonProperty("phase") GameState.TurnPhase phase) {
+    public EndPhaseDecision(GameState.TurnPhase phase) {
         this.phase = phase;
     }
 
@@ -27,7 +22,6 @@ public final class EndPhaseDecision implements Decision {
      *
      * @return the description of the end turn decision
      */
-    @JsonIgnore
     public String getDescription() {
         return "End phase: " + phase.name().toLowerCase();
     }
