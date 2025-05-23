@@ -1,4 +1,4 @@
-package edu.brandeis.cosi.atg.api;
+package edu.brandeis.cosi.atg.engine;
 
 /**
  * Exception thrown when a Player violates the game rules or throws an

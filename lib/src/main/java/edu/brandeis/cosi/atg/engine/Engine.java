@@ -1,6 +1,10 @@
-package edu.brandeis.cosi.atg.api;
+package edu.brandeis.cosi.atg.engine;
 
 import com.google.common.collect.ImmutableList;
+
+import edu.brandeis.cosi.atg.player.Player;
+import edu.brandeis.cosi.atg.state.CardStacks;
+import edu.brandeis.cosi.atg.state.GameState;
 
 /**
  * An Engine executes a full game, given a list of available cards, and players
@@ -23,9 +27,9 @@ import com.google.common.collect.ImmutableList;
  * <br/>
  * During the {@link GameState.TurnPhase#MONEY MONEY} phase, the Engine should
  * prompt the Player with one
- * {@link edu.brandeis.cosi.atg.api.decisions.PlayCardDecision
+ * {@link edu.brandeis.cosi.atg.decisions.PlayCardDecision
  * PlayCardDecisions} for each unplayed card in the player's hand, and a single
- * {@link edu.brandeis.cosi.atg.api.decisions.EndPhaseDecision
+ * {@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision
  * EndPhaseDecision}, which the player can use to indicate that they have
  * finished playing money for this turn.
  * <br/>
@@ -33,9 +37,10 @@ import com.google.common.collect.ImmutableList;
  *
  * During the {@link GameState.TurnPhase#BUY BUY} phase, the Engine should
  * prompt the Player with one
- * {@link edu.brandeis.cosi.atg.api.decisions.BuyDecision BuyCardDecision}
- * for each card in the {@link GameDeck} that the player can afford to buy, and
- * a single {@link edu.brandeis.cosi.atg.api.decisions.EndPhaseDecision
+ * {@link edu.brandeis.cosi.atg.decisions.BuyDecision BuyCardDecision}
+ * for each card in the {@link CardStacks} that the player can afford to buy,
+ * and
+ * a single {@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision
  * EndPhaseDecision}, which the player can use to indicate that they have
  * finished buying cards for this turn. A player starts a turn with a single
  * buy. In this version of the game, there is no way to acquire additional buys.
@@ -50,67 +55,45 @@ import com.google.common.collect.ImmutableList;
  * <strong>Ending the game:</strong>
  * <br/>
  * <br/>
- * When all {@link edu.brandeis.cosi.atg.api.cards.Card.Type#FRAMEWORK
+ * When all {@link edu.brandeis.cosi.atg.cards.Card.Type#FRAMEWORK
  * FRAMEWORK} cards have been purchased, the game ends, and the Engine returns a
- * list of {@link Player.ScorePair Player.ScorePairs} representing the scores of
+ * list of {@link ScorePair Player.ScorePairs} representing the scores of
  * each player.
- * <br/>
- * <br/>
- * <strong>Game events:</strong>
- * <br/>
- * <br/>
- * Engines are responsible for logging game events to {@link GameObserver}s.
- * <br/>
- * <br/>
- * Each {@link Player} has a {@link Player#getObserver()} method, which returns
- * an {@link GameObserver} for that player. The Engine should log all events to
- * the Player observers (if present).
- * <br/>
- * <br/>
- * Additionally, Engines can be configured with an additional
- * {@link GameObserver} to log which events should be logged. This can be used
- * to log events to the console, a file, or to facilitate testing.
- * <br/>
- * <br/>
- * See the {@link edu.brandeis.cosi.atg.api.event event} package
- * documentation for details on events.
  * <br/>
  * <br/>
  * <strong>Creating Engines:</strong>
  * <br/>
  * <br/>
- * Implementations of this class can have any constructor signature(s).
- * However, a package containing an Engine must provide exactly one method
- * annotated with the {@link EngineCreator} annotation. This allows an Engine to
- * be created generically for testing or other purposes. See the
- * {@link EngineCreator} documentation for more details.
+ * Engine implementations <strong>must</strong> have a zero-argument
+ * constructor. They may optionally have additional constructors for testing or
+ * other purposes.
  * <br/>
  * <br/>
  * <strong>Starting cards:</strong>
  * <br/>
  * <br/>
- * Engines should initialize a {@link GameDeck} with the following cards:
+ * Engines should initialize a {@link CardStacks} with the following cards:
  * <ul>
- * <li>60x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#BITCOIN Bitcoin}
+ * <li>60x {@link edu.brandeis.cosi.atg.cards.Card.Type#BITCOIN Bitcoin}
  * cards</li>
- * <li>40x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#ETHEREUM Ethereum}
+ * <li>40x {@link edu.brandeis.cosi.atg.cards.Card.Type#ETHEREUM Ethereum}
  * cards</li>
- * <li>30x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#DOGECOIN Dogecoin}
+ * <li>30x {@link edu.brandeis.cosi.atg.cards.Card.Type#DOGECOIN Dogecoin}
  * cards</li>
- * <li>14x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#METHOD Method}
+ * <li>14x {@link edu.brandeis.cosi.atg.cards.Card.Type#METHOD Method}
  * cards</li>
- * <li>8x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#MODULE Module}
+ * <li>8x {@link edu.brandeis.cosi.atg.cards.Card.Type#MODULE Module}
  * cards</li>
- * <li>8x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#FRAMEWORK Framework}
+ * <li>8x {@link edu.brandeis.cosi.atg.cards.Card.Type#FRAMEWORK Framework}
  * cards</li>
  * </ul>
  *
  * Starting hands for players should be dealt from this GameDeck. Each player's
- * staring hand should include:
+ * starting hand should include:
  * <ul>
- * <li>7x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#BITCOIN Bitcoin}
+ * <li>7x {@link edu.brandeis.cosi.atg.cards.Card.Type#BITCOIN Bitcoin}
  * cards</li>
- * <li>3x {@link edu.brandeis.cosi.atg.api.cards.Card.Type#METHOD Method}
+ * <li>3x {@link edu.brandeis.cosi.atg.cards.Card.Type#METHOD Method}
  * cards</li>
  * </ul>
  */
@@ -124,5 +107,5 @@ public interface Engine {
      *                                  or throws an exception when making a
      *                                  decision
      */
-    public ImmutableList<Player.ScorePair> play() throws PlayerViolationException;
+    public ImmutableList<ScorePair> play() throws PlayerViolationException;
 }

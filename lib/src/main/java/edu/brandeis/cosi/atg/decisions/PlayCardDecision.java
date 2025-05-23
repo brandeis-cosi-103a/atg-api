@@ -1,10 +1,6 @@
-package edu.brandeis.cosi.atg.api.decisions;
+package edu.brandeis.cosi.atg.decisions;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import edu.brandeis.cosi.atg.api.cards.Card;
+import edu.brandeis.cosi.atg.cards.Card;
 
 /**
  * Represents a decision by a player to play a card.
@@ -17,8 +13,7 @@ public final class PlayCardDecision implements Decision {
      *
      * @param card the card to play
      */
-    @JsonCreator
-    public PlayCardDecision(@JsonProperty("card") Card card) {
+    public PlayCardDecision(Card card) {
         this.card = card;
     }
 
@@ -27,7 +22,6 @@ public final class PlayCardDecision implements Decision {
      *
      * @return the description of the play card decision
      */
-    @JsonIgnore
     public String getDescription() {
         return "Play " + card.getDescription();
     }
