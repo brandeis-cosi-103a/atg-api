@@ -20,4 +20,4 @@
  * edu.brandeis.cosi.atg.api.Player Player} is responsible for choosing
  * a decision when prompted.
  */
-package edu.brandeis.cosi.atg.api.decisions;
+package edu.brandeis.cosi.atg.decisions;
