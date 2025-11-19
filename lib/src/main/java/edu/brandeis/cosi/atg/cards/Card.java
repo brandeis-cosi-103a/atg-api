@@ -8,6 +8,15 @@ package edu.brandeis.cosi.atg.cards;
  * They also have ids, which are unique to each card in the game. The id of a
  * card is used to distinguish it from other cards of the same type. Two cards
  * are considered equal if they have the same type and id.
+ * <br/>
+ * <br/>
+ * The three broad categories of cards are:
+ * {@link Card.Type.Category#ACTION ACTION},
+ * {@link Card.Type.Category#MONEY MONEY}, and
+ * {@link Card.Type.Category#VICTORY VICTORY}.
+ * Action cards have further, informal subcategories, such as "Attack" (
+ * {@link Card.Type#HACK} and {@link Card.Type#EVERGREEN_TEST}), and
+ * "Reaction" ({@link Card.Type#MONITORING}).
  */
 public class Card {
     private Type type;
@@ -106,6 +115,14 @@ public class Card {
      */
     public enum Type {
         /**
+         * A victory card worth -1 automation points.
+         * <br/>
+         * <br/>
+         * This card is never playable, but subtracts 1 automation point when the game
+         * ends.
+         */
+        BUG("Bug", Category.VICTORY, 0, -1),
+        /**
          * A victory card worth 1 automation point.
          * <br/>
          * <br/>
@@ -158,7 +175,43 @@ public class Card {
          * phase. When played, it grants 3 spendable money for the turn on which it was
          * played.
          */
-        DOGECOIN("Dogecoin", Category.MONEY, 6, 3);
+        DOGECOIN("Dogecoin", Category.MONEY, 6, 3),
+
+        /**
+         * Trash a card from your hand; Gain a card costing up to 2 more than the
+         * trashed card.
+         * <br/>
+         * <br/>
+         * Trashing a card removes it from the player's deck entirely.
+         * When this card is played, the player will be prompted with
+         * {@link edu.brandeis.cosi.atg.decisions.TrashCardDecision
+         * TrashCardDecisions} for each card in their hand. Trashing is not optional, so
+         * the list of decisions will not include an EndPhaseDecision. After the player
+         * makes a trash decision, they will be prompted with
+         * {@link edu.brandeis.cosi.atg.decisions.GainCardDecision
+         * GainCardDecisions} representing the cards they can possibly gain - every card
+         * that costs up to 2 more than the trashed card. Gaining a card is also not
+         * optional. Gained cards are placed into the player's discard pile.
+         */
+        REFACTOR("Refactor", Category.ACTION, 4, 0),
+
+        /**
+         * +1 Card, +2 Actions.
+         * <br/>
+         * <br/>
+         * When this card is played, the player immediately draws a card, and is granted
+         * two additional actions for this turn.
+         */
+        CODE_REVIEW("Code Review", Category.ACTION, 3, 0),
+
+        /**
+         * (Attack card) +2 Cards; Each other player gains a Bug.
+         * <br/>
+         * <br/>
+         * When this card is played, the engine immediately adds a
+         * {@link Card.Type#BUG} to the discard pile of each other player.
+         */
+        EVERGREEN_TEST("Evergreen Test", Category.ACTION, 5, 0);
 
         private String description;
         private Category category;
@@ -220,6 +273,10 @@ public class Card {
          * Represents the category of a card type.
          */
         public enum Category {
+            /**
+             * A card that can be played during the action phase.
+             */
+            ACTION("Action"),
             /**
              * A card that grants money to spend for the turn in which it is played.
              */

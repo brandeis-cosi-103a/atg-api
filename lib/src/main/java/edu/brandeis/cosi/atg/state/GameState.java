@@ -1,12 +1,10 @@
 package edu.brandeis.cosi.atg.state;
 
-import edu.brandeis.cosi.atg.engine.Engine;
-import edu.brandeis.cosi.atg.player.Player;
-
 /**
  * Represents the current, immutable state of the game.
  *
- * When the {@link Engine} prompts a {@link Player} for a decision, it provides
+ * When the {@link edu.brandeis.cosi.atg.engine.Engine} prompts a
+ * {@link edu.brandeis.cosi.atg.player.Player} for a decision, it provides
  * a GameState representing the current state of the game. The Player can use
  * the GameState while making a decision.
  *
@@ -16,15 +14,18 @@ import edu.brandeis.cosi.atg.player.Player;
 public final class GameState {
     private final String currentPlayerName;
     private final int availableBuys;
+    private final int availableActions;
     private final int spendableMoney;
     private final Hand currentPlayerHand;
-    private final CardStacks deck;
+    private final CardStacks buyableCards;
     private final TurnPhase phase;
 
     /**
      * Represents the phase of a turn.
      */
     public enum TurnPhase {
+        /** The phase of the turn that involves playing action cards */
+        ACTION,
         /** The phase of a turn that involves playing money */
         MONEY,
         /**
@@ -34,6 +35,13 @@ public final class GameState {
          * equivalent to ending the turn.
          */
         BUY,
+        /**
+         * A phase of a turn that involves gaining cards.
+         *
+         * This phase only occurs when a player takes an action that triggers a card
+         * gain.
+         */
+        GAIN,
         /**
          * The phase of a turn where the player discards their hand and draws a new
          * hand.
@@ -49,20 +57,23 @@ public final class GameState {
      *                          GameState is intended for a player who is not the
      *                          current player
      * @param phase             the phase of the current turn
+     * @param availableActions  the number of available actions
      * @param spendableMoney    the amount of money the player can spend this turn
      * @param availableBuys     the number of available buys
-     * @param deck              the game deck
+     * @param buyableCards      the stacks of buyable cards
      */
     public GameState(String currentPlayerName,
             Hand currentPlayerHand,
             TurnPhase phase,
+            int availableActions,
             int spendableMoney,
             int availableBuys,
-            CardStacks deck) {
+            CardStacks buyableCards) {
         this.availableBuys = availableBuys;
+        this.availableActions = availableActions;
         this.currentPlayerHand = currentPlayerHand;
         this.currentPlayerName = currentPlayerName;
-        this.deck = deck;
+        this.buyableCards = buyableCards;
         this.spendableMoney = spendableMoney;
         this.phase = phase;
     }
@@ -108,12 +119,21 @@ public final class GameState {
     }
 
     /**
+     * Gets the number of actions available to the current player.
+     *
+     * @return the number of available actions
+     */
+    public int getAvailableActions() {
+        return availableActions;
+    }
+
+    /**
      * Gets the game deck.
      *
      * @return the game deck
      */
-    public CardStacks getDeck() {
-        return deck;
+    public CardStacks getBuyableCards() {
+        return buyableCards;
     }
 
     /**
@@ -123,5 +143,42 @@ public final class GameState {
      */
     public TurnPhase getTurnPhase() {
         return phase;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        GameState gameState = (GameState) o;
+
+        if (availableBuys != gameState.availableBuys)
+            return false;
+        if (availableActions != gameState.availableActions)
+            return false;
+        if (spendableMoney != gameState.spendableMoney)
+            return false;
+        if (!currentPlayerName.equals(gameState.currentPlayerName))
+            return false;
+        if (currentPlayerHand != null ? !currentPlayerHand.equals(gameState.currentPlayerHand)
+                : gameState.currentPlayerHand != null)
+            return false;
+        if (!buyableCards.equals(gameState.buyableCards))
+            return false;
+        return phase == gameState.phase;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = currentPlayerName.hashCode();
+        result = 31 * result + availableBuys;
+        result = 31 * result + availableActions;
+        result = 31 * result + spendableMoney;
+        result = 31 * result + (currentPlayerHand != null ? currentPlayerHand.hashCode() : 0);
+        result = 31 * result + buyableCards.hashCode();
+        result = 31 * result + phase.hashCode();
+        return result;
     }
 }

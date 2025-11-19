@@ -3,21 +3,27 @@
  * game.
  * <br/>
  * <br/>
- * There are three types of decisions:
+ * There are six types of decisions:
  * <ul>
- * <li>{@link edu.brandeis.cosi.atg.api.decisions.BuyDecision} - a decision to
+ * <li>{@link edu.brandeis.cosi.atg.decisions.BuyDecision} - a decision to
  * buy a card</li>
- * <li>{@link edu.brandeis.cosi.atg.api.decisions.EndPhaseDecision} - a decision
- * to end a phase of play</li>
- * <li>{@link edu.brandeis.cosi.atg.api.decisions.PlayCardDecision} - a decision
+ * <li>{@link edu.brandeis.cosi.atg.decisions.PlayCardDecision} - a decision
  * to play a card</li>
+ * <li>{@link edu.brandeis.cosi.atg.decisions.GainCardDecision} - a decision
+ * to gain a card</li>
+ * <li>{@link edu.brandeis.cosi.atg.decisions.DiscardCardDecision} - a
+ * decision to discard a card</li>
+ * <li>{@link edu.brandeis.cosi.atg.decisions.TrashCardDecision} - a
+ * decision to trash (permanently remove from the player's deck) a card</li>
+ * <li>{@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision} - a decision
+ * to end a phase of play</li>
  * </ul>
  * <br/>
  * <br/>
- * The {@link edu.brandeis.cosi.atg.api.Engine Engine} is responsible for
+ * The {@link edu.brandeis.cosi.atg.engine.Engine Engine} is responsible for
  * creating lists of possible valid decisions, and prompting the {@link
- * edu.brandeis.cosi.atg.api.Player Player} to choose one. The {@link
- * edu.brandeis.cosi.atg.api.Player Player} is responsible for choosing
+ * edu.brandeis.cosi.atg.player.Player Player} to choose one. The {@link
+ * edu.brandeis.cosi.atg.player.Player Player} is responsible for choosing
  * a decision when prompted.
  */
 package edu.brandeis.cosi.atg.decisions;

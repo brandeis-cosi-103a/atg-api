@@ -14,6 +14,9 @@ public final class PlayCardDecision implements Decision {
      * @param card the card to play
      */
     public PlayCardDecision(Card card) {
+        if (card == null) {
+            throw new IllegalArgumentException("Card cannot be null");
+        }
         this.card = card;
     }
 

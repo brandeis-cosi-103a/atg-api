@@ -1,5 +1,7 @@
 package edu.brandeis.cosi.atg.state;
 
+import javax.annotation.Nonnull;
+
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableSet;
 
@@ -10,7 +12,9 @@ import edu.brandeis.cosi.atg.cards.Card;
  * single turn of the game.
  */
 public final class Hand {
+    @Nonnull
     private final ImmutableCollection<Card> playedCards;
+    @Nonnull
     private final ImmutableCollection<Card> unplayedCards;
 
     /**
@@ -19,8 +23,8 @@ public final class Hand {
      * @param playedCards   The cards that have already been played this turn.
      * @param unplayedCards The cards that have not yet been played this turn.
      */
-    public Hand(ImmutableCollection<Card> playedCards,
-            ImmutableCollection<Card> unplayedCards) {
+    public Hand(@Nonnull ImmutableCollection<Card> playedCards,
+            @Nonnull ImmutableCollection<Card> unplayedCards) {
         this.playedCards = playedCards;
         this.unplayedCards = unplayedCards;
     }
