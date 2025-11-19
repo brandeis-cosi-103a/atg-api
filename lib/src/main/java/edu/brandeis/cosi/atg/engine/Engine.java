@@ -116,6 +116,8 @@ import edu.brandeis.cosi.atg.state.GameState;
  * cards</li>
  * <li>8x {@link edu.brandeis.cosi.atg.cards.Card.Type#FRAMEWORK Framework}
  * cards</li>
+ * <li>10x <b>per player</b> {@link edu.brandeis.cosi.atg.cards.Card.Type#BUG
+ * Bug} cards</li>
  * <li>10x each of the 3 action cards:
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#REFACTOR Refactor}
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#CODE_REVIEW Code Review}
