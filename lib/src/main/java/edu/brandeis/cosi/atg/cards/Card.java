@@ -14,9 +14,6 @@ package edu.brandeis.cosi.atg.cards;
  * {@link Card.Type.Category#ACTION ACTION},
  * {@link Card.Type.Category#MONEY MONEY}, and
  * {@link Card.Type.Category#VICTORY VICTORY}.
- * Action cards have further, informal subcategories, such as "Attack" (
- * {@link Card.Type#HACK} and {@link Card.Type#EVERGREEN_TEST}), and
- * "Reaction" ({@link Card.Type#MONITORING}).
  */
 public class Card {
     private Type type;

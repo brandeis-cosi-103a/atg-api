@@ -13,7 +13,7 @@ import edu.brandeis.cosi.atg.state.GameState;
  *
  * The Engine interacts with the {@link edu.brandeis.cosi.atg.player.Player}
  * interface by calling the
- * {@link edu.brandeis.cosi.atg.player.Player#makeDecision(GameState, ImmutableList, Optional)
+ * {@link edu.brandeis.cosi.atg.player.Player#makeDecision(GameState, ImmutableList)
  * Player.makeDecision}
  * method. In general, the Engine should only prompt the
  * Player with legal options, and the Engine is also responsible for ensuring

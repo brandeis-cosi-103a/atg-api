@@ -11,8 +11,6 @@
  * to play a card</li>
  * <li>{@link edu.brandeis.cosi.atg.decisions.GainCardDecision} - a decision
  * to gain a card</li>
- * <li>{@link edu.brandeis.cosi.atg.decisions.DiscardCardDecision} - a
- * decision to discard a card</li>
  * <li>{@link edu.brandeis.cosi.atg.decisions.TrashCardDecision} - a
  * decision to trash (permanently remove from the player's deck) a card</li>
  * <li>{@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision} - a decision

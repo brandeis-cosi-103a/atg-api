@@ -5,4 +5,4 @@ Automation: The Game API
 
 # Dev notes
 
-Build javadocs (do this before trying to publish to maven central): `./gradlew javadoc`
+Build javadocs (do this before trying to publish to maven central): `mvn javadoc:javadoc -f "/workspaces/atg-api/lib/pom.xml"`
