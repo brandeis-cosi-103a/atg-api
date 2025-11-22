@@ -152,7 +152,7 @@ public class Card {
          * phase. When played, it grants 1 spendable money for the turn on which it was
          * played.
          */
-        BITCOIN("Bitcoin", Category.MONEY, 1, 1),
+        BITCOIN("Bitcoin", Category.MONEY, 0, 1),
         /**
          * A money card worth 2 money.
          * <br/>
