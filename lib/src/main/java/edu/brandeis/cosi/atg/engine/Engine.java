@@ -30,16 +30,21 @@ import edu.brandeis.cosi.atg.state.GameState;
  * the Engine should prompt the player with one
  * {@link edu.brandeis.cosi.atg.decisions.PlayCardDecision PlayCardDecision}
  * for each unplayed Action card in the player's hand, and a single
- * EndPhaseDecision}, which the player can use to indicate that they have
- * finished playing action cards for this turn. A player starts a turn with one
- * action, but can earn additional actions by playing certain action cards. See
+ * {@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision EndPhaseDecision},
+ * which the player can use to indicate that they have finished playing action
+ * cards for this turn. A player starts a turn with one action, but can earn
+ * additional actions by playing certain action cards. See
  * {@link edu.brandeis.cosi.atg.cards.Card.Type Card Types} for details on
  * the semantics of each card type.
  * <br/>
  * <br/>
  * 2. The {@link GameState.TurnPhase#MONEY MONEY} phase. During this phase, the
  * Engine should prompt the Player with one
- * {@link edu.brandeis.cosi.atg.decisions.PlayCardDecision
+ * {@link edu.brandeis.cosi.atg.decisions.PlayCardDecision PlayCardDecision}
+ * for each unplayed card in the player's hand, and a single
+ * {@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision EndPhaseDecision},
+ * which the player can use to indicate that they have finished playing money
+ * for this turn.
  * <br/>
  * <br/>
  * 3. The {@link GameState.TurnPhase#BUY BUY} phase. During this phase, the
