@@ -3,7 +3,7 @@
  * game.
  * <br/>
  * <br/>
- * There are six types of decisions:
+ * There are five types of decisions:
  * <ul>
  * <li>{@link edu.brandeis.cosi.atg.decisions.BuyDecision} - a decision to
  * buy a card</li>

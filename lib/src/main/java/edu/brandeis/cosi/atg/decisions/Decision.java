@@ -10,12 +10,12 @@ package edu.brandeis.cosi.atg.decisions;
  * Engine then executes the chosen decision.
  */
 public sealed interface Decision
-                permits BuyDecision, EndPhaseDecision, GainCardDecision, PlayCardDecision,
-                TrashCardDecision {
-        /**
-         * Gets the description of the decision.
-         *
-         * @return the description of the decision
-         */
-        public String getDescription();
+        permits BuyDecision, EndPhaseDecision, GainCardDecision, PlayCardDecision,
+        TrashCardDecision {
+    /**
+     * Gets the description of the decision.
+     *
+     * @return the description of the decision
+     */
+    public String getDescription();
 }
