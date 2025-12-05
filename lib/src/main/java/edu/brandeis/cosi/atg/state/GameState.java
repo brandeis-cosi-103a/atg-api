@@ -11,7 +11,6 @@ package edu.brandeis.cosi.atg.state;
  * GameState is intentionally immutable: the only way players can modify the
  * state of the game is to make a decision when prompted by the Engine.
  */
-
 public record GameState(
         String currentPlayerName,
         Hand currentPlayerHand,
@@ -24,7 +23,8 @@ public record GameState(
         java.util.Objects.requireNonNull(currentPlayerName, "currentPlayerName must not be null");
         java.util.Objects.requireNonNull(phase, "phase must not be null");
         java.util.Objects.requireNonNull(buyableCards, "buyableCards must not be null");
-        // currentPlayerHand can be null (see documentation)
+        // currentPlayerHand can be null if this GameState is intended for a
+        // non-current player.
     }
 
     /**

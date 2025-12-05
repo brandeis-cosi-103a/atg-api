@@ -21,10 +21,11 @@ public record CardStacks(
      * Gets the number of available cards of the specified type.
      *
      * @param cardType the type of card
-     * @return the number of available cards of the specified type
+     * @return the number of available cards of the specified type. 0 if none are
+     *         available, or if the card type does not exist in the stacks.
      */
     public int getNumAvailable(Card.Type cardType) {
-        return cardCounts.get(cardType);
+        return cardCounts.getOrDefault(cardType, 0);
     }
 
     /**

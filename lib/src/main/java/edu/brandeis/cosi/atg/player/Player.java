@@ -39,6 +39,9 @@ import edu.brandeis.cosi.atg.state.GameState;
  */
 public interface Player {
 
+    // Player implementations MUST have a zero-argument constructor for the
+    // Engine to use.
+
     /**
      * Gets the name of the player.
      *
