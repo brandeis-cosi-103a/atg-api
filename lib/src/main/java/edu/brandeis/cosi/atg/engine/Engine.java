@@ -82,8 +82,8 @@ import edu.brandeis.cosi.atg.state.GameState;
  *
  * When all {@link edu.brandeis.cosi.atg.cards.Card.Type#FRAMEWORK
  * FRAMEWORK} cards have been purchased, the game ends, and the Engine returns a
- * list of {@link ScorePair Player.ScorePairs} representing the scores of
- * each player.
+ * {@link GameResult} containing player results (name, score, and ending deck)
+ * for each player, sorted by decreasing score.
  * <br/>
  * <br/>
  * <strong>Game events:</strong>
@@ -138,12 +138,13 @@ import edu.brandeis.cosi.atg.state.GameState;
 public interface Engine {
 
     /**
-     * Executes the game and returns the score for each player.
+     * Executes the game and returns the results for each player.
      *
-     * @return The scores for each player, sorted from most points to least.
+     * @return The game results containing player information (name, score, and
+     *         ending deck) for each player, sorted from most points to least.
      * @throws PlayerViolationException if a player violates the rules of the game
      *                                  or throws an exception when making a
      *                                  decision
      */
-    public ImmutableList<ScorePair> play() throws PlayerViolationException;
+    public GameResult play() throws PlayerViolationException;
 }
