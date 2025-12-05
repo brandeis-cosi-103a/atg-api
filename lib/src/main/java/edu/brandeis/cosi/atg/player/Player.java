@@ -10,26 +10,32 @@ import edu.brandeis.cosi.atg.state.GameState;
  * The interface to a player in a game of <i>Automation: The Game</i>.
  * <br/>
  * <br/>
- * A Player participates in a game, and is responsible for making decisions
- * throughout the game. The Player itself cannot manipulate any game state -
- * it is prompted by the {@link Engine} to choose a decision from a list of
- * possible decisions. The Engine is then responsible for applying the decision
- * and updating the game state.
- *
- * There is a single entry point: {@link Player#makeDecision makeDecision},
- * which is invoked by the Engine when the Player must make a decision
- * during the game, such as whether to play a card, which card to buy, or
- * which cards to discard.
+ * A Player participates in a game and is responsible for making decisions
+ * throughout the game. The Player cannot directly manipulate game state—it is
+ * prompted by the {@link Engine} to choose from a list of presented decisions.
+ * The Engine is responsible for applying the chosen decision and updating the
+ * game state.
  * <br/>
  * <br/>
- *
- * <strong>Creating Players:</strong>
+ * <strong>Responsibilities</strong>
+ * <ul>
+ * <li>Implement the zero-argument constructor (required by the Engine).</li>
+ * <li>Implement {@link #getName()} to return a unique player identifier.</li>
+ * <li>Implement {@link #makeDecision(GameState, ImmutableList)} to select a
+ * decision from the provided options.</li>
+ * <li>Handle exceptions gracefully; unhandled exceptions will cause the player
+ * to forfeit the game.</li>
+ * </ul>
+ * <br/>
+ * <strong>Implementation Notes</strong>
+ * <br/>
+ * {@link #makeDecision(GameState, ImmutableList)} is the only method the Engine
+ * calls on the Player. The provided options are the only valid choices;
+ * selecting
+ * any other decision will result in a
+ * {@link edu.brandeis.cosi.atg.engine.PlayerViolationException}.
  * <br/>
  * <br/>
- * A Player implementation <strong>must</strong> have a zero-argument
- * constructor. It may optionally have additional constructors for testing or
- * other purposes. Implementations of this class can have any constructor
- * signature(s) required.
  */
 public interface Player {
 

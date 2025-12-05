@@ -1,19 +1,37 @@
 /**
- * This package contains utility classes which represent the state of the game.
- * These are used by the {@link edu.brandeis.cosi.atg.engine.Engine} to
- * communicate the state of the game to the
- * {@link edu.brandeis.cosi.atg.player.Player} when prompting for decisions.
+ * This package contains immutable data structures representing game state.
+ * The Engine uses these classes to communicate the state of the game to Players
+ * when prompting for decisions.
  * <br/>
  * <br/>
- * The {@link edu.brandeis.cosi.atg.state.GameState} class represents the
- * state of the game, including the players, the deck, and the discard pile.
+ * <strong>Core State Classes</strong>
+ * <ul>
+ * <li><strong>{@link edu.brandeis.cosi.atg.state.GameState}:</strong>
+ * Represents
+ * the current state of the game, including the current player, turn phase,
+ * available actions/buys/money, the current player's hand, and available cards
+ * for purchase.</li>
+ * <li><strong>{@link edu.brandeis.cosi.atg.state.Hand}:</strong> Represents a
+ * player's current hand of cards, with separate collections for played and
+ * unplayed cards.</li>
+ * <li><strong>{@link edu.brandeis.cosi.atg.state.CardStacks}:</strong>
+ * Represents
+ * the supply of purchasable cards during the game.</li>
+ * </ul>
  * <br/>
+ * <strong>Result Classes</strong>
+ * <ul>
+ * <li><strong>{@link edu.brandeis.cosi.atg.state.GameResult}:</strong> Contains
+ * final game results for all players, sorted by score (descending).</li>
+ * <li><strong>{@link edu.brandeis.cosi.atg.state.PlayerResult}:</strong>
+ * Contains
+ * a single player's final results: name, score, and ending deck.</li>
+ * </ul>
  * <br/>
- * The {@link edu.brandeis.cosi.atg.state.CardStacks} class represents the
- * stacks of cards which can be purchased during the game.
+ * <strong>Design Notes</strong>
  * <br/>
- * <br/>
- * The {@link edu.brandeis.cosi.atg.state.Hand} class represents a player's
- * current hand of cards.
+ * All classes in this package are immutable records. This ensures thread safety
+ * and prevents accidental state corruption. The Engine is responsible for
+ * creating new state objects as the game progresses.
  */
 package edu.brandeis.cosi.atg.state;

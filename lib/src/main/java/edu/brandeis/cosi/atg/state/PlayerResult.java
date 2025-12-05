@@ -1,7 +1,6 @@
-package edu.brandeis.cosi.atg.engine;
+package edu.brandeis.cosi.atg.state;
 
 import com.google.common.collect.ImmutableCollection;
-
 import edu.brandeis.cosi.atg.cards.Card;
 
 /**
@@ -13,4 +12,8 @@ import edu.brandeis.cosi.atg.cards.Card;
  * @param endingDeck the player's deck at the end of the game
  */
 public record PlayerResult(String playerName, int score, ImmutableCollection<Card> endingDeck) {
+    public PlayerResult {
+        java.util.Objects.requireNonNull(playerName, "playerName must not be null");
+        java.util.Objects.requireNonNull(endingDeck, "endingDeck must not be null");
+    }
 }

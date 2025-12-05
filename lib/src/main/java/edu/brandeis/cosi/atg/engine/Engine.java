@@ -3,27 +3,36 @@ package edu.brandeis.cosi.atg.engine;
 import com.google.common.collect.ImmutableList;
 
 import edu.brandeis.cosi.atg.state.CardStacks;
+import edu.brandeis.cosi.atg.state.GameResult;
 import edu.brandeis.cosi.atg.state.GameState;
 
 /**
- * An Engine executes a full game, given a list of available cards, and players
- * to participate.
+ * Game execution engine that orchestrates play between players.
  * <br/>
  * <br/>
- *
- * The Engine interacts with the {@link edu.brandeis.cosi.atg.player.Player}
- * interface by calling the
+ * <strong>Responsibility:</strong>
+ * <br/>
+ * The Engine executes a complete game given a list of players and available
+ * cards,
+ * managing game state transitions and enforcing game rules. It communicates
+ * with
+ * players through the {@link edu.brandeis.cosi.atg.player.Player} interface,
+ * providing valid decision options and validating chosen decisions.
+ * <br/>
+ * <br/>
+ * <strong>Player Interaction:</strong>
+ * <br/>
+ * The Engine calls
  * {@link edu.brandeis.cosi.atg.player.Player#makeDecision(GameState, ImmutableList)
- * Player.makeDecision}
- * method. In general, the Engine should only prompt the
- * Player with legal options, and the Engine is also responsible for ensuring
- * that the Player only selects from the decisions that were provided to it. If
- * a Player does not behave as expected - either by not returning a Decision, or
- * returning an invalid or disallowed Decision, the Engine should throw a
- * {@link PlayerViolationException}.
+ * Player.makeDecision} to obtain player decisions. The Engine must:
+ * <ul>
+ * <li>Only provide legal decision options to players</li>
+ * <li>Validate that chosen decisions are from the provided options</li>
+ * <li>Throw {@link PlayerViolationException} for invalid or non-compliant
+ * choices</li>
+ * </ul>
  * <br/>
- * <br/>
- * <strong>Primary phases of a turn:</strong>
+ * <strong>Game Flow - Turn Phases:</strong>
  * <br/>
  * <br/>
  * 1. The {@link GameState.TurnPhase#ACTION ACTION} phase. During this phase,
@@ -86,21 +95,16 @@ import edu.brandeis.cosi.atg.state.GameState;
  * for each player, sorted by decreasing score.
  * <br/>
  * <br/>
- * <strong>Game events:</strong>
- * <br/>
- * <br/>
- * <strong>Creating Engines:</strong>
- * <br/>
+ * <strong>Game Initialization:</strong>
  * <br/>
  * Engine implementations <strong>must</strong> have a 1-argument constructor
- * which accepts a
- * {@link java.util.List} of {@link edu.brandeis.cosi.atg.player.Player}s.
+ * which accepts a {@link java.util.List} of
+ * {@link edu.brandeis.cosi.atg.player.Player}s.
  * The Engine should throw an {@link java.lang.IllegalArgumentException} if the
  * list of Players contains more than 4 players.
  * <br/>
  * <br/>
- * <strong>Starting cards:</strong>
- * <br/>
+ * <strong>Card Stack Configuration:</strong>
  * <br/>
  * Engines should initialize a {@link CardStacks} with the following cards:
  * <ul>
@@ -126,8 +130,9 @@ import edu.brandeis.cosi.atg.state.GameState;
  * </li>
  * </ul>
  *
- * Starting hands for players should be dealt from this GameDeck. Each player's
- * starting hand should include:
+ * <strong>Player Starting Hands:</strong>
+ * <br/>
+ * Each player's starting hand should include:
  * <ul>
  * <li>7x {@link edu.brandeis.cosi.atg.cards.Card.Type#BITCOIN Bitcoin}
  * cards</li>

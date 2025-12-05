@@ -1,32 +1,20 @@
 package edu.brandeis.cosi.atg.state;
 
 import javax.annotation.Nonnull;
-
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableSet;
-
 import edu.brandeis.cosi.atg.cards.Card;
 
 /**
  * A Hand represents the collection of cards a player has in their hand during a
  * single turn of the game.
  */
-public final class Hand {
-    @Nonnull
-    private final ImmutableCollection<Card> playedCards;
-    @Nonnull
-    private final ImmutableCollection<Card> unplayedCards;
-
-    /**
-     * Constructs a Hand with the specified cards
-     *
-     * @param playedCards   The cards that have already been played this turn.
-     * @param unplayedCards The cards that have not yet been played this turn.
-     */
-    public Hand(@Nonnull ImmutableCollection<Card> playedCards,
-            @Nonnull ImmutableCollection<Card> unplayedCards) {
-        this.playedCards = playedCards;
-        this.unplayedCards = unplayedCards;
+public record Hand(
+        @Nonnull ImmutableCollection<Card> playedCards,
+        @Nonnull ImmutableCollection<Card> unplayedCards) {
+    public Hand {
+        java.util.Objects.requireNonNull(playedCards, "playedCards must not be null");
+        java.util.Objects.requireNonNull(unplayedCards, "unplayedCards must not be null");
     }
 
     /**
@@ -36,23 +24,5 @@ public final class Hand {
      */
     public ImmutableCollection<Card> getAllCards() {
         return ImmutableSet.<Card>builder().addAll(playedCards).addAll(unplayedCards).build();
-    }
-
-    /**
-     * Gets the unplayed cards in the hand.
-     *
-     * @return an immutable collection of unplayed cards in the hand
-     */
-    public ImmutableCollection<Card> getUnplayedCards() {
-        return unplayedCards;
-    }
-
-    /**
-     * Gets the played cards in the hand.
-     *
-     * @return an immutable collection of played cards in the hand
-     */
-    public ImmutableCollection<Card> getPlayedCards() {
-        return playedCards;
     }
 }

@@ -15,102 +15,36 @@ package edu.brandeis.cosi.atg.cards;
  * {@link Card.Type.Category#MONEY MONEY}, and
  * {@link Card.Type.Category#VICTORY VICTORY}.
  */
-public class Card {
-    private Type type;
-    private int id;
-
-    /**
-     * Constructs a Card with the specified type and id.
-     *
-     * @param type the type of the card
-     * @param id   the id of the card
-     */
-    public Card(Type type, int id) {
-        this.type = type;
-        this.id = id;
+public record Card(Type type, int id) {
+    public Card {
+        java.util.Objects.requireNonNull(type, "Card type must not be null");
     }
 
-    /**
-     * Gets the type of the card.
-     *
-     * @return the type of the card
-     */
-    public Type getType() {
-        return type;
-    }
-
-    /**
-     * Gets the id of the card.
-     *
-     * @return the id of the card
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * Gets the category of the card.
-     *
-     * @return the category of the card
-     */
     public Type.Category getCategory() {
         return type.getCategory();
     }
 
-    /**
-     * Gets the value of the card.
-     *
-     * @return the value of the card
-     */
     public int getValue() {
         return type.getValue();
     }
 
-    /**
-     * Gets the cost of the card.
-     *
-     * @return the cost of the card
-     */
     public int getCost() {
         return type.getCost();
     }
 
-    /**
-     * Gets the description of the card.
-     *
-     * @return the description of the card
-     */
     public String getDescription() {
         return type.getDescription();
     }
 
-    /**
-     * Returns a string representation of the card, including its description and
-     * id.
-     */
     @Override
     public String toString() {
         return "[" + getDescription() + "(id: " + id + ")]";
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Card)) {
-            return false;
-        }
-        Card other = (Card) o;
-        return type.equals(other.type) && id == other.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return type.hashCode() + id;
-    }
-
     /**
      * Represents the type of a card.
      */
-    public enum Type {
+    public static enum Type {
         /**
          * A victory card worth -1 automation points.
          * <br/>
@@ -224,8 +158,8 @@ public class Card {
          * @param cost        the cost of the card type
          */
         Type(String description, Category category, int cost, int value) {
-            this.description = description;
-            this.category = category;
+            this.description = java.util.Objects.requireNonNull(description, "Type description must not be null");
+            this.category = java.util.Objects.requireNonNull(category, "Type category must not be null");
             this.value = value;
             this.cost = cost;
         }
@@ -283,7 +217,7 @@ public class Card {
              */
             VICTORY("Victory");
 
-            private String name;
+            private final String name;
 
             /**
              * Constructs a Category with the specified name.
@@ -291,7 +225,7 @@ public class Card {
              * @param name the name of the category
              */
             Category(String name) {
-                this.name = name;
+                this.name = java.util.Objects.requireNonNull(name, "Category name must not be null");
             }
 
             /**

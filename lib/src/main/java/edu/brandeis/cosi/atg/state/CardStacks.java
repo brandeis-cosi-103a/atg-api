@@ -2,7 +2,6 @@ package edu.brandeis.cosi.atg.state;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-
 import edu.brandeis.cosi.atg.cards.Card;
 
 /**
@@ -11,28 +10,11 @@ import edu.brandeis.cosi.atg.cards.Card;
  * This class does not represent a single player's deck of cards (which is a
  * private implementation detail of the game engine), but rather the piles of
  * cards available for purchase during the game.
- *
  */
-public final class CardStacks {
-    private final ImmutableMap<Card.Type, Integer> cardCounts;
-
-    /**
-     * Constructs a CardStacks with the specified cards types and counts.
-     *
-     * @param cardCounts a map of card types to the number of available cards of
-     *                   that type
-     */
-    public CardStacks(ImmutableMap<Card.Type, Integer> cardCounts) {
-        this.cardCounts = cardCounts;
-    }
-
-    /**
-     * Gets the number of available cards of each type.
-     *
-     * @return a map of card types to the number of available cards of that type
-     */
-    public ImmutableMap<Card.Type, Integer> getCardCounts() {
-        return cardCounts;
+public record CardStacks(
+        ImmutableMap<Card.Type, Integer> cardCounts) {
+    public CardStacks {
+        java.util.Objects.requireNonNull(cardCounts, "cardCounts must not be null");
     }
 
     /**
