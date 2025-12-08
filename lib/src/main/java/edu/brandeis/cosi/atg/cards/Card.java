@@ -24,21 +24,21 @@ public record Card(Type type, int id) {
         return type.getCategory();
     }
 
-    public int getValue() {
+    public int value() {
         return type.getValue();
     }
 
-    public int getCost() {
+    public int cardost() {
         return type.getCost();
     }
 
-    public String getDescription() {
+    public String description() {
         return type.getDescription();
     }
 
     @Override
     public String toString() {
-        return "[" + getDescription() + "(id: " + id + ")]";
+        return "[" + description() + "(id: " + id + ")]";
     }
 
     /**

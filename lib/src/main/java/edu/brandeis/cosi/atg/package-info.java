@@ -49,5 +49,3 @@
  * <br/>
  */
 package edu.brandeis.cosi.atg;
-
-import edu.brandeis.cosi.atg.player.Player;

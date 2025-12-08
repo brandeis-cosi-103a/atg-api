@@ -14,6 +14,6 @@ public record TrashCardDecision(Card card) implements Decision {
 
     @Override
     public String getDescription() {
-        return "Trash " + card.getDescription();
+        return "Trash " + card;
     }
 }

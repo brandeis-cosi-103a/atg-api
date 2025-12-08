@@ -12,6 +12,6 @@ public record PlayCardDecision(Card card) implements Decision {
 
     @Override
     public String getDescription() {
-        return "Play " + card.getDescription();
+        return "Play " + card;
     }
 }
