@@ -96,33 +96,15 @@ public class Card {
         return type.getDescription();
     }
 
-    /**
-     * Returns a string representation of the card, including its description and
-     * id.
-     */
     @Override
     public String toString() {
         return "[" + getDescription() + "(id: " + id + ")]";
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Card)) {
-            return false;
-        }
-        Card other = (Card) o;
-        return type.equals(other.type) && id == other.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return type.hashCode() + id;
-    }
-
     /**
      * Represents the type of a card.
      */
-    public enum Type {
+    public static enum Type {
         /**
          * A victory card worth -1 automation points.
          * <br/>
@@ -164,7 +146,7 @@ public class Card {
          * phase. When played, it grants 1 spendable money for the turn on which it was
          * played.
          */
-        BITCOIN("Bitcoin", Category.MONEY, 1, 1),
+        BITCOIN("Bitcoin", Category.MONEY, 0, 1),
         /**
          * A money card worth 2 money.
          * <br/>
@@ -347,8 +329,8 @@ public class Card {
          * @param cost        the cost of the card type
          */
         Type(String description, Category category, int cost, int value) {
-            this.description = description;
-            this.category = category;
+            this.description = java.util.Objects.requireNonNull(description, "Type description must not be null");
+            this.category = java.util.Objects.requireNonNull(category, "Type category must not be null");
             this.value = value;
             this.cost = cost;
         }
@@ -406,7 +388,7 @@ public class Card {
              */
             VICTORY("Victory");
 
-            private String name;
+            private final String name;
 
             /**
              * Constructs a Category with the specified name.
@@ -414,7 +396,7 @@ public class Card {
              * @param name the name of the category
              */
             Category(String name) {
-                this.name = name;
+                this.name = java.util.Objects.requireNonNull(name, "Category name must not be null");
             }
 
             /**

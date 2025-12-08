@@ -1,11 +1,8 @@
 package edu.brandeis.cosi.atg.state;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-
 import edu.brandeis.cosi.atg.cards.Card;
 
 /**
@@ -14,40 +11,23 @@ import edu.brandeis.cosi.atg.cards.Card;
  * This class does not represent a single player's deck of cards (which is a
  * private implementation detail of the game engine), but rather the piles of
  * cards available for purchase during the game.
- *
  */
-public final class CardStacks {
-    private final ImmutableMap<Card.Type, Integer> cardCounts;
-
-    /**
-     * Constructs a GameDeck with the specified cards types and counts.
-     *
-     * @param cardCounts a map of card types to the number of available cards of
-     *                   that type
-     */
-    @JsonCreator
-    public CardStacks(@JsonProperty("cardCounts") ImmutableMap<Card.Type, Integer> cardCounts) {
-        this.cardCounts = cardCounts;
-    }
-
-    /**
-     * Gets the number of available cards of each type.
-     *
-     * @return a map of card types to the number of available cards of that type
-     */
-    public ImmutableMap<Card.Type, Integer> getCardCounts() {
-        return cardCounts;
+public record CardStacks(
+        ImmutableMap<Card.Type, Integer> cardCounts) {
+    public CardStacks {
+        java.util.Objects.requireNonNull(cardCounts, "cardCounts must not be null");
     }
 
     /**
      * Gets the number of available cards of the specified type.
      *
      * @param cardType the type of card
-     * @return the number of available cards of the specified type
+     * @return the number of available cards of the specified type. 0 if none are
+     *         available, or if the card type does not exist in the stacks.
      */
     @JsonIgnore
     public int getNumAvailable(Card.Type cardType) {
-        return cardCounts.get(cardType);
+        return cardCounts.getOrDefault(cardType, 0);
     }
 
     /**
@@ -58,20 +38,5 @@ public final class CardStacks {
     @JsonIgnore
     public ImmutableSet<Card.Type> getCardTypes() {
         return cardCounts.keySet();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        CardStacks gameDeck = (CardStacks) o;
-        return cardCounts.equals(gameDeck.cardCounts);
-    }
-
-    @Override
-    public int hashCode() {
-        return cardCounts.hashCode();
     }
 }

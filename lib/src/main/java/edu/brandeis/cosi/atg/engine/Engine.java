@@ -5,48 +5,57 @@ import com.google.common.collect.ImmutableList;
 import edu.brandeis.cosi.atg.event.GameObserver;
 import edu.brandeis.cosi.atg.player.Player;
 import edu.brandeis.cosi.atg.state.CardStacks;
+import edu.brandeis.cosi.atg.state.GameResult;
 import edu.brandeis.cosi.atg.state.GameState;
 
 /**
- * An Engine executes a full game, given a list of available cards, and players
- * to participate.
+ * Game execution engine that orchestrates play between players.
  * <br/>
  * <br/>
- *
- * The Engine interacts with the {@link edu.brandeis.cosi.atg.player.Player}
- * interface by calling the
- * {@link edu.brandeis.cosi.atg.player.Player#makeDecision(GameState, ImmutableList, Optional)
- * Player.makeDecision}
- * method. In general, the Engine should only prompt the
- * Player with legal options, and the Engine is also responsible for ensuring
- * that the Player only selects from the decisions that were provided to it. If
- * a Player does not behave as expected - either by not returning a Decision, or
- * returning an invalid or disallowed Decision, the Engine should throw a
- * {@link PlayerViolationException}.
+ * <strong>Responsibility:</strong>
+ * <br/>
+ * The Engine executes a complete game given a list of players and available
+ * cards,
+ * managing game state transitions and enforcing game rules. It communicates
+ * with
+ * players through the {@link edu.brandeis.cosi.atg.player.Player} interface,
+ * providing valid decision options and validating chosen decisions.
  * <br/>
  * <br/>
- * <strong>Primary phases of a turn:</strong>
+ * <strong>Player Interaction:</strong>
+ * <br/>
+ * The Engine calls
+ * {@link edu.brandeis.cosi.atg.player.Player#makeDecision(GameState, ImmutableList)
+ * Player.makeDecision} to obtain player decisions. The Engine must:
+ * <ul>
+ * <li>Only provide legal decision options to players</li>
+ * <li>Validate that chosen decisions are from the provided options</li>
+ * <li>Throw {@link PlayerViolationException} for invalid or non-compliant
+ * choices</li>
+ * </ul>
+ * <br/>
+ * <strong>Game Flow - Turn Phases:</strong>
  * <br/>
  * <br/>
  * 1. The {@link GameState.TurnPhase#ACTION ACTION} phase. During this phase,
  * the Engine should prompt the player with one
  * {@link edu.brandeis.cosi.atg.decisions.PlayCardDecision PlayCardDecision}
  * for each unplayed Action card in the player's hand, and a single
- * {@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision
- * EndPhaseDecision}, which the player can use to indicate that they have
- * finished playing action cards for this turn. A player starts a turn with one
- * action, but can earn additional actions by playing certain action cards. See
+ * {@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision EndPhaseDecision},
+ * which the player can use to indicate that they have finished playing action
+ * cards for this turn. A player starts a turn with one action, but can earn
+ * additional actions by playing certain action cards. See
  * {@link edu.brandeis.cosi.atg.cards.Card.Type Card Types} for details on
  * the semantics of each card type.
  * <br/>
  * <br/>
  * 2. The {@link GameState.TurnPhase#MONEY MONEY} phase. During this phase, the
  * Engine should prompt the Player with one
- * {@link edu.brandeis.cosi.atg.decisions.PlayCardDecision
- * PlayCardDecisions} for each unplayed card in the player's hand, and a single
- * {@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision
- * EndPhaseDecision}, which the player can use to indicate that they have
- * finished playing money for this turn.
+ * {@link edu.brandeis.cosi.atg.decisions.PlayCardDecision PlayCardDecision}
+ * for each unplayed card in the player's hand, and a single
+ * {@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision EndPhaseDecision},
+ * which the player can use to indicate that they have finished playing money
+ * for this turn.
  * <br/>
  * <br/>
  * 3. The {@link GameState.TurnPhase#BUY BUY} phase. During this phase, the
@@ -112,8 +121,8 @@ import edu.brandeis.cosi.atg.state.GameState;
  *
  * When all {@link edu.brandeis.cosi.atg.cards.Card.Type#FRAMEWORK
  * FRAMEWORK} cards have been purchased, the game ends, and the Engine returns a
- * list of {@link ScorePair Player.ScorePairs} representing the scores of
- * each player.
+ * {@link GameResult} containing player results (name, score, and ending deck)
+ * for each player, sorted by decreasing score.
  * <br/>
  * <br/>
  * <strong>Game events:</strong>
@@ -140,14 +149,13 @@ import edu.brandeis.cosi.atg.state.GameState;
  * <br/>
  * <br/>
  * Engine implementations <strong>must</strong> have a 1-argument constructor
- * which accepts a
- * {@link java.util.List} of {@link edu.brandeis.cosi.atg.player.Player}s.
+ * which accepts a {@link java.util.List} of
+ * {@link edu.brandeis.cosi.atg.player.Player}s.
  * The Engine should throw an {@link java.lang.IllegalArgumentException} if the
  * list of Players contains more than 4 players.
  * <br/>
  * <br/>
- * <strong>Starting cards:</strong>
- * <br/>
+ * <strong>Card Stack Configuration:</strong>
  * <br/>
  * Engines should initialize a {@link CardStacks} with the following cards:
  * <ul>
@@ -163,6 +171,7 @@ import edu.brandeis.cosi.atg.state.GameState;
  * cards</li>
  * <li>8x {@link edu.brandeis.cosi.atg.cards.Card.Type#FRAMEWORK Framework}
  * cards</li>
+ * <li>10x <b>per player</b> {@link edu.brandeis.cosi.atg.cards.Card.Type#BUG
  * <li>10x each of the 10 action cards:
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#BACKLOG Backlog}
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#DAILY_SCRUM Daily Scrum}
@@ -171,16 +180,16 @@ import edu.brandeis.cosi.atg.state.GameState;
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#MONITORING Monitoring}
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECH_DEBT Tech Debt}
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#REFACTOR Refactor}
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#PARALLELIZATION
- * Parallelization}
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#PARALLELIZATION Parallelization}
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#CODE_REVIEW Code Review}
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#EVERGREEN_TEST Evergreen
  * Test}
  * </li>
  * </ul>
  *
- * Starting hands for players should be dealt from this GameDeck. Each player's
- * starting hand should include:
+ * <strong>Player Starting Hands:</strong>
+ * <br/>
+ * Each player's starting hand should include:
  * <ul>
  * <li>7x {@link edu.brandeis.cosi.atg.cards.Card.Type#BITCOIN Bitcoin}
  * cards</li>
@@ -191,12 +200,13 @@ import edu.brandeis.cosi.atg.state.GameState;
 public interface Engine {
 
     /**
-     * Executes the game and returns the score for each player.
+     * Executes the game and returns the results for each player.
      *
-     * @return The scores for each player, sorted from most points to least.
+     * @return The game results containing player information (name, score, and
+     *         ending deck) for each player, sorted from most points to least.
      * @throws PlayerViolationException if a player violates the rules of the game
      *                                  or throws an exception when making a
      *                                  decision
      */
-    public ImmutableList<ScorePair> play() throws PlayerViolationException;
+    public GameResult play() throws PlayerViolationException;
 }

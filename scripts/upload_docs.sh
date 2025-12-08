@@ -23,7 +23,7 @@ fi
 echo "Uploading docs for version $VERSION"
 
 # Create the directory for the version
-rm -r docs
+rm -rf docs
 jar -xvf lib/target/atg-api-$VERSION-javadoc.jar -C docs
 
 URL="https://atgapi.blob.core.windows.net/\$web/$VERSION/index.html"
