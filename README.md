@@ -9,3 +9,6 @@ Automation: The Game API
 # Dev notes
 
 Build javadocs (do this before trying to publish to maven central): `mvn javadoc:javadoc -f "/workspaces/atg-api/lib/pom.xml"`
+
+TODO:
+- Fix Card.Type accessors to be named consistently with records
