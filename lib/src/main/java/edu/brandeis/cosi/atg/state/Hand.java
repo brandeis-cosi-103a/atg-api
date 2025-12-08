@@ -1,5 +1,7 @@
 package edu.brandeis.cosi.atg.state;
 
+import java.util.Objects;
+
 import javax.annotation.Nonnull;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,11 +21,13 @@ public record Hand(
     public Hand(
             @JsonProperty("playedCards") ImmutableCollection<Card> playedCards,
             @JsonProperty("unplayedCards") ImmutableCollection<Card> unplayedCards) {
-        java.util.Objects.requireNonNull(playedCards, "playedCards must not be null");
-        java.util.Objects.requireNonNull(unplayedCards, "unplayedCards must not be null");
+        Objects.requireNonNull(playedCards, "playedCards must not be null");
+        Objects.requireNonNull(unplayedCards, "unplayedCards must not be null");
         // Normalize to ImmutableSet for equality
-        this.playedCards = playedCards instanceof ImmutableSet ? playedCards : ImmutableSet.copyOf(playedCards);
-        this.unplayedCards = unplayedCards instanceof ImmutableSet ? unplayedCards : ImmutableSet.copyOf(unplayedCards);
+        this.playedCards = Objects
+                .requireNonNull(playedCards instanceof ImmutableSet ? playedCards : ImmutableSet.copyOf(playedCards));
+        this.unplayedCards = Objects.requireNonNull(
+                unplayedCards instanceof ImmutableSet ? unplayedCards : ImmutableSet.copyOf(unplayedCards));
     }
 
     /**

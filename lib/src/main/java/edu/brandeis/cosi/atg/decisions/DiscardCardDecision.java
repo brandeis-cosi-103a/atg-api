@@ -14,6 +14,6 @@ public record DiscardCardDecision(Card card) implements Decision {
     @Override
     @JsonIgnore
     public String getDescription() {
-        return "Discard " + card.getDescription();
+        return "Discard " + card.description();
     }
 }
