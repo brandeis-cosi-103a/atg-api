@@ -25,6 +25,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param id   the id of the card
  */
 public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) {
+    /**
+     * Compact constructor that validates the card type is not null.
+     */
     public Card {
         java.util.Objects.requireNonNull(type, "Card type must not be null");
     }
@@ -64,7 +67,6 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
      *
      * @return the description of the card
      */
-
     @JsonIgnore
     public String description() {
         return type.description();

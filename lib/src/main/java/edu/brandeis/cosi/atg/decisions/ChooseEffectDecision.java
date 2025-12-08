@@ -31,6 +31,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @since 2
  */
 public record ChooseEffectDecision(Effect effect) implements Decision {
+    /**
+     * Compact constructor that validates the effect is not null.
+     */
     public ChooseEffectDecision {
         java.util.Objects.requireNonNull(effect, "effect must not be null");
     }

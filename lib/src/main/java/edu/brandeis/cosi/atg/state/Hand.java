@@ -12,11 +12,17 @@ import edu.brandeis.cosi.atg.cards.Card;
 /**
  * A Hand represents the collection of cards a player has in their hand during a
  * single turn of the game.
+ *
+ * @param playedCards   the cards that have already been played this turn
+ * @param unplayedCards the cards that have not yet been played this turn
  */
 public record Hand(
         @Nonnull ImmutableCollection<Card> playedCards,
         @Nonnull ImmutableCollection<Card> unplayedCards) {
 
+    /**
+     * Compact constructor that validates both card collections are not null.
+     */
     @JsonCreator
     public Hand(
             @JsonProperty("playedCards") ImmutableCollection<Card> playedCards,
