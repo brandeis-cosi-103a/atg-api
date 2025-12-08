@@ -12,6 +12,9 @@ import edu.brandeis.cosi.atg.cards.Card;
  * @param endingDeck the player's deck at the end of the game
  */
 public record PlayerResult(String playerName, int score, ImmutableCollection<Card> endingDeck) {
+    /**
+     * Compact constructor that validates required fields are not null.
+     */
     public PlayerResult {
         java.util.Objects.requireNonNull(playerName, "playerName must not be null");
         java.util.Objects.requireNonNull(endingDeck, "endingDeck must not be null");

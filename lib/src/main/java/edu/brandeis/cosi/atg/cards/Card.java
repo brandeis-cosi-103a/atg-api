@@ -14,24 +14,51 @@ package edu.brandeis.cosi.atg.cards;
  * {@link Card.Type.Category#ACTION ACTION},
  * {@link Card.Type.Category#MONEY MONEY}, and
  * {@link Card.Type.Category#VICTORY VICTORY}.
+ *
+ * @param type the type of the card
+ * @param id   the unique identifier for this card
  */
 public record Card(Type type, int id) {
+    /**
+     * Compact constructor that validates the card type is not null.
+     */
     public Card {
         java.util.Objects.requireNonNull(type, "Card type must not be null");
     }
 
+    /**
+     * Returns the category of this card.
+     *
+     * @return the category (ACTION, MONEY, or VICTORY)
+     */
     public Type.Category getCategory() {
         return type.category();
     }
 
+    /**
+     * Returns the value of this card.
+     *
+     * @return the card's value (points for victory cards, money for money cards,
+     *         etc.)
+     */
     public int value() {
         return type.value();
     }
 
+    /**
+     * Returns the cost of this card in the shop.
+     *
+     * @return the cost in coins to purchase this card
+     */
     public int cardost() {
         return type.cost();
     }
 
+    /**
+     * Returns a human-readable description of this card.
+     *
+     * @return the card's description text
+     */
     public String description() {
         return type.description();
     }
