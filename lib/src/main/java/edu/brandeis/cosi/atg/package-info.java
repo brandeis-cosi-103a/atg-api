@@ -17,7 +17,7 @@
  * events (card plays, gains, discards, etc.). Engines must now log events to
  * observers.</li>
  * <li><strong>Expanded Action Cards:</strong> The game now includes 15 action
- * cards total (up from 10 in v2.0). Each game uses 10 randomly selected action
+ * cards total. Each game uses 10 randomly selected action
  * cards, chosen by the harness and passed to the Engine constructor. The 15
  * available action cards are:
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#BACKLOG Backlog},

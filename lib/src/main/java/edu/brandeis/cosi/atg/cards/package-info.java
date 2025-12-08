@@ -7,7 +7,7 @@
  * <br/>
  * <strong>Version 2 Additions:</strong>
  * <br/>
- * Version 2 added 7 new action cards with diverse mechanics:
+ * Version 2 added 12 new action cards with diverse mechanics:
  * <ul>
  * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#BACKLOG Backlog} - discard
  * and draw</li>
@@ -23,12 +23,6 @@
  * conditional discard</li>
  * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#PARALLELIZATION
  * Parallelization} - double action play</li>
- * </ul>
- * <br/>
- * <strong>Version 2.5 Additions:</strong>
- * <br/>
- * Version 2.5 added 5 more action cards:
- * <ul>
  * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#SPRINT_PLANNING Sprint
  * Planning} - multi-benefit card</li>
  * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#MERGE_CONFLICT Merge

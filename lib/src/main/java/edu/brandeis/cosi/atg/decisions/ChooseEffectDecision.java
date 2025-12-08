@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  *
  * @param effect the effect being chosen
  *
- * @since 2.5
+ * @since 2
  */
 public record ChooseEffectDecision(Effect effect) implements Decision {
     public ChooseEffectDecision {

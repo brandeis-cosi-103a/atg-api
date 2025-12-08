@@ -157,7 +157,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * player with the next appropriate set of decisions, based on actions
          * remaining.
          *
-         * @since 2.0
+         * @since 2
          */
         BACKLOG("Backlog", Category.ACTION, 2, 0),
 
@@ -169,7 +169,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * hand. Immediately following that (before any other actions), the engine will
          * draw will draw 1 card into each other player's hands.
          *
-         * @since 2.0
+         * @since 2
          */
         DAILY_SCRUM("Daily Scrum", Category.ACTION, 5, 0),
 
@@ -184,7 +184,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * Note that "+2 Money" indicates the player has 2 more money to spend for this
          * turn. This does not imply that any money cards are gained by the player.
          *
-         * @since 2.0
+         * @since 2
          */
         IPO("IPO", Category.ACTION, 5, 0),
 
@@ -205,7 +205,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * Note that "+2 Money" indicates the player has 2 more money to spend for this
          * turn. This does not imply that any money cards are gained by the player.
          *
-         * @since 2.0
+         * @since 2
          */
         HACK("Hack", Category.ACTION, 4, 0),
 
@@ -228,7 +228,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * Attack cards are: {@link Card.Type#HACK} and {@link Card.Type#EVERGREEN_TEST
          * Evergreen Test}
          *
-         * @since 2.0
+         * @since 2
          */
         MONITORING("Monitoring", Category.ACTION, 2, 0),
 
@@ -244,7 +244,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * (with no {@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision}
          * possible) until they have discarded one card for each empty supply pile.
          *
-         * @since 2.0
+         * @since 2
          */
         TECH_DEBT("Tech Debt", Category.ACTION, 4, 0),
 
@@ -277,7 +277,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * use additional actions (beyond the one action used to play the
          * Parallelization card).
          *
-         * @since 2.0
+         * @since 2
          */
         PARALLELIZATION("Parallelization", Category.ACTION, 4, 0),
 
@@ -309,7 +309,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * When this card is played, the player draws one card, gains one additional
          * action for this turn, and gains one additional buy for this turn.
          *
-         * @since 2.5
+         * @since 2
          */
         SPRINT_PLANNING("Sprint Planning", Category.ACTION, 3, 0),
 
@@ -325,7 +325,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * makes a trash decision, the engine will draw a number of cards equal to the
          * cost of the trashed card into the player's hand.
          *
-         * @since 2.5
+         * @since 2
          */
         MERGE_CONFLICT("Merge Conflict", Category.ACTION, 2, 0),
 
@@ -344,7 +344,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * a {@link Card.Type#BUG Bug}. The player must make one of these choices, but
          * is allowed to choose discard even if they don't have 2 cards in hand.
          *
-         * @since 2.5
+         * @since 2
          */
         TECHNICAL_DEBT_COLLECTION("Technical Debt Collection", Category.ACTION, 6, 0),
 
@@ -356,7 +356,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * turn. Additionally, all cards cost $1 less for the remainder of
          * this turn (minimum cost is $0). T
          *
-         * @since 2.5
+         * @since 2
          */
         DEPLOYMENT_PIPELINE("Deployment Pipeline", Category.ACTION, 5, 0),
 
@@ -369,7 +369,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * this turn, gain $2 to spend for this turn, or draw 2 cards. The player must
          * choose one option.
          *
-         * @since 2.5
+         * @since 2
          */
         UNIT_TEST("Unit Test", Category.ACTION, 3, 0);
 
