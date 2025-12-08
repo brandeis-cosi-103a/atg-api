@@ -19,6 +19,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * All implementations are defined as sealed subtypes:
  * <ul>
  * <li>{@link BuyDecision} - Buy a card from the supply.</li>
+ * <li>{@link ChooseEffectDecision} - Choose between alternative effects
+ * (beneficial or penalties).</li>
  * <li>{@link DiscardCardDecision} - Discard a card from the hand.</li>
  * <li>{@link EndPhaseDecision} - End the current turn phase.</li>
  * <li>{@link GainCardDecision} - Gain a card to the discard pile (no
@@ -30,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
                 @JsonSubTypes.Type(value = BuyDecision.class, name = "buy"),
+                @JsonSubTypes.Type(value = ChooseEffectDecision.class, name = "choose_effect"),
                 @JsonSubTypes.Type(value = EndPhaseDecision.class, name = "end_phase"),
                 @JsonSubTypes.Type(value = PlayCardDecision.class, name = "play_card"),
                 @JsonSubTypes.Type(value = GainCardDecision.class, name = "gain_card"),
@@ -37,7 +40,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
                 @JsonSubTypes.Type(value = DiscardCardDecision.class, name = "discard_card"),
 })
 public sealed interface Decision
-                permits BuyDecision, DiscardCardDecision, EndPhaseDecision, GainCardDecision, PlayCardDecision,
+                permits BuyDecision, ChooseEffectDecision, DiscardCardDecision, EndPhaseDecision, GainCardDecision,
+                PlayCardDecision,
                 TrashCardDecision {
         /**
          * Gets the description of the decision.

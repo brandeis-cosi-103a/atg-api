@@ -19,6 +19,9 @@
  * {@link edu.brandeis.cosi.atg.decisions.DiscardCardDecision}
  * decision type</li>
  * <li>Implement mechanics for the 7 new action cards added in v2</li>
+ * <li>Accept a 2-argument constructor: a list of players and a list of 10
+ * action card types to use for the game (the harness is responsible for
+ * randomly selecting 10 from the 15 available action cards)</li>
  * </ul>
  */
 package edu.brandeis.cosi.atg.engine;

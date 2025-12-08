@@ -3,11 +3,15 @@
  * game.
  * <br/>
  * <br/>
- * There are six types of decisions (note that
- * {@link edu.brandeis.cosi.atg.decisions.DiscardCardDecision} was added in v2):
+ * There are seven types of decisions (note that
+ * {@link edu.brandeis.cosi.atg.decisions.DiscardCardDecision} was added in v2,
+ * and {@link edu.brandeis.cosi.atg.decisions.ChooseEffectDecision} was added in
+ * v2.5):
  * <ul>
  * <li>{@link edu.brandeis.cosi.atg.decisions.BuyDecision} - a decision to
  * buy a card</li>
+ * <li>{@link edu.brandeis.cosi.atg.decisions.ChooseEffectDecision} - a
+ * decision to choose between alternative effects (beneficial or penalties)</li>
  * <li>{@link edu.brandeis.cosi.atg.decisions.PlayCardDecision} - a decision
  * to play a card</li>
  * <li>{@link edu.brandeis.cosi.atg.decisions.GainCardDecision} - a decision

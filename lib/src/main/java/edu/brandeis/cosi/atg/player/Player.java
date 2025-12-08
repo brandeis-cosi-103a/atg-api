@@ -25,7 +25,9 @@ import edu.brandeis.cosi.atg.state.GameState;
  * <ul>
  * <li>Implement the zero-argument constructor (required by the Engine).</li>
  * <li>Implement {@link #getName()} to return a unique player identifier.</li>
- * <li>Implement {@link #makeDecision(GameState, ImmutableList)} to select a
+ * <li>Implement
+ * {@link #makeDecision(GameState, ImmutableList, java.util.Optional)} to select
+ * a
  * decision from the provided options.</li>
  * <li>Handle exceptions gracefully; unhandled exceptions will cause the player
  * to forfeit the game.</li>
@@ -33,7 +35,8 @@ import edu.brandeis.cosi.atg.state.GameState;
  * <br/>
  * <strong>Implementation Notes</strong>
  * <br/>
- * {@link #makeDecision(GameState, ImmutableList)} is the only method the Engine
+ * {@link #makeDecision(GameState, ImmutableList, java.util.Optional)} is the
+ * only method the Engine
  * calls on the Player. The provided options are the only valid choices;
  * selecting
  * any other decision will result in a

@@ -16,20 +16,35 @@
  * game
  * events (card plays, gains, discards, etc.). Engines must now log events to
  * observers.</li>
- * <li><strong>New Action Cards:</strong> Seven new action cards added with
- * diverse mechanics:
+ * <li><strong>Expanded Action Cards:</strong> The game now includes 15 action
+ * cards total (up from 10 in v2.0). Each game uses 10 randomly selected action
+ * cards, chosen by the harness and passed to the Engine constructor. The 15
+ * available action cards are:
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#BACKLOG Backlog},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#CODE_REVIEW Code Review},
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#DAILY_SCRUM Daily Scrum},
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#IPO IPO},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#DEPLOYMENT_PIPELINE Deployment
+ * Pipeline},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#EVERGREEN_TEST Evergreen Test}
+ * (Attack),
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#HACK Hack} (Attack),
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#IPO IPO},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#MERGE_CONFLICT Merge Conflict},
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#MONITORING Monitoring}
  * (Reaction),
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECH_DEBT Tech Debt}, and
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#PARALLELIZATION
- * Parallelization}.</li>
+ * Parallelization},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#REFACTOR Refactor},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#SPRINT_PLANNING Sprint
+ * Planning},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECH_DEBT Tech Debt},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECHNICAL_DEBT_COLLECTION
+ * Technical Debt Collection} (Attack), and
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#UNIT_TEST Unit Test}.</li>
  * <li><strong>Attack and Reaction Mechanics:</strong> New Attack card category
  * (Hack, {@link edu.brandeis.cosi.atg.cards.Card.Type#EVERGREEN_TEST Evergreen
- * Test})
+ * Test}, {@link edu.brandeis.cosi.atg.cards.Card.Type#TECHNICAL_DEBT_COLLECTION
+ * Technical Debt Collection})
  * and Reaction card (Monitoring) that can counter attacks.</li>
  * <li><strong>New Game Phases:</strong> Added
  * {@link edu.brandeis.cosi.atg.state.GameState.TurnPhase#REACTION REACTION}

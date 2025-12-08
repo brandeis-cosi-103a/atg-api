@@ -300,7 +300,78 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * {@link Card.Type#BUG} to the discard pile of each player who did not reveal
          * a {@link Card.Type#MONITORING Monitoring} card.
          */
-        EVERGREEN_TEST("Evergreen Test", Category.ACTION, 5, 0);
+        EVERGREEN_TEST("Evergreen Test", Category.ACTION, 5, 0),
+
+        /**
+         * +1 Card, +1 Action, +1 Buy.
+         * <br/>
+         * <br/>
+         * When this card is played, the player draws one card, gains one additional
+         * action for this turn, and gains one additional buy for this turn.
+         *
+         * @since 2.5
+         */
+        SPRINT_PLANNING("Sprint Planning", Category.ACTION, 3, 0),
+
+        /**
+         * Trash a card from your hand. +1 Card per $1 it costs.
+         * <br/>
+         * <br/>
+         * Trashing a card removes it from the player's deck entirely.
+         * When this card is played, the player will be prompted with
+         * {@link edu.brandeis.cosi.atg.decisions.TrashCardDecision
+         * TrashCardDecisions} for each card in their hand. Trashing is not optional, so
+         * the list of decisions will not include an EndPhaseDecision. After the player
+         * makes a trash decision, the engine will draw a number of cards equal to the
+         * cost of the trashed card into the player's hand.
+         *
+         * @since 2.5
+         */
+        MERGE_CONFLICT("Merge Conflict", Category.ACTION, 2, 0),
+
+        /**
+         * (Attack card) +3 Cards; Each other player chooses one: discard 2 cards; or
+         * gain a Bug.
+         * <br/>
+         * <br/>
+         * When this card is played, the engine will first check to see which players
+         * have {@link Card.Type#MONITORING Monitoring} cards, and will prompt them to
+         * reveal the cards. After that, the engine prompts each player who hasn't
+         * avoided the attack with a choice: either two
+         * {@link edu.brandeis.cosi.atg.decisions.DiscardCardDecision
+         * DiscardCardDecisions}, or a
+         * {@link edu.brandeis.cosi.atg.decisions.GainCardDecision GainCardDecision} for
+         * a {@link Card.Type#BUG Bug}. The player must make one of these choices, but
+         * is allowed to choose discard even if they don't have 2 cards in hand.
+         *
+         * @since 2.5
+         */
+        TECHNICAL_DEBT_COLLECTION("Technical Debt Collection", Category.ACTION, 6, 0),
+
+        /**
+         * +1 Buy, +$1. This turn, cards cost $1 less (but not less than $0).
+         * <br/>
+         * <br/>
+         * When this card is played, the player gains an additional buy and $1 for this
+         * turn. Additionally, all cards cost $1 less for the remainder of
+         * this turn (minimum cost is $0). T
+         *
+         * @since 2.5
+         */
+        DEPLOYMENT_PIPELINE("Deployment Pipeline", Category.ACTION, 5, 0),
+
+        /**
+         * Choose one: +2 Actions; +$2; +2 Cards.
+         * <br/>
+         * <br/>
+         * When this card is played, the engine prompts the player with two options:
+         * either gain 2 additional actions for
+         * this turn, gain $2 to spend for this turn, or draw 2 cards. The player must
+         * choose one option.
+         *
+         * @since 2.5
+         */
+        UNIT_TEST("Unit Test", Category.ACTION, 3, 0);
 
         private String description;
         private Category category;

@@ -25,9 +25,32 @@
  * Parallelization} - double action play</li>
  * </ul>
  * <br/>
+ * <strong>Version 2.5 Additions:</strong>
+ * <br/>
+ * Version 2.5 added 5 more action cards:
+ * <ul>
+ * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#SPRINT_PLANNING Sprint
+ * Planning} - multi-benefit card</li>
+ * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#MERGE_CONFLICT Merge
+ * Conflict} - trash for cards</li>
+ * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#TECHNICAL_DEBT_COLLECTION
+ * Technical Debt Collection} - Attack card with choice</li>
+ * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#DEPLOYMENT_PIPELINE
+ * Deployment Pipeline} - cost reduction</li>
+ * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#UNIT_TEST Unit Test} -
+ * choice card</li>
+ * </ul>
+ * <br/>
+ * With 15 total action cards available, each game uses 10 randomly selected
+ * action cards. The harness is responsible for selecting these cards and
+ * passing them to the {@link edu.brandeis.cosi.atg.engine.Engine} constructor.
+ * <br/>
+ * <br/>
  * These cards introduce new informal card categories: Attack cards
  * ({@link edu.brandeis.cosi.atg.cards.Card.Type#HACK Hack},
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#EVERGREEN_TEST Evergreen Test})
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#EVERGREEN_TEST Evergreen Test},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECHNICAL_DEBT_COLLECTION
+ * Technical Debt Collection})
  * and Reaction cards ({@link edu.brandeis.cosi.atg.cards.Card.Type#MONITORING
  * Monitoring}).
  */

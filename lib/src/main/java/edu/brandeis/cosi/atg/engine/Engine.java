@@ -25,7 +25,7 @@ import edu.brandeis.cosi.atg.state.GameState;
  * <strong>Player Interaction:</strong>
  * <br/>
  * The Engine calls
- * {@link edu.brandeis.cosi.atg.player.Player#makeDecision(GameState, ImmutableList)
+ * {@link edu.brandeis.cosi.atg.player.Player#makeDecision(GameState, ImmutableList, java.util.Optional)
  * Player.makeDecision} to obtain player decisions. The Engine must:
  * <ul>
  * <li>Only provide legal decision options to players</li>
@@ -141,18 +141,36 @@ import edu.brandeis.cosi.atg.state.GameState;
  * to log events to the console, a file, or to facilitate testing.
  * <br/>
  * <br/>
- * See the {@link edu.brandeis.cosi.atg.api.event event} package
+ * See the {@link edu.brandeis.cosi.atg.event event} package
  * documentation for details on events.
  * <br/>
  * <br/>
  * <strong>Creating Engines:</strong>
  * <br/>
  * <br/>
- * Engine implementations <strong>must</strong> have a 1-argument constructor
- * which accepts a {@link java.util.List} of
- * {@link edu.brandeis.cosi.atg.player.Player}s.
- * The Engine should throw an {@link java.lang.IllegalArgumentException} if the
- * list of Players contains more than 4 players.
+ * Engine implementations <strong>must</strong> have a 2-argument constructor
+ * which accepts:
+ * <ul>
+ * <li>A {@link java.util.List} of
+ * {@link edu.brandeis.cosi.atg.player.Player}s (must not be null)</li>
+ * <li>A {@link java.util.List} of {@link edu.brandeis.cosi.atg.cards.Card.Type}
+ * representing the 10 action card types to use in the game (must not be null,
+ * must contain exactly 10 distinct action card types)</li>
+ * </ul>
+ * The Engine should throw an {@link java.lang.IllegalArgumentException} if:
+ * <ul>
+ * <li>The list of Players contains more than 4 players</li>
+ * <li>The list of action card types is null, does not contain exactly 10 types,
+ * contains duplicate types, or contains non-action card types</li>
+ * </ul>
+ * <br/>
+ * <strong>Harness Responsibility:</strong>
+ * <br/>
+ * The game harness (the code that creates and runs Engine instances) is
+ * responsible for randomly selecting 10 action card types from the 15 available
+ * action cards and passing them to the Engine constructor. This random
+ * selection
+ * should happen once per game, not within the Engine.
  * <br/>
  * <br/>
  * <strong>Card Stack Configuration:</strong>
@@ -172,18 +190,30 @@ import edu.brandeis.cosi.atg.state.GameState;
  * <li>8x {@link edu.brandeis.cosi.atg.cards.Card.Type#FRAMEWORK Framework}
  * cards</li>
  * <li>10x <b>per player</b> {@link edu.brandeis.cosi.atg.cards.Card.Type#BUG
- * <li>10x each of the 10 action cards:
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#BACKLOG Backlog}
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#DAILY_SCRUM Daily Scrum}
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#IPO IPO}
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#HACK Hack}
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#MONITORING Monitoring}
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECH_DEBT Tech Debt}
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#REFACTOR Refactor}
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#PARALLELIZATION Parallelization}
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#CODE_REVIEW Code Review}
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#EVERGREEN_TEST Evergreen
- * Test}
+ * Bug}
+ * cards</li>
+ * <li>10x each of the 10 action card types provided in the constructor
+ * parameter.
+ * The harness randomly selects 10 from the 15 available action cards:
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#BACKLOG Backlog},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#CODE_REVIEW Code Review},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#DAILY_SCRUM Daily Scrum},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#DEPLOYMENT_PIPELINE Deployment
+ * Pipeline},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#EVERGREEN_TEST Evergreen Test},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#HACK Hack},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#IPO IPO},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#MERGE_CONFLICT Merge Conflict},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#MONITORING Monitoring},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#PARALLELIZATION
+ * Parallelization},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#REFACTOR Refactor},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#SPRINT_PLANNING Sprint
+ * Planning},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECH_DEBT Tech Debt},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECHNICAL_DEBT_COLLECTION
+ * Technical Debt Collection},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#UNIT_TEST Unit Test}
  * </li>
  * </ul>
  *
