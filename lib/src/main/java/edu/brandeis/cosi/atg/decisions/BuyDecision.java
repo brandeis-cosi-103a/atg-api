@@ -14,6 +14,6 @@ public record BuyDecision(Card.Type cardType) implements Decision {
     @Override
     @JsonIgnore
     public String getDescription() {
-        return "Buy " + cardType.getDescription();
+        return "Buy " + cardType.description();
     }
 }

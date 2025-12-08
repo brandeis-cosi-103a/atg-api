@@ -16,6 +16,6 @@ public record GainCardEvent(Card.Type cardType, String playerName) implements Ev
     @Override
     @JsonIgnore
     public String getDescription() {
-        return playerName + " gained card: " + cardType.getDescription();
+        return playerName + " gained card: " + cardType.description();
     }
 }

@@ -36,7 +36,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
      */
     @JsonIgnore
     public Type.Category category() {
-        return type.getCategory();
+        return type.category();
     }
 
     /**
@@ -46,7 +46,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
      */
     @JsonIgnore
     public int value() {
-        return type.getValue();
+        return type.value();
     }
 
     /**
@@ -56,7 +56,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
      */
     @JsonIgnore
     public int cost() {
-        return type.getCost();
+        return type.cost();
     }
 
     /**
@@ -67,7 +67,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
 
     @JsonIgnore
     public String description() {
-        return type.getDescription();
+        return type.description();
     }
 
     @Override
@@ -399,7 +399,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          *
          * @return the description of the card type
          */
-        public String getDescription() {
+        public String description() {
             return description;
         }
 
@@ -408,7 +408,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          *
          * @return the category of the card type
          */
-        public Category getCategory() {
+        public Category category() {
             return category;
         }
 
@@ -417,7 +417,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          *
          * @return the value of the card type
          */
-        public int getValue() {
+        public int value() {
             return value;
         }
 
@@ -426,7 +426,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          *
          * @return the cost of the card type
          */
-        public int getCost() {
+        public int cost() {
             return cost;
         }
 
@@ -447,15 +447,16 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
              */
             VICTORY("Victory");
 
-            private final String name;
+            private final String description;
 
             /**
-             * Constructs a Category with the specified name.
+             * Constructs a Category with the specified description.
              *
-             * @param name the name of the category
+             * @param description the description of the category
              */
-            Category(String name) {
-                this.name = java.util.Objects.requireNonNull(name, "Category name must not be null");
+            Category(String description) {
+                this.description = java.util.Objects.requireNonNull(description,
+                        "Category description must not be null");
             }
 
             /**
@@ -463,8 +464,8 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
              *
              * @return the name of the category
              */
-            public String getName() {
-                return name;
+            public String description() {
+                return description;
             }
         }
     }

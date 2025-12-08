@@ -15,6 +15,6 @@ public record TrashCardEvent(Card.Type cardType, String playerName) implements E
     @Override
     @JsonIgnore
     public String getDescription() {
-        return playerName + " trashed card: " + cardType.getDescription();
+        return playerName + " trashed card: " + cardType.description();
     }
 }

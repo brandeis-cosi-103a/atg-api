@@ -15,6 +15,6 @@ public record DiscardCardEvent(Card.Type cardType, String playerName) implements
     @Override
     @JsonIgnore
     public String getDescription() {
-        return playerName + " discarded card: " + cardType.getDescription();
+        return playerName + " discarded card: " + cardType.description();
     }
 }
