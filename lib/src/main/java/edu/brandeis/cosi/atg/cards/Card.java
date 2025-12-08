@@ -1,6 +1,5 @@
 package edu.brandeis.cosi.atg.cards;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -21,40 +20,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Action cards have further, informal subcategories, such as "Attack" (
  * {@link Card.Type#HACK} and {@link Card.Type#EVERGREEN_TEST}), and
  * "Reaction" ({@link Card.Type#MONITORING}).
+ *
+ * @param type the type of the card
+ * @param id   the id of the card
  */
-public class Card {
-    private Type type;
-    private int id;
-
-    /**
-     * Constructs a Card with the specified type and id.
-     *
-     * @param type the type of the card
-     * @param id   the id of the card
-     */
-    @JsonCreator
-    public Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) {
-        this.type = type;
-        this.id = id;
-    }
-
-    /**
-     * Gets the type of the card.
-     *
-     * @return the type of the card
-     */
-    public Type getType() {
-        return type;
-    }
-
-    /**
-     * Gets the id of the card.
-     *
-     * @return the id of the card
-     */
-    public int getId() {
-        return id;
-    }
+public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) {
 
     /**
      * Gets the category of the card.
@@ -99,23 +69,6 @@ public class Card {
     @Override
     public String toString() {
         return "[" + getDescription() + "(id: " + id + ")]";
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Card other = (Card) obj;
-        return id == other.id && type == other.type;
-    }
-
-    @Override
-    public int hashCode() {
-        return java.util.Objects.hash(type, id);
     }
 
     /**
