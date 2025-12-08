@@ -5,6 +5,50 @@
  * University.
  * <br/>
  * <br/>
+ * <strong>What's Changed Since v1</strong>
+ * <br/>
+ * Version 2 introduces significant gameplay enhancements and infrastructure
+ * improvements:
+ * <ul>
+ * <li><strong>Event System:</strong> New {@link edu.brandeis.cosi.atg.event}
+ * package
+ * with {@link edu.brandeis.cosi.atg.event.GameObserver} interface for tracking
+ * game
+ * events (card plays, gains, discards, etc.). Engines must now log events to
+ * observers.</li>
+ * <li><strong>New Action Cards:</strong> Seven new action cards added with
+ * diverse mechanics:
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#BACKLOG Backlog},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#DAILY_SCRUM Daily Scrum},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#IPO IPO},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#HACK Hack} (Attack),
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#MONITORING Monitoring}
+ * (Reaction),
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECH_DEBT Tech Debt}, and
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#PARALLELIZATION
+ * Parallelization}.</li>
+ * <li><strong>Attack and Reaction Mechanics:</strong> New Attack card category
+ * (Hack, {@link edu.brandeis.cosi.atg.cards.Card.Type#EVERGREEN_TEST Evergreen
+ * Test})
+ * and Reaction card (Monitoring) that can counter attacks.</li>
+ * <li><strong>New Game Phases:</strong> Added
+ * {@link edu.brandeis.cosi.atg.state.GameState.TurnPhase#REACTION REACTION}
+ * phase
+ * for responding to attacks and
+ * {@link edu.brandeis.cosi.atg.state.GameState.TurnPhase#DISCARD DISCARD} phase
+ * for discarding cards.</li>
+ * <li><strong>New Decision Type:</strong>
+ * {@link edu.brandeis.cosi.atg.decisions.DiscardCardDecision} added for discard
+ * mechanics.</li>
+ * <li><strong>JSON Serialization:</strong> Full Jackson annotation support
+ * added to all
+ * game state, decision, and event types for JSON
+ * serialization/deserialization.</li>
+ * <li><strong>Card Implementation:</strong> Card class converted to a record
+ * with
+ * explicit JSON property annotations and improved documentation.</li>
+ * </ul>
+ * <br/>
  * <strong>Architecture Overview</strong>
  * <br/>
  * This library provides a framework for implementing and running games of ATG.
@@ -22,6 +66,9 @@
  * interface types in the {@link edu.brandeis.cosi.atg.decisions} package.</li>
  * <li><strong>Cards:</strong> Defines card types and attributes via
  * {@link edu.brandeis.cosi.atg.cards.Card}.</li>
+ * <li><strong>Events:</strong> Provides game event notifications via the
+ * {@link edu.brandeis.cosi.atg.event} package and
+ * {@link edu.brandeis.cosi.atg.event.GameObserver} interface.</li>
  * </ul>
  * <br/>
  * <strong>Design Principles</strong>

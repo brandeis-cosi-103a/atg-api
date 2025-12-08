@@ -3,7 +3,8 @@
  * game.
  * <br/>
  * <br/>
- * There are six types of decisions:
+ * There are six types of decisions (note that
+ * {@link edu.brandeis.cosi.atg.decisions.DiscardCardDecision} was added in v2):
  * <ul>
  * <li>{@link edu.brandeis.cosi.atg.decisions.BuyDecision} - a decision to
  * buy a card</li>

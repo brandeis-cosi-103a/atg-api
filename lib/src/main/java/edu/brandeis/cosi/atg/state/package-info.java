@@ -10,7 +10,12 @@
  * Represents
  * the current state of the game, including the current player, turn phase,
  * available actions/buys/money, the current player's hand, and available cards
- * for purchase.</li>
+ * for purchase. In v2, the
+ * {@link edu.brandeis.cosi.atg.state.GameState.TurnPhase TurnPhase}
+ * enum includes two new phases:
+ * {@link edu.brandeis.cosi.atg.state.GameState.TurnPhase#REACTION REACTION}
+ * and {@link edu.brandeis.cosi.atg.state.GameState.TurnPhase#DISCARD
+ * DISCARD}.</li>
  * <li><strong>{@link edu.brandeis.cosi.atg.state.Hand}:</strong> Represents a
  * player's current hand of cards, with separate collections for played and
  * unplayed cards.</li>

@@ -156,6 +156,8 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * draw the number of cards discarded into the player's hand, and prompt the
          * player with the next appropriate set of decisions, based on actions
          * remaining.
+         *
+         * @since 2.0
          */
         BACKLOG("Backlog", Category.ACTION, 2, 0),
 
@@ -166,6 +168,8 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * When this card is played, the engine will draw 4 cards into the player's
          * hand. Immediately following that (before any other actions), the engine will
          * draw will draw 1 card into each other player's hands.
+         *
+         * @since 2.0
          */
         DAILY_SCRUM("Daily Scrum", Category.ACTION, 5, 0),
 
@@ -179,6 +183,8 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          *
          * Note that "+2 Money" indicates the player has 2 more money to spend for this
          * turn. This does not imply that any money cards are gained by the player.
+         *
+         * @since 2.0
          */
         IPO("IPO", Category.ACTION, 5, 0),
 
@@ -198,6 +204,8 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          *
          * Note that "+2 Money" indicates the player has 2 more money to spend for this
          * turn. This does not imply that any money cards are gained by the player.
+         *
+         * @since 2.0
          */
         HACK("Hack", Category.ACTION, 4, 0),
 
@@ -219,6 +227,8 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          *
          * Attack cards are: {@link Card.Type#HACK} and {@link Card.Type#EVERGREEN_TEST
          * Evergreen Test}
+         *
+         * @since 2.0
          */
         MONITORING("Monitoring", Category.ACTION, 2, 0),
 
@@ -233,6 +243,8 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * DiscardCardDecisions}
          * (with no {@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision}
          * possible) until they have discarded one card for each empty supply pile.
+         *
+         * @since 2.0
          */
         TECH_DEBT("Tech Debt", Category.ACTION, 4, 0),
 
@@ -264,6 +276,8 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * chosen card will then be executed twice. Executing the chosen card does not
          * use additional actions (beyond the one action used to play the
          * Parallelization card).
+         *
+         * @since 2.0
          */
         PARALLELIZATION("Parallelization", Category.ACTION, 4, 0),
 
