@@ -25,6 +25,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param id   the id of the card
  */
 public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) {
+    public Card {
+        java.util.Objects.requireNonNull(type, "Card type must not be null");
+    }
 
     /**
      * Gets the category of the card.
