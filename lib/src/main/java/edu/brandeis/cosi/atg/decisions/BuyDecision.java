@@ -1,9 +1,6 @@
 package edu.brandeis.cosi.atg.decisions;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import edu.brandeis.cosi.atg.cards.Card;
 
 /**
@@ -15,6 +12,7 @@ public record BuyDecision(Card.Type cardType) implements Decision {
     }
 
     @Override
+    @JsonIgnore
     public String getDescription() {
         return "Buy " + cardType.getDescription();
     }

@@ -1,9 +1,6 @@
 package edu.brandeis.cosi.atg.decisions;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import edu.brandeis.cosi.atg.state.GameState;
 
 /**
@@ -15,6 +12,7 @@ public record EndPhaseDecision(GameState.TurnPhase phase) implements Decision {
     }
 
     @Override
+    @JsonIgnore
     public String getDescription() {
         return "End phase: " + phase.name().toLowerCase();
     }

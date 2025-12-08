@@ -1,80 +1,21 @@
 package edu.brandeis.cosi.atg.event;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import edu.brandeis.cosi.atg.cards.Card;
 
 /**
  * Represents an event where a player gains a card. Note that this event is
  * generated when a player gains any card, including buying one from the supply.
  */
-public final class GainCardEvent implements Event {
-    private Card.Type cardType;
-    private String playerName;
-
-    /**
-     * Constructs an GainCardEvent with the specified card type and player.
-     *
-     * @param cardType   the type of card gained by the player
-     * @param playerName the name of the player who gained the card
-     */
-    @JsonCreator
-    public GainCardEvent(@JsonProperty("cardType") Card.Type cardType, @JsonProperty("playerName") String playerName) {
-        if (cardType == null) {
-            throw new IllegalArgumentException("Card type cannot be null");
-        }
-        if (playerName == null) {
-            throw new IllegalArgumentException("Player name cannot be null");
-        }
-
-        this.cardType = cardType;
-        this.playerName = playerName;
+public record GainCardEvent(Card.Type cardType, String playerName) implements Event {
+    public GainCardEvent {
+        java.util.Objects.requireNonNull(cardType, "cardType must not be null");
+        java.util.Objects.requireNonNull(playerName, "playerName must not be null");
     }
 
-    /**
-     * Gets the description of the card gain event.
-     */
+    @Override
     @JsonIgnore
     public String getDescription() {
         return playerName + " gained card: " + cardType.getDescription();
-    }
-
-    /**
-     * Gets the card type gained by the player.
-     *
-     * @return the card type gained by the player
-     */
-    public Card.Type getCardType() {
-        return cardType;
-    }
-
-    /**
-     * Gets the name of the player who gained the card.
-     *
-     * @return the name of the player who gained the card
-     */
-    public String getPlayerName() {
-        return playerName;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        GainCardEvent that = (GainCardEvent) obj;
-        return cardType.equals(that.cardType) && playerName.equals(that.playerName);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = cardType.hashCode();
-        result = 31 * result + playerName.hashCode();
-        return result;
     }
 }

@@ -101,6 +101,23 @@ public class Card {
         return "[" + getDescription() + "(id: " + id + ")]";
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Card other = (Card) obj;
+        return id == other.id && type == other.type;
+    }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(type, id);
+    }
+
     /**
      * Represents the type of a card.
      */

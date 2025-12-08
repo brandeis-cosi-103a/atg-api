@@ -1,6 +1,8 @@
 package edu.brandeis.cosi.atg.state;
 
 import javax.annotation.Nonnull;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableSet;
 import edu.brandeis.cosi.atg.cards.Card;
@@ -12,9 +14,16 @@ import edu.brandeis.cosi.atg.cards.Card;
 public record Hand(
         @Nonnull ImmutableCollection<Card> playedCards,
         @Nonnull ImmutableCollection<Card> unplayedCards) {
-    public Hand {
+
+    @JsonCreator
+    public Hand(
+            @JsonProperty("playedCards") ImmutableCollection<Card> playedCards,
+            @JsonProperty("unplayedCards") ImmutableCollection<Card> unplayedCards) {
         java.util.Objects.requireNonNull(playedCards, "playedCards must not be null");
         java.util.Objects.requireNonNull(unplayedCards, "unplayedCards must not be null");
+        // Normalize to ImmutableSet for equality
+        this.playedCards = playedCards instanceof ImmutableSet ? playedCards : ImmutableSet.copyOf(playedCards);
+        this.unplayedCards = unplayedCards instanceof ImmutableSet ? unplayedCards : ImmutableSet.copyOf(unplayedCards);
     }
 
     /**

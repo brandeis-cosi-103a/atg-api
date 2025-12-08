@@ -1,5 +1,6 @@
 package edu.brandeis.cosi.atg.decisions;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.brandeis.cosi.atg.cards.Card;
 
 /**
@@ -13,6 +14,7 @@ public record TrashCardDecision(Card card) implements Decision {
     }
 
     @Override
+    @JsonIgnore
     public String getDescription() {
         return "Trash " + card.getDescription();
     }
