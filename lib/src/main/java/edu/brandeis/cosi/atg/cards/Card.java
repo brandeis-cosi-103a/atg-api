@@ -50,7 +50,7 @@ public record Card(Type type, int id) {
      *
      * @return the cost in coins to purchase this card
      */
-    public int cardost() {
+    public int cost() {
         return type.cost();
     }
 
