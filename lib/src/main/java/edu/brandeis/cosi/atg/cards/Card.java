@@ -35,7 +35,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
      * @return the category of the card
      */
     @JsonIgnore
-    public Type.Category getCategory() {
+    public Type.Category category() {
         return type.getCategory();
     }
 
@@ -45,7 +45,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
      * @return the value of the card
      */
     @JsonIgnore
-    public int getValue() {
+    public int value() {
         return type.getValue();
     }
 
@@ -55,7 +55,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
      * @return the cost of the card
      */
     @JsonIgnore
-    public int getCost() {
+    public int cost() {
         return type.getCost();
     }
 
@@ -64,14 +64,15 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
      *
      * @return the description of the card
      */
+
     @JsonIgnore
-    public String getDescription() {
+    public String description() {
         return type.getDescription();
     }
 
     @Override
     public String toString() {
-        return "[" + getDescription() + "(id: " + id + ")]";
+        return "[" + description() + "(id: " + id + ")]";
     }
 
     /**

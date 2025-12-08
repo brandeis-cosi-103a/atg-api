@@ -14,6 +14,6 @@ public record PlayCardDecision(Card card) implements Decision {
     @Override
     @JsonIgnore
     public String getDescription() {
-        return "Play " + card.getDescription();
+        return "Play " + card;
     }
 }
