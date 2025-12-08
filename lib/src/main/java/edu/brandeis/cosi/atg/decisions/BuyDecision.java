@@ -12,6 +12,6 @@ public record BuyDecision(Card.Type cardType) implements Decision {
 
     @Override
     public String getDescription() {
-        return "Buy " + cardType.getDescription();
+        return "Buy " + cardType.description();
     }
 }

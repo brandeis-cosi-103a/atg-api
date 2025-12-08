@@ -12,6 +12,6 @@ public record GainCardDecision(Card.Type cardType) implements Decision {
 
     @Override
     public String getDescription() {
-        return "Gain " + cardType.getDescription();
+        return "Gain " + cardType.description();
     }
 }
