@@ -38,13 +38,13 @@
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#SPRINT_PLANNING Sprint
  * Planning},
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECH_DEBT Tech Debt},
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECHNICAL_DEBT_COLLECTION
- * Technical Debt Collection} (Attack), and
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#RANSOMWARE
+ * Ransomware} (Attack), and
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#UNIT_TEST Unit Test}.</li>
  * <li><strong>Attack and Reaction Mechanics:</strong> New Attack card category
  * (Hack, {@link edu.brandeis.cosi.atg.cards.Card.Type#EVERGREEN_TEST Evergreen
- * Test}, {@link edu.brandeis.cosi.atg.cards.Card.Type#TECHNICAL_DEBT_COLLECTION
- * Technical Debt Collection})
+ * Test}, {@link edu.brandeis.cosi.atg.cards.Card.Type#RANSOMWARE
+ * Ransomware})
  * and Reaction card (Monitoring) that can counter attacks.</li>
  * <li><strong>New Game Phases:</strong> Added
  * {@link edu.brandeis.cosi.atg.state.GameState.TurnPhase#REACTION REACTION}

@@ -19,11 +19,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * {@link Effect#UNIT_TEST_PLUS_TWO_ACTIONS},
  * {@link Effect#UNIT_TEST_PLUS_TWO_MONEY}, or
  * {@link Effect#UNIT_TEST_PLUS_TWO_CARDS}.</li>
- * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#TECHNICAL_DEBT_COLLECTION
- * Technical Debt Collection}
+ * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#RANSOMWARE
+ * Ransomware}
  * forces affected players to choose between
- * {@link Effect#TECHNICAL_DEBT_COLLECTION_DISCARD_TWO}
- * or {@link Effect#TECHNICAL_DEBT_COLLECTION_GAIN_BUG}.</li>
+ * {@link Effect#RANSOMWARE_DISCARD_TWO}
+ * or {@link Effect#RANSOMWARE_GAIN_BUG}.</li>
  * </ul>
  *
  * @param effect the effect being chosen
@@ -70,22 +70,22 @@ public record ChooseEffectDecision(Effect effect) implements Decision {
         UNIT_TEST_PLUS_TWO_CARDS("+2 Cards"),
 
         /**
-         * Technical Debt Collection: Discard 2 cards.
+         * Ransomware: Discard 2 cards.
          * <br/>
          * When chosen, the player must discard 2 cards from their hand.
-         * This is a penalty option when affected by the Technical Debt Collection
+         * This is a penalty option when affected by the Ransomware
          * attack card.
          */
-        TECHNICAL_DEBT_COLLECTION_DISCARD_TWO("Discard 2 cards"),
+        RANSOMWARE_DISCARD_TWO("Discard 2 cards"),
 
         /**
-         * Technical Debt Collection: Gain a Bug.
+         * Ransomware: Gain a Bug.
          * <br/>
          * When chosen, the player gains a Bug card to their discard pile.
-         * This is a penalty option when affected by the Technical Debt Collection
+         * This is a penalty option when affected by the Ransomware
          * attack card.
          */
-        TECHNICAL_DEBT_COLLECTION_GAIN_BUG("Gain a Bug");
+        RANSOMWARE_GAIN_BUG("Gain a Bug");
 
         private final String description;
 

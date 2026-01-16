@@ -211,8 +211,8 @@ import edu.brandeis.cosi.atg.state.GameState;
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#SPRINT_PLANNING Sprint
  * Planning},
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECH_DEBT Tech Debt},
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECHNICAL_DEBT_COLLECTION
- * Technical Debt Collection},
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#RANSOMWARE
+ * Ransomware},
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#UNIT_TEST Unit Test}
  * </li>
  * </ul>

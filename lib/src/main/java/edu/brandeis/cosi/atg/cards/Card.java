@@ -195,41 +195,35 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          * (Attack card) +2 Money; Each other player discards down to 3 cards in hand.
          * <br/>
          * <br/>
-         * When this card is played, the engine will first check to see which players
-         * have {@link Card.Type#MONITORING Monitoring} cards, and will prompt them to
-         * reveal the cards. After that, the engine prompt each player who hasn't
-         * avoided the attack with
+         * The engine will prompt each player with
          * {@link edu.brandeis.cosi.atg.decisions.DiscardCardDecision
-         * DiscardCardDecisions} until they have 3 cards in hand. The list of possible
+         * DiscardCardDecisions}
+         * until they have 3 cards in hand. The list of possible
          * decisions offered to the players will not include an
          * {@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision
          * EndPhaseDecision}, indicating that the discarding is not optional.
          *
-         * Note that "+2 Money" indicates the player has 2 more money to spend for this
-         * turn. This does not imply that any money cards are gained by the player.
+         * Players that have a {@link Card.Type#MONITORING Monitoring} card in hand
+         * will avoid the attack, and should not be prompted to discard any cards.
          *
          * @since 2
          */
         HACK("Hack", Category.ACTION, 4, 0),
 
         /**
-         * (Reaction card) +2 Cards; When another player plays an Attack card, you may
+         * (Reaction card) +2 Cards; When another player plays an Attack card, you
          * reveal this from your hand to be unaffected by the attack.
          * <br/>
          * <br/>
-         * The engine implements this by prompting the
-         * player with a {@link edu.brandeis.cosi.atg.decisions.PlayCardDecision}
-         * and an {@link edu.brandeis.cosi.atg.decisions.EndPhaseDecision} with
-         * the phase set to
-         * {@link edu.brandeis.cosi.atg.state.GameState.TurnPhase#REACTION REACTION}. If
-         * the player
-         * wishes to reveal the card and avoid the attack, they choose the
-         * PlayCardDecision and select the Monitoring card. If the player does not wish
-         * to reveal the card, they choose the EndPhaseDecision. The card is revealed,
-         * but remains in the player's hand, and the player is unaffected by the attack.
+         * When played, this card grants +2 cards. When another player plays an
+         * attack card, players currently holding this card in hand will avoid
+         * the attack entirely. When a player avoids an attack like this, a
+         * {@link edu.brandeis.cosi.atg.event.GameEvent} should be logged. The
+         * card is not considered "played" when used to avoid an attack, and
+         * remains in the player's hand.
          *
-         * Attack cards are: {@link Card.Type#HACK} and {@link Card.Type#EVERGREEN_TEST
-         * Evergreen Test}
+         * Attack cards are: {@link Card.Type#HACK}, {@link Card.Type#EVERGREEN_TEST
+         * Evergreen Test}, and {@link Card.Type#RANSOMWARE Ransomware}.
          *
          * @since 2
          */
@@ -349,7 +343,7 @@ public record Card(@JsonProperty("type") Type type, @JsonProperty("id") int id) 
          *
          * @since 2
          */
-        TECHNICAL_DEBT_COLLECTION("Technical Debt Collection", Category.ACTION, 6, 0),
+        RANSOMWARE("Ransomware", Category.ACTION, 6, 0),
 
         /**
          * +1 Buy, +$1. This turn, cards cost $1 less (but not less than $0).

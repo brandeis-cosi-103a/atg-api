@@ -27,8 +27,8 @@
  * Planning} - multi-benefit card</li>
  * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#MERGE_CONFLICT Merge
  * Conflict} - trash for cards</li>
- * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#TECHNICAL_DEBT_COLLECTION
- * Technical Debt Collection} - Attack card with choice</li>
+ * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#RANSOMWARE
+ * Ransomware} - Attack card with choice</li>
  * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#DEPLOYMENT_PIPELINE
  * Deployment Pipeline} - cost reduction</li>
  * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#UNIT_TEST Unit Test} -
@@ -43,8 +43,8 @@
  * These cards introduce new informal card categories: Attack cards
  * ({@link edu.brandeis.cosi.atg.cards.Card.Type#HACK Hack},
  * {@link edu.brandeis.cosi.atg.cards.Card.Type#EVERGREEN_TEST Evergreen Test},
- * {@link edu.brandeis.cosi.atg.cards.Card.Type#TECHNICAL_DEBT_COLLECTION
- * Technical Debt Collection})
+ * {@link edu.brandeis.cosi.atg.cards.Card.Type#RANSOMWARE
+ * Ransomware})
  * and Reaction cards ({@link edu.brandeis.cosi.atg.cards.Card.Type#MONITORING
  * Monitoring}).
  */
