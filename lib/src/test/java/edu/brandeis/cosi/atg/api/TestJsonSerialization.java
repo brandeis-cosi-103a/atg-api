@@ -3,12 +3,15 @@ package edu.brandeis.cosi.atg.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.guava.GuavaModule;
 import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 
+import edu.brandeis.cosi.atg.state.CardStacks;
+import edu.brandeis.cosi.atg.state.GameResult;
 import edu.brandeis.cosi.atg.state.GameState;
 import edu.brandeis.cosi.atg.state.Hand;
-import edu.brandeis.cosi.atg.state.CardStacks;
+import edu.brandeis.cosi.atg.state.PlayerResult;
 import edu.brandeis.cosi.atg.cards.Card;
 import edu.brandeis.cosi.atg.decisions.BuyDecision;
 import edu.brandeis.cosi.atg.decisions.DiscardCardDecision;
@@ -19,7 +22,9 @@ import edu.brandeis.cosi.atg.decisions.TrashCardDecision;
 import edu.brandeis.cosi.atg.event.DiscardCardEvent;
 import edu.brandeis.cosi.atg.event.EndTurnEvent;
 import edu.brandeis.cosi.atg.event.GainCardEvent;
+import edu.brandeis.cosi.atg.event.GameEndEvent;
 import edu.brandeis.cosi.atg.event.GameEvent;
+import edu.brandeis.cosi.atg.event.GameStartEvent;
 import edu.brandeis.cosi.atg.event.PlayCardEvent;
 import edu.brandeis.cosi.atg.event.TrashCardEvent;
 
@@ -98,6 +103,25 @@ public class TestJsonSerialization {
     @Test
     public void testTrashCardDecisionSerialization() throws Exception {
         testJsonRoundTrip(new TrashCardDecision(new Card(Card.Type.FRAMEWORK, 5)));
+    }
+
+    @Test
+    public void testGameStartEventSerialization() throws Exception {
+        CardStacks supply = new CardStacks(ImmutableMap.of(
+                Card.Type.FRAMEWORK, 8,
+                Card.Type.BITCOIN, 60));
+        testJsonRoundTrip(new GameStartEvent(ImmutableList.of("Alice", "Bob"), supply));
+    }
+
+    @Test
+    public void testGameEndEventSerialization() throws Exception {
+        CardStacks finalSupply = new CardStacks(ImmutableMap.of(
+                Card.Type.FRAMEWORK, 0,
+                Card.Type.BITCOIN, 42));
+        GameResult result = new GameResult(ImmutableList.of(
+                new PlayerResult("Alice", 12, ImmutableList.of(new Card(Card.Type.FRAMEWORK, 1))),
+                new PlayerResult("Bob", 8, ImmutableList.of(new Card(Card.Type.MODULE, 2)))));
+        testJsonRoundTrip(new GameEndEvent(finalSupply, result));
     }
 
     @Test

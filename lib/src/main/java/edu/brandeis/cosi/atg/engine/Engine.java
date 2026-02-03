@@ -239,4 +239,16 @@ public interface Engine {
      *                                  decision
      */
     public GameResult play() throws PlayerViolationException;
+
+    /**
+     * Sets an additional observer to receive game events.
+     * <br/>
+     * This observer is notified alongside any player-specific observers.
+     * It can be used for logging, testing, or external monitoring.
+     *
+     * @param observer the observer to notify of game events
+     */
+    default void setObserver(GameObserver observer) {
+        // Default no-op; implementations should override to store and use the observer.
+    }
 }

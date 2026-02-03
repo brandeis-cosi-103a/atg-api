@@ -2,7 +2,7 @@
  * This package contains classes related to game events.
  * <br/>
  * <br/>
- * There are six types of events:
+ * There are eight types of events:
  * <ul>
  * <li>{@link PlayCardEvent} - an event that occurs when a card is played</li>
  * <li>{@link GainCardEvent} - an event that occurs when a card is gained</li>
@@ -13,6 +13,10 @@
  * (permanently removed from the player's deck)</li>
  * <li>{@link GameEvent} - a generic event which doesn't fit any of the other
  * categories</li>
+ * <li>{@link GameStartEvent} - fired once at the start of a game, with player
+ * names and initial supply</li>
+ * <li>{@link GameEndEvent} - fired once at the end of a game, with the final
+ * supply</li>
  * </ul>
  * <br/>
  * <br/>
