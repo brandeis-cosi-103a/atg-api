@@ -19,11 +19,14 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
                 @JsonSubTypes.Type(value = EndTurnEvent.class, name = "end_turn"),
                 @JsonSubTypes.Type(value = GainCardEvent.class, name = "gain_card"),
                 @JsonSubTypes.Type(value = GameEvent.class, name = "game"),
+                @JsonSubTypes.Type(value = GameStartEvent.class, name = "game_start"),
+                @JsonSubTypes.Type(value = GameEndEvent.class, name = "game_end"),
                 @JsonSubTypes.Type(value = PlayCardEvent.class, name = "play_card"),
                 @JsonSubTypes.Type(value = TrashCardEvent.class, name = "trash_card"),
 })
 public sealed interface Event
-                permits DiscardCardEvent, EndTurnEvent, GainCardEvent, GameEvent, PlayCardEvent, TrashCardEvent {
+                permits DiscardCardEvent, EndTurnEvent, GainCardEvent, GameEvent, GameStartEvent, GameEndEvent,
+                PlayCardEvent, TrashCardEvent {
 
         /**
          * Gets the description of the event.
