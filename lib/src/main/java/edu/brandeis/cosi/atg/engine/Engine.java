@@ -187,8 +187,8 @@ import edu.brandeis.cosi.atg.state.GameState;
  * cards</li>
  * <li>8x {@link edu.brandeis.cosi.atg.cards.Card.Type#MODULE Module}
  * cards</li>
- * <li>8x {@link edu.brandeis.cosi.atg.cards.Card.Type#FRAMEWORK Framework}
- * cards</li>
+ * <li>{@link edu.brandeis.cosi.atg.cards.Card.Type#FRAMEWORK Framework}
+ * cards: 8x for 2-player games, 12x for 3-4 player games</li>
  * <li>10x <b>per player</b> {@link edu.brandeis.cosi.atg.cards.Card.Type#BUG
  * Bug}
  * cards</li>
